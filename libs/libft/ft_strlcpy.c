@@ -1,17 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/09/21 20:50:57 by jfrancis         ###   ########.fr       */
+/*   Created: 2021/02/11 22:59:59 by jfrancis          #+#    #+#             */
+/*   Updated: 2021/05/15 22:10:27 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(void) {
-	return(0);
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+{
+	char		*d;
+	char		*e;
+	const char	*s = src;
+
+	d = dst;
+	e = dst + size;
+	if (!dst || !src)
+		return (0);
+	while (*s != '\0' && d < e)
+		*d++ = *s++;
+	if (d < e)
+		*d = 0;
+	else if (size > 0)
+		d[-1] = 0;
+	while (*s != '\0')
+		s++;
+	return (s - src);
 }

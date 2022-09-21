@@ -1,17 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/09/21 20:50:57 by jfrancis         ###   ########.fr       */
+/*   Created: 2021/02/18 21:13:33 by jfrancis          #+#    #+#             */
+/*   Updated: 2021/05/15 23:28:07 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(void) {
-	return(0);
+char	*ft_strdup(const char *s)
+{
+	size_t	size;
+	char	*dest;
+
+	size = ft_strlen(s) + 1;
+	dest = malloc(size);
+	if (dest == NULL)
+		return (NULL);
+	ft_memcpy(dest, s, size);
+	return (dest);
 }

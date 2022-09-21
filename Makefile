@@ -6,7 +6,7 @@
 #    By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 20:49:56 by jfrancis          #+#    #+#              #
-#    Updated: 2022/09/20 23:02:21 by jfrancis         ###   ########.fr        #
+#    Updated: 2022/09/21 20:53:44 by jfrancis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,33 +15,36 @@ CFLAGS = -Wall -Wextra -Werror
 CC = gcc
 RM = rm -rf
 
-LIBFTDIR = ./libs/Libft
+LIBFTDIR = libs/libft
 LIBFT = $(LIBFTDIR)/libft.a
 
-MINILBXDIR = ./libs/minilibx-linux
+MINILBXDIR = libs/minilibx-linux
 MINILBX = $(MINILBXDIR)/libmlx.a
 
-INCLUDES = -I $(MINILBXDIR) -I $(LIBFTDIR)/includes
+LIBFLAGS = -lm -lmlx -lX11 -lbsd -lXext -lft
 
-LDLIBS = -lm -lmlx -lX11 -lbsd -lXext -lft
-LDFLAGS = -L $(MINILBXDIR) -L $(LIBFTDIR)
+OBJ_DIR = build
+INC_DIR = includes
 
-SRCDIR = ./src
+BASE = main.c
 
-SRC =
+SRC = $(BASE)
 
-OBJ = $(SRC:%.c=$(OBJDIR)/%.o)
+SRC_FULL = $(addprefix $(SRC_DIR)/, $(BASE))
+
+OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FULL))
+
+VPATH = includes \
+		src
 
 all: $(NAME)
 
-$(NAME): $(OBJDIR) $(OBJ) $(MINILBX) $(LIBFT)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) -o $@ $(LDFLAGS) $(LDLIBS)
+$(NAME): $(OBJS) $(MINILBX) $(LIBFT)
+	$(CC) $(CFLAGS) -o $@ $^ $(LIBFLAGS)
 
-$(OBJDIR)/%.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-
-$(OBJDIR):
-	mkdir -p $@
+$(OBJ_DIR)/%.o: %.c
+	mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
 
 $(MINILBX):
 	$(MAKE) -C $(MINILBXDIR)
@@ -50,12 +53,12 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFTDIR)
 
 clean:
-	$(RM) $(OBJDIR)
+	$(RM) $(OBJ_DIR)
 	$(MAKE) clean -C $(LIBFTDIR)
+	$(MAKE) clean -C $(MINILBXDIR)
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) $(TEST)
 	$(MAKE) clean -C $(MINILBXDIR)
 	$(MAKE) fclean -C $(LIBFTDIR)
 

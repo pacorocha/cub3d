@@ -1,17 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/09/21 20:50:57 by jfrancis         ###   ########.fr       */
+/*   Created: 2021/02/15 11:59:54 by jfrancis          #+#    #+#             */
+/*   Updated: 2021/02/15 17:22:10 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int	main(void) {
-	return(0);
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	char	*c_dest;
+	char	*c_src;
+
+	c_dest = (char *)dest;
+	c_src = (char *)src;
+	if ((c_dest != NULL) || (c_src != NULL))
+	{
+		while (n--)
+		{
+			*(c_dest++) = *(c_src++);
+		}
+	}
+	return (dest);
 }
