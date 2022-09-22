@@ -6,7 +6,7 @@
 #    By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 20:49:56 by jfrancis          #+#    #+#              #
-#    Updated: 2022/09/21 20:53:44 by jfrancis         ###   ########.fr        #
+#    Updated: 2022/09/21 20:57:36 by jfrancis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBFT = $(LIBFTDIR)/libft.a
 MINILBXDIR = libs/minilibx-linux
 MINILBX = $(MINILBXDIR)/libmlx.a
 
-LIBFLAGS = -lm -lmlx -lX11 -lbsd -lXext -lft
+LIBFLAGS = -lm -lbsd -lmlx -lXext -lX11
 
 OBJ_DIR = build
 INC_DIR = includes
