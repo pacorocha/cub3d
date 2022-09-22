@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: Dmonteir < dmonteir@student.42sp.org.br    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 20:49:56 by jfrancis          #+#    #+#              #
-#    Updated: 2022/09/21 22:04:22 by jfrancis         ###   ########.fr        #
+#    Updated: 2022/09/23 01:13:29 by Dmonteir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,12 @@ RM = rm -rf
 LIBFTDIR = libs/libft
 LIBFT = $(LIBFTDIR)/libft.a
 
-MINILBXDIR = libs/minilibx-linux
-MINILBX = $(MINILBXDIR)/libmlx.a
+# MINILBXDIR = libs/minilibx-linux
+# MINILBX = $(MINILBXDIR)/libmlx.a
 
 LIBFLAGS = -lm -lbsd -lmlx -lXext -lX11
-LDLIBS = -L$(MINILBXDIR) -L$(LIBFTDIR)
+#LDLIBS = -L$(MINILBXDIR) -L$(LIBFTDIR)
+LDLIBS = -L$(LIBFTDIR)
 
 OBJ_DIR = build
 INC_DIR = includes
@@ -40,15 +41,16 @@ VPATH = includes \
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(MINILBX) $(LIBFT)
+#$(NAME): $(OBJS) $(MINILBX) $(LIBFT)
+$(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) -o $@ $^ $(LIBFLAGS) $(LDLIBS)
 
 $(OBJ_DIR)/%.o: %.c
 	mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
 
-$(MINILBX):
-	$(MAKE) -C $(MINILBXDIR)
+# $(MINILBX):
+# 	$(MAKE) -C $(MINILBXDIR)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFTDIR)
@@ -56,11 +58,11 @@ $(LIBFT):
 clean:
 	$(RM) $(OBJ_DIR)
 	$(MAKE) clean -C $(LIBFTDIR)
-	$(MAKE) clean -C $(MINILBXDIR)
+# $(MAKE) clean -C $(MINILBXDIR)
 
 fclean: clean
 	$(RM) $(NAME)
-	$(MAKE) clean -C $(MINILBXDIR)
+# $(MAKE) clean -C $(MINILBXDIR)
 	$(MAKE) fclean -C $(LIBFTDIR)
 
 re: fclean all
