@@ -6,7 +6,7 @@
 /*   By: Dmonteir < dmonteir@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/09/23 00:55:26 by Dmonteir         ###   ########.fr       */
+/*   Updated: 2022/09/23 01:27:38 by Dmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	check_textures(t_data *data)
 	data->map[i] = NULL;
 
 	i = 0;
-	while(data->map != NULL)
+	while(data->map[i] != NULL)
 	{
 		printf("%s\n", data->map[i]);
 		i++;
@@ -71,7 +71,7 @@ char	**lines(char *file, t_data *data)
 		return (NULL);
 	if (!check_file(file, "cub"))
 		print_error("Every map must have a .cub extension\n");
-	nb_rows = 1;
+	nb_rows = 0;
 	read_line = 1;
 	while (read_line)
 	{
@@ -82,7 +82,7 @@ char	**lines(char *file, t_data *data)
 			nb_rows++;
 	}
 	close(fd);
-	data->map = (char **)ft_calloc(nb_rows + 1, sizeof(char *));
+	data->map = (char **)ft_calloc(nb_rows, sizeof(char *));
 	return (data->map);
 }
 
@@ -99,7 +99,6 @@ int	check_file(char *file, char *sufx)
 		return (1);
 	return (0);
 }
-
 
 int	print_error(char *msg)
 {
