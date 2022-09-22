@@ -6,7 +6,7 @@
 #    By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 20:49:56 by jfrancis          #+#    #+#              #
-#    Updated: 2022/09/21 20:57:36 by jfrancis         ###   ########.fr        #
+#    Updated: 2022/09/21 22:04:22 by jfrancis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ MINILBXDIR = libs/minilibx-linux
 MINILBX = $(MINILBXDIR)/libmlx.a
 
 LIBFLAGS = -lm -lbsd -lmlx -lXext -lX11
+LDLIBS = -L$(MINILBXDIR) -L$(LIBFTDIR)
 
 OBJ_DIR = build
 INC_DIR = includes
@@ -40,7 +41,7 @@ VPATH = includes \
 all: $(NAME)
 
 $(NAME): $(OBJS) $(MINILBX) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $^ $(LIBFLAGS)
+	$(CC) $(CFLAGS) -o $@ $^ $(LIBFLAGS) $(LDLIBS)
 
 $(OBJ_DIR)/%.o: %.c
 	mkdir -p $(OBJ_DIR)
