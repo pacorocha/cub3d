@@ -22,13 +22,19 @@
 # define FALSE 0
 
 
-typedef struct t_data
+typedef struct s_data
 {
     int argc;
     char *file;
     char **map;
-
+	t_mlx mlx;
 } t_data;
+
+typedef struct s_mlx
+{
+	void	*mlx_ptr;
+	void	*win;
+} t_mlx;
 
 void	init_data(t_data *data, int argc, char **argv);
 

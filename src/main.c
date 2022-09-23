@@ -17,8 +17,11 @@ int	main(int argc, char **argv)
 	t_data data;
 
 	init_data(&data, argc, argv);
-	parser(&data);	
-	
+	parser(&data);
+	data.mlx_ptr = mlx_init();
+	data.mlx.win = mlx_new_window(data.mlx_ptr, 1024, 620, "Haunted House");
+	mlx_hook(data.win, 33, 1L << 17, close_window, &data);
+	mlx_loop(data.mlx);
 }
 
 void	init_data(t_data *data, int argc, char **argv)
@@ -31,7 +34,7 @@ void	parser(t_data *data)
 {
 	if (data->argc != 2)
 		print_error("ERROR!\nNumber of parameters is invalid!\n");
-	
+
 	check_textures(data);
 
 }
@@ -104,4 +107,15 @@ int	print_error(char *msg)
 {
 	printf("%s\n", msg);
 	return (FALSE);
+}
+
+
+int	close_window(t_data *data)
+{
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	free(data->map);
+	free(data->mlx);
+	exit(0);
+	return (0);
 }
