@@ -3,92 +3,100 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: Dmonteir < dmonteir@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 18:22:20 by jfrancis          #+#    #+#             */
-/*   Updated: 2021/05/15 23:57:32 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/09/24 01:43:34 by Dmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	count_words(char const *s, char c)
+static size_t	count_words(const char *s, char c)
 {
-	size_t			wc;
-	unsigned int	i;
-	int				temp;
+	int		is_word;
+	size_t	words;
 
-	wc = 0;
-	i = 0;
-	temp = 0;
-	if (!s)
-		return (wc);
-	while (s[i] != '\0')
+	words = 0;
+	is_word = 0;
+	while (*s)
 	{
-		if (s[i] == c)
-			temp = 1;
-		if (s[i] != c && temp == 0)
+		if (!is_word && *s != c)
 		{
-			wc++;
-			temp = 1;
+			is_word = 1;
+			words++;
 		}
-		else if (s[i] == c && temp == 1)
-		{
-			temp = 0;
-		}
-		i++;
+		else if (is_word && *s == c)
+			is_word = 0;
+		s++;
 	}
-	return (wc);
+	return (words);
 }
 
-int	ln(char *s, int i, char c)
+static size_t	get_wordlen(const char *s, char c)
 {
-	int	count;
+	size_t	offset;
 
-	count = 0;
-	while (s[i] != c && s[i])
-	{
-		count++;
-		i++;
-	}
-	return (count);
+	offset = 0;
+	while (s[offset] && s[offset] != c)
+		offset++;
+	return (offset);
 }
 
-static void	cut_str(char const *s, char **s_array, int i, char c)
+static char	*worddup(const char *s, size_t len)
 {
-	int	j;
-	int	k;
+	char	*str;
+	size_t	offset;
 
-	j = 0;
-	k = 0;
-	while (s[i] != c && s[i])
-		s_array[j][k++] = s[i++];
-	s_array[j++][k] = '\0';
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**s_array;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	s_array = malloc(sizeof(char *) * (count_words(s, c) + 1));
-	if (!s || !s_array)
+	str = malloc(len + 1);
+	if (str == NULL)
 		return (NULL);
-	while (s[i])
+	offset = 0;
+	while (offset < len)
 	{
-		while (s[i] == c && s[i])
-			i++;
-		if (s[i])
-		{
-			s_array[j] = malloc(sizeof(char) * ln((char *)s, i, c) + 1);
-			if (!s_array[j])
-				return (NULL);
-			cut_str(s, s_array, i, c);
-		}
+		str[offset] = s[offset];
+		offset++;
 	}
-	s_array[j] = NULL;
-	return (s_array);
+	str[offset] = '\0';
+	return (str);
+}
+
+static void	*kill(char **res, size_t stop)
+{
+	size_t	counter;
+
+	counter = 0;
+	while (counter < stop)
+		free(res[counter]);
+	free(res);
+	return (NULL);
+}
+
+char	**ft_split(const char *s, char c)
+{
+	char	**res;
+	size_t	len;
+	size_t	words;
+	size_t	counter;
+
+	if (s == NULL)
+		return (NULL);
+	words = count_words(s, c);
+	res = malloc((words + 1) * sizeof(char *));
+	if (res == NULL)
+		return (NULL);
+	counter = 0;
+	while (counter < words)
+	{
+		len = get_wordlen(s, c);
+		if (len)
+		{
+			res[counter] = worddup(s, len);
+			if (res[counter++] == NULL)
+				return (kill(res, counter - 1));
+		}
+		s += len + 1;
+	}
+	res[counter] = NULL;
+	return (res);
 }
