@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Dmonteir < dmonteir@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/09/23 01:27:38 by Dmonteir         ###   ########.fr       */
+/*   Updated: 2022/09/24 03:26:27 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ int	main(int argc, char **argv)
 
 	init_data(&data, argc, argv);
 	parser(&data);
-	data.mlx_ptr = mlx_init();
-	data.mlx.win = mlx_new_window(data.mlx_ptr, 1024, 620, "Haunted House");
-	mlx_hook(data.win, 33, 1L << 17, close_window, &data);
-	mlx_loop(data.mlx);
+	data.mlx.mlx_ptr = mlx_init();
+	data.mlx.win = mlx_new_window(data.mlx.mlx_ptr, 1024, 620, "Haunted House");
+	mlx_hook(data.mlx.win, 33, 1L << 17, close_window, &data);
+	mlx_key_hook(data.mlx.win, &key_press, &data);
+	mlx_loop(data.mlx.mlx_ptr);
 }
 
 void	init_data(t_data *data, int argc, char **argv)
@@ -110,12 +111,4 @@ int	print_error(char *msg)
 }
 
 
-int	close_window(t_data *data)
-{
-	mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
-	free(data->map);
-	free(data->mlx);
-	exit(0);
-	return (0);
-}
+
