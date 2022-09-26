@@ -29,18 +29,91 @@ void	init_data(t_data *data, int argc, char **argv)
 {
 	data->argc = argc;
 	data->file = argv[1];
+	data->c_color = NULL;
+	data->f_color = NULL;
 }
 
 void	parser(t_data *data)
 {
 	if (data->argc != 2)
 		print_error("ERROR!\nNumber of parameters is invalid!\n");
-
 	check_textures(data);
-
+	read_map(data);
+	loop_check(data);
 }
 
-void	check_textures(t_data *data)
+void	loop_check(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while(data->map[i] != NULL)
+	{
+		if (check_flags_cardinal_directions(data->map[i]))
+			fill_arr_textures(data, data->map[i], i);
+		if (check_flags_colors(data->map[i]))
+			fill_arr_colors(data, data->map[i]);
+
+		i++;
+	}
+}
+
+int	check_flags_cardinal_directions(char *line)
+{
+	if (!ft_strncmp(line, "NO", 2) ||
+	!ft_strncmp(line, "SO", 2) ||
+	!ft_strncmp(line, "WE", 2) ||
+	!ft_strncmp(line, "EA", 2))
+		return (1);
+
+	return (0);
+}
+
+int	check_flags_colors(char *line)
+{
+	if (!ft_strncmp(line, "F ", 2) ||
+	!ft_strncmp(line, "C ", 2))
+		return (1);
+
+	return (0);
+}
+
+void	fill_arr_textures(t_data *data, char *line, int i)
+{
+	static int counter;
+
+	if (i == 0)
+	{
+		counter = 0;
+		data->directions = (char **)ft_calloc(5, sizeof(char *));
+		data->directions[counter] = line;
+		counter++;
+	}
+	else
+	{
+		data->directions[counter] = line;
+		counter++;
+	}
+
+	if (counter == 5)
+		data->directions[counter] = NULL;
+}
+
+void	fill_arr_colors(t_data *data, char *line)
+{
+	char **str_splitted;
+
+	str_splitted = ft_split(line, ' ');
+	if (!ft_strncmp(line, "F ", 2))
+		data->f_color = ft_strdup(str_splitted[1]);
+	else
+		data->c_color = ft_strdup(str_splitted[1]);
+	
+	free(str_splitted);
+	printf("%s\n", data->c_color);
+}
+
+void	read_map(t_data *data)
 {
 	int content;
 	int	gnl;
@@ -53,14 +126,22 @@ void	check_textures(t_data *data)
 	while (gnl)
 		gnl = get_next_line(content, &data->map[i++]);
 	data->map[i] = NULL;
+	close(content);
+}
+
+
+
+void	free_array(char **arr)
+{
+	int i;
 
 	i = 0;
-	while(data->map[i] != NULL)
+	while ((arr)[i])
 	{
-		printf("%s\n", data->map[i]);
+		free((arr)[i]);
 		i++;
 	}
-	close(content);
+	free(arr);
 }
 
 char	**lines(char *file, t_data *data)
