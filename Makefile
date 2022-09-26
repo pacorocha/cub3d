@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Dmonteir < dmonteir@student.42sp.org.br    +#+  +:+       +#+         #
+#    By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 20:49:56 by jfrancis          #+#    #+#              #
-#    Updated: 2022/09/23 01:13:29 by Dmonteir         ###   ########.fr        #
+#    Updated: 2022/09/24 03:37:12 by jfrancis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,39 +18,48 @@ RM = rm -rf
 LIBFTDIR = libs/libft
 LIBFT = $(LIBFTDIR)/libft.a
 
-# MINILBXDIR = libs/minilibx-linux
-# MINILBX = $(MINILBXDIR)/libmlx.a
+MINILBXDIR = libs/minilibx-linux
+MINILBX = $(MINILBXDIR)/libmlx.a
 
-LIBFLAGS = -lm -lbsd -lmlx -lXext -lX11
-#LDLIBS = -L$(MINILBXDIR) -L$(LIBFTDIR)
-LDLIBS = -L$(LIBFTDIR)
+LIBFLAGS = -lXext -lX11 -lmx
+LDLIBFT = -L$(LIBFTDIR) -lft
+LDMINILIBX = -L$(MINILIBX) -lmlx -lXext -lX11
+
+#LDLIBS = -L$(LIBFTDIR)
 
 OBJ_DIR = build
 INC_DIR = includes
+SRC_DIR = src
+KEYS_DIR = keys
 
 BASE = main.c
 
-SRC = $(BASE)
+KEYS = keys_utils.c
 
-SRC_FULL = $(addprefix $(SRC_DIR)/, $(BASE))
+SRC = $(BASE) \
+		$(KEYS)
+
+SRC_FULL = $(addprefix $(SRC_DIR)/, $(BASE)) \
+			$(addprefix $(SRC_DIR)/$(KEYS_DIR)/, $(KEYS))
 
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FULL))
 
 VPATH = includes \
-		src
+		src src/keys
 
 all: $(NAME)
 
-#$(NAME): $(OBJS) $(MINILBX) $(LIBFT)
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ $^ $(LIBFLAGS) $(LDLIBS)
+#$(NAME): $(OBJS) $(LIBFT)
+$(NAME): $(OBJS) $(LIBFT) $(MINILBX)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDLIBFT) $(LDMINILIBX)
 
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
+	mkdir -p $(OBJ_DIR)/$(KEYS_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR)
 
-# $(MINILBX):
-# 	$(MAKE) -C $(MINILBXDIR)
+$(MINILBX):
+	$(MAKE) -C $(MINILBXDIR)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFTDIR)
@@ -58,11 +67,11 @@ $(LIBFT):
 clean:
 	$(RM) $(OBJ_DIR)
 	$(MAKE) clean -C $(LIBFTDIR)
-# $(MAKE) clean -C $(MINILBXDIR)
+	$(MAKE) clean -C $(MINILBXDIR)
 
 fclean: clean
 	$(RM) $(NAME)
-# $(MAKE) clean -C $(MINILBXDIR)
+	$(MAKE) clean -C $(MINILBXDIR)
 	$(MAKE) fclean -C $(LIBFTDIR)
 
 re: fclean all

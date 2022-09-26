@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Dmonteir < dmonteir@student.42sp.org.br    +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/09/24 02:07:21 by Dmonteir         ###   ########.fr       */
+/*   Updated: 2022/09/24 03:26:27 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ int	main(int argc, char **argv)
 	t_data data;
 
 	init_data(&data, argc, argv);
-	parser(&data);	
-	
+	parser(&data);
+	data.mlx.mlx_ptr = mlx_init();
+	data.mlx.win = mlx_new_window(data.mlx.mlx_ptr, 1024, 620, "Haunted House");
+	mlx_hook(data.mlx.win, 33, 1L << 17, close_window, &data);
+	mlx_key_hook(data.mlx.win, &key_press, &data);
+	mlx_loop(data.mlx.mlx_ptr);
 }
 
 void	init_data(t_data *data, int argc, char **argv)
@@ -33,10 +37,9 @@ void	parser(t_data *data)
 {
 	if (data->argc != 2)
 		print_error("ERROR!\nNumber of parameters is invalid!\n");
+	check_textures(data);
 	read_map(data);
 	loop_check(data);
-	
-
 }
 
 void	loop_check(t_data *data)
@@ -187,3 +190,6 @@ int	print_error(char *msg)
 	printf("%s\n", msg);
 	return (FALSE);
 }
+
+
+
