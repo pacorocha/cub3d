@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/09/24 03:26:27 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/09/26 19:45:19 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	parser(t_data *data)
 {
 	if (data->argc != 2)
 		print_error("ERROR!\nNumber of parameters is invalid!\n");
-	check_textures(data);
 	read_map(data);
 	loop_check(data);
 }
@@ -108,7 +107,7 @@ void	fill_arr_colors(t_data *data, char *line)
 		data->f_color = ft_strdup(str_splitted[1]);
 	else
 		data->c_color = ft_strdup(str_splitted[1]);
-	
+
 	free(str_splitted);
 	printf("%s\n", data->c_color);
 }
