@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: Dmonteir < dmonteir@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/09/26 19:45:19 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/09/28 00:18:51 by Dmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,23 +79,16 @@ int	check_flags_colors(char *line)
 
 void	fill_arr_textures(t_data *data, char *line, int i)
 {
-	static int counter;
-
 	if (i == 0)
 	{
-		counter = 0;
 		data->directions = (char **)ft_calloc(5, sizeof(char *));
-		data->directions[counter] = line;
-		counter++;
+		data->directions[i] = line;
 	}
 	else
-	{
-		data->directions[counter] = line;
-		counter++;
-	}
+		data->directions[i] = line;
 
-	if (counter == 5)
-		data->directions[counter] = NULL;
+	if (i == 5)
+		data->directions[i] = NULL;
 }
 
 void	fill_arr_colors(t_data *data, char *line)
