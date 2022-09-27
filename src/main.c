@@ -6,7 +6,7 @@
 /*   By: Dmonteir < dmonteir@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/09/28 00:18:51 by Dmonteir         ###   ########.fr       */
+/*   Updated: 2022/09/28 01:17:11 by Dmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	main(int argc, char **argv)
 
 	init_data(&data, argc, argv);
 	parser(&data);
-	data.mlx.mlx_ptr = mlx_init();
-	data.mlx.win = mlx_new_window(data.mlx.mlx_ptr, 1024, 620, "Haunted House");
-	mlx_hook(data.mlx.win, 33, 1L << 17, close_window, &data);
-	mlx_key_hook(data.mlx.win, &key_press, &data);
-	mlx_loop(data.mlx.mlx_ptr);
+	// data.mlx.mlx_ptr = mlx_init();
+	// data.mlx.win = mlx_new_window(data.mlx.mlx_ptr, 1024, 620, "Haunted House");
+	// mlx_hook(data.mlx.win, 33, 1L << 17, close_window, &data);
+	// mlx_key_hook(data.mlx.win, &key_press, &data);
+	// mlx_loop(data.mlx.mlx_ptr);
 }
 
 void	init_data(t_data *data, int argc, char **argv)
@@ -39,6 +39,8 @@ void	parser(t_data *data)
 		print_error("ERROR!\nNumber of parameters is invalid!\n");
 	read_map(data);
 	loop_check(data);
+	
+
 }
 
 void	loop_check(t_data *data)
@@ -46,15 +48,16 @@ void	loop_check(t_data *data)
 	int i;
 
 	i = 0;
+
 	while(data->map[i] != NULL)
 	{
 		if (check_flags_cardinal_directions(data->map[i]))
 			fill_arr_textures(data, data->map[i], i);
 		if (check_flags_colors(data->map[i]))
 			fill_arr_colors(data, data->map[i]);
-
 		i++;
 	}
+	printf("%s\n", data->directions[4]);
 }
 
 int	check_flags_cardinal_directions(char *line)
@@ -79,16 +82,17 @@ int	check_flags_colors(char *line)
 
 void	fill_arr_textures(t_data *data, char *line, int i)
 {
+	
 	if (i == 0)
 	{
-		data->directions = (char **)ft_calloc(5, sizeof(char *));
+		data->directions = (char **)ft_calloc(5, sizeof(char *));		
 		data->directions[i] = line;
 	}
 	else
 		data->directions[i] = line;
 
-	if (i == 5)
-		data->directions[i] = NULL;
+	if (i == 3)
+		data->directions[i + 1] = NULL;
 }
 
 void	fill_arr_colors(t_data *data, char *line)
@@ -100,9 +104,8 @@ void	fill_arr_colors(t_data *data, char *line)
 		data->f_color = ft_strdup(str_splitted[1]);
 	else
 		data->c_color = ft_strdup(str_splitted[1]);
-
+	
 	free(str_splitted);
-	printf("%s\n", data->c_color);
 }
 
 void	read_map(t_data *data)
@@ -148,7 +151,7 @@ char	**lines(char *file, t_data *data)
 		return (NULL);
 	if (!check_file(file, "cub"))
 		print_error("Every map must have a .cub extension\n");
-	nb_rows = 0;
+	nb_rows = 1;
 	read_line = 1;
 	while (read_line)
 	{
@@ -159,7 +162,7 @@ char	**lines(char *file, t_data *data)
 			nb_rows++;
 	}
 	close(fd);
-	data->map = (char **)ft_calloc(nb_rows, sizeof(char *));
+	data->map = (char **)ft_calloc(nb_rows + 1, sizeof(char *));
 	return (data->map);
 }
 
@@ -182,6 +185,3 @@ int	print_error(char *msg)
 	printf("%s\n", msg);
 	return (FALSE);
 }
-
-
-
