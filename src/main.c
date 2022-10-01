@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/09/30 02:03:35 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/01 03:01:57 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,24 +71,36 @@ void	loop_check(t_data *data)
 		}
 		i++;
 	}
-	printf("%s\n", data->map[1]);
-}
 
-//saber se precisamos de pelo menos 4 texturas e 2 cores obrigatoriamente
+	// i = 0;
+	// while(data->map[i] != NULL)
+	// {
+	// 	printf("%s\n", data->map[i]);
+	// 	i++;
+	// }
+}
 
 void	fill_map(t_data *data, char *line, int i)
 {
 	if (data->counter == 6 && data->control == 0)
 	{
 		data->counter = 0;
+		
 		data->nb_rows = data->nb_rows - i;
+		printf("%d\n", data->nb_rows);
 		data->map = (char **)ft_calloc(data->nb_rows + 1, sizeof(char *));
+		printf("%d\n", data->nb_rows);
 		data->map[data->counter] = ft_strdup(line);
 	}
 	else
 	{
 		data->counter++;
 		data->map[data->counter] = ft_strdup(line);
+		data->control = 1;
+	}
+	if(data->counter == data->nb_rows - 1)
+	{
+		data->map[data->counter + 1] = NULL;
 		data->control = 1;
 	}
 }

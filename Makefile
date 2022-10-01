@@ -6,7 +6,7 @@
 #    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 20:49:56 by jfrancis          #+#    #+#              #
-#    Updated: 2022/09/30 00:32:47 by coder            ###   ########.fr        #
+#    Updated: 2022/10/01 03:01:41 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,16 +25,14 @@ LIBFLAGS = -lXext -lX11 -lmx
 LDLIBFT = -L$(LIBFTDIR) -lft
 LDMINILIBX = -L$(MINILIBX) -lmlx -lXext -lX11
 
-#LDLIBS = -L$(LIBFTDIR)
-
 OBJ_DIR = build
 INC_DIR = includes
 SRC_DIR = src
 KEYS_DIR = keys
 
 BASE =	main.c \
-
-KEYS = keys_utils.c
+		
+KEYS = keys_utils.c \
 
 SRC = $(BASE) \
 		$(KEYS)
@@ -46,6 +44,7 @@ OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FULL))
 
 VPATH = includes \
 		src src/keys \
+		
 
 all: $(NAME)
 
