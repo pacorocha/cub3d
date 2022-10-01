@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/09/30 01:55:02 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/01 06:29:51 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,10 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <math.h>
 # include "../libs/libft/libft.h"
 # include "../libs/minilibx-linux/mlx.h"
-
-# define TRUE 1
-# define FALSE 0
-
-# define KEY_ESC (0xff1b)
-# define KEY_Q (0x71)
-
-# define KEY_A (0x61)
-# define KEY_S (0x73)
-# define KEY_D (0x64)
-# define KEY_W (0x77)
-
-# define KEY_UP (0xff52)
-# define KEY_DOWN (0xff54)
-# define KEY_LEFT (0xff51)
-# define KEY_RIGHT (0xff53)
+# include "defines.h"
 
 typedef struct s_mlx
 {
