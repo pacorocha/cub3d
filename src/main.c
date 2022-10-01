@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/01 03:01:57 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/01 03:52:45 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,7 @@ void	fill_map(t_data *data, char *line, int i)
 		data->counter = 0;
 		
 		data->nb_rows = data->nb_rows - i;
-		printf("%d\n", data->nb_rows);
 		data->map = (char **)ft_calloc(data->nb_rows + 1, sizeof(char *));
-		printf("%d\n", data->nb_rows);
 		data->map[data->counter] = ft_strdup(line);
 	}
 	else
