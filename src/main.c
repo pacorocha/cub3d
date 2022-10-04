@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/01 03:52:45 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/04 03:29:10 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int	main(int argc, char **argv)
 
 	init_data(&data, argc, argv);
 	read_map(&data);
-
 	parser(&data);
-	// data.mlx.mlx_ptr = mlx_init();
-	// data.mlx.win = mlx_new_window(data.mlx.mlx_ptr, 1024, 620, "Haunted House");
-	// mlx_hook(data.mlx.win, 33, 1L << 17, close_window, &data);
-	// mlx_key_hook(data.mlx.win, &key_press, &data);
-	// mlx_loop(data.mlx.mlx_ptr);
+	init_player(&data);
+	data.mlx.mlx_ptr = mlx_init();
+	data.mlx.win = mlx_new_window(data.mlx.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "Haunted House");
+	mlx_hook(data.mlx.win, 33, 1L << 17, close_window, &data);
+	mlx_key_hook(data.mlx.win, &key_press, &data);
+	mlx_loop(data.mlx.mlx_ptr);
 }
 
 void	init_data(t_data *data, int argc, char **argv)
@@ -72,12 +72,12 @@ void	loop_check(t_data *data)
 		i++;
 	}
 
-	// i = 0;
-	// while(data->map[i] != NULL)
-	// {
-	// 	printf("%s\n", data->map[i]);
-	// 	i++;
-	// }
+	 /* i = 0;
+	 while(data->map[i] != NULL)
+	 {
+	 	printf("%s\n", data->map[i]);
+	 	i++;
+	 } */
 }
 
 void	fill_map(t_data *data, char *line, int i)
