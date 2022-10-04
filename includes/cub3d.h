@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/01 06:29:51 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/04 03:32:15 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,7 @@
 # include "../libs/libft/libft.h"
 # include "../libs/minilibx-linux/mlx.h"
 # include "defines.h"
-
-typedef struct s_mlx
-{
-	void	*mlx_ptr;
-	void	*win;
-} t_mlx;
-
-typedef struct s_data
-{
-    int	    nb_rows;
-	char	**map;
-    int argc;
-    char *file;
-    char **cub;
-	  t_mlx mlx;
-    char **directions;
-    char *f_color;
-    char *c_color;
-	int	counter;
-	int	control;
-} t_data;
+# include "structs.h"
 
 void	init_data(t_data *data, int argc, char **argv);
 int     print_error(char *msg);
@@ -65,5 +45,9 @@ void	free_array(char **arr);
 //keys
 int		key_press(int key_code, t_data *data);
 int		close_window(t_data *data);
+
+//init
+int		get_player_pos(t_data *data);
+void	init_player(t_data *data);
 
 #endif
