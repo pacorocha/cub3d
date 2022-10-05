@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/04 03:29:10 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/05 03:22:02 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	data.mlx.win = mlx_new_window(data.mlx.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "Haunted House");
 	mlx_hook(data.mlx.win, 33, 1L << 17, close_window, &data);
 	mlx_key_hook(data.mlx.win, &key_press, &data);
+	mlx_loop_hook(data.mlx.mlx_ptr, &render_game, &data);
 	mlx_loop(data.mlx.mlx_ptr);
 }
 
