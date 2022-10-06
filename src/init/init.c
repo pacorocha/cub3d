@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:58:24 by coder             #+#    #+#             */
-/*   Updated: 2022/10/05 03:43:32 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/06 02:15:36 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	get_player_pos(t_data *data)
 		{
 			if (ft_strchr(CHAR_PLAYER, data->map[i][j]))
 			{
-				data->player.x = j * TILE_SIZE + (TILE_SIZE / 2);
-				data->player.y = i * TILE_SIZE + (TILE_SIZE / 2);
+				data->player.x = j;
+				data->player.y = i;
 				data->player.init_pos = data->map[i][j];
 				return (0);
 			}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 03:29:01 by coder             #+#    #+#             */
-/*   Updated: 2022/10/05 04:31:37 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/07 00:10:12 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ int render_rect(t_data *data, t_rect rect)
 	return (0);
 }
 
-int	render_game(t_data *data)
-{
+void render_map(t_data *data) {
 	int i;
 	int j;
 	int color;
@@ -52,15 +51,25 @@ int	render_game(t_data *data)
 		while (j < data->nb_cols)
 		{
 			if (data->map[i][j] == '0')
-				color = RED_PIXEL;
+				color = RED;
 			if (data->map[i][j] == '1')
-				color = GREEN_PIXEL;
-			render_rect(data, (t_rect){10 * i, 10 * j,
-			10, 10, color});
+				color = GREEN;
+			render_rect(data, (t_rect){16 * i, 16 * j,
+				16, 16, color});
 			j++;
 		}
 		j = 0;
 		i++;
 	}
+	color = BlACK;
+	render_rect(data, (t_rect){data->player.x, data->player.y,
+		data->player.width, data->player.height, color});
+
+}
+
+int	render_game(t_data *data)
+{
+	data->img.img_ptr = mlx_new_image(data.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	render_map(data);
 	return (0);
 }

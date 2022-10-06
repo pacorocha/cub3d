@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/05 03:29:33 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/06 01:44:15 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ void	set_map_size(t_data *data);
 
 //render
 int		render_game(t_data *data);
+void	render_map(t_data *data);
 
 #endif

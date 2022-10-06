@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 06:28:51 by coder             #+#    #+#             */
-/*   Updated: 2022/10/05 03:59:26 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/06 02:20:13 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,15 @@
 # define WINDOW_HEIGHT 768
 
 # define CHAR_PLAYER "NSWE"
-# define PLAYER_SIZE 5
+# define PLAYER_SIZE 16
 # define FOV_ANGLE 1.0472; // rounded (60 * PI / 180)
 
-#define RED_PIXEL 0xFF0000
-#define GREEN_PIXEL 0xFF00
+#define RED 0xB00612
+#define GREEN 0x26871C
+#define OFFBLACK 0x191919
+#define BLACK 0x000000
+#define WHITE 0xFFFFFF
+#define BLUE 0x06304a;
 
 # define TILE_SIZE 64
 
