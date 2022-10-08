@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/04 03:29:10 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/08 03:06:06 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,61 @@ void	parser(t_data *data)
 {
 	if (data->argc != 2)
 		print_error("ERROR!\nNumber of parameters is invalid!\n");
-	
-	loop_check(data);
-	
-
+	fill_structures_loop(data);
+	map_checker(data);
 }
 
-void	loop_check(t_data *data)
+void	map_checker(t_data *data)
+{
+	search_ocurrence_ground(data);
+	
+}
+
+void	search_ocurrence_ground(t_data *data)
+{
+	int i;
+	int j;
+	
+	i = 0;
+	while(data->map[i] != NULL)
+	{
+		j = 0;
+		while(data->map[i][j] != NULL)
+		{
+			if (data->map[i][j] == '0')
+			{
+				break ;				
+			}
+		}	
+	}
+
+	init_flood_fill(i, j);
+
+	i = 0;
+	while(data->map[i] != NULL)
+	{
+	 	printf("%s\n", data->map[i]);
+	 	i++;
+	}
+}
+
+void	init_flood_fill(int row, int col)
+{
+	char new_color;
+	char prev_color;
+	
+	new_color = '%';
+	prev_color = data->map[row, col];
+	
+	data->map[row, col] = new_color;
+	
+	init_flood_fill(row + 1, col);
+	init_flood_fill(row - 1, col);
+	init_flood_fill(row, col - 1);
+	init_flood_fill(row, col + 1);
+}
+
+void	fill_structures_loop(t_data *data)
 {
 	int i;
 	
