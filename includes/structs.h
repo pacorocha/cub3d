@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:06:08 by coder             #+#    #+#             */
-/*   Updated: 2022/10/06 02:24:58 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/11 02:45:55 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ typedef struct s_mlx
 typedef struct s_img
 {
 	int		bpp;
-	int		size_l;
+	char	*addr;
+	int		line_len;
 	int		endian;
 	int		width;
 	int		height;
@@ -40,6 +41,7 @@ typedef struct s_player
 	float	fov_angle;
 	int		turn_dir;
 	int		walk_dir;
+	int		side_dir;
 	float	rot_angle;
 	float	walk_spd;
 	float	turn_spd;
@@ -56,6 +58,7 @@ typedef struct s_data
 	char		**cub;
 	t_mlx		mlx;
 	t_player	player;
+	t_img		img;
 	char		**directions;
 	char		*f_color;
 	char		*c_color;

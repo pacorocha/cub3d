@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:58:24 by coder             #+#    #+#             */
-/*   Updated: 2022/10/06 02:15:36 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/11 03:10:29 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	get_player_pos(t_data *data)
 		{
 			if (ft_strchr(CHAR_PLAYER, data->map[i][j]))
 			{
-				data->player.x = j;
-				data->player.y = i;
+				data->player.x = j * TILE_SIZE + (TILE_SIZE / 2);
+				data->player.y = i * TILE_SIZE + (TILE_SIZE / 2);
 				data->player.init_pos = data->map[i][j];
 				return (0);
 			}
@@ -71,7 +71,8 @@ void	init_player(t_data *data)
 	data->player.width = PLAYER_SIZE;
 	data->player.height = PLAYER_SIZE;
 	data->player.turn_dir = 0;
+	data->player.side_dir = 0;
 	data->player.walk_dir = 0;
-	data->player.walk_spd = 20;
-	data->player.turn_spd = 10 * PI / 180;
+	data->player.walk_spd = 1;
+	data->player.turn_spd = 5 * PI / 180;
 }

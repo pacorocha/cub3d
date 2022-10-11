@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 06:28:51 by coder             #+#    #+#             */
-/*   Updated: 2022/10/06 02:20:13 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/11 02:12:43 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define WINDOW_HEIGHT 768
 
 # define CHAR_PLAYER "NSWE"
-# define PLAYER_SIZE 16
+# define PLAYER_SIZE 1
 # define FOV_ANGLE 1.0472; // rounded (60 * PI / 180)
 
 #define RED 0xB00612
@@ -31,9 +31,9 @@
 #define OFFBLACK 0x191919
 #define BLACK 0x000000
 #define WHITE 0xFFFFFF
-#define BLUE 0x06304a;
+#define BLUE 0x06304A
 
-# define TILE_SIZE 64
+# define TILE_SIZE 16
 
 # define KEY_ESC (0xff1b)
 # define KEY_Q (0x71)

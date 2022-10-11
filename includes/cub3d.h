@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/06 01:44:15 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/11 02:51:42 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	free_array(char **arr);
 
 //keys
 int		key_press(int key_code, t_data *data);
+int		key_release(int key_code, t_data *data);
 int		close_window(t_data *data);
 
 //init
@@ -53,7 +54,10 @@ float	set_player_direction(char c);
 void	set_map_size(t_data *data);
 
 //render
-int		render_game(t_data *data);
 void	render_map(t_data *data);
+void	render_player(t_data *data);
+
+// game
+int		game_loop(t_data *data);
 
 #endif
