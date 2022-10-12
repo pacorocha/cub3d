@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/04 03:32:15 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/08 17:48:20 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,14 @@ void	fill_map(t_data *data, char *line, int i);
 void	read_map(t_data *data);
 char	**lines(char *file, t_data *data);
 int		check_end_of_file(char *file, char *sufx);
-void	loop_check(t_data *data);
+void	fill_structures_loop(t_data *data);
+
+//map_checker
+void	map_checker(t_data *data);
+void	search_ocurrence_ground(t_data *data);
+void	init_flood_fill(t_data *data, int row, size_t col);
+void	count_col(t_data *data);
+void	color_change(t_data *data, int row, size_t col, char new_color);
 
 //utils parse
 int     check_flags_cardinal_directions(char *line);

@@ -1,0 +1,15 @@
+NO textures/first_brick_layer.png
+SO textures/second_brick_layer.png
+EA textures/third_brick_layer.png
+WE textures/fourth_brick_layer.png
+  
+F 151,151,151
+C 40,40,40
+
+1111111
+1000011
+1000011
+10N0111
+1000111
+1000111
+11111

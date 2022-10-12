@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/08 03:06:06 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/12 13:43:31 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	main(int argc, char **argv)
 	init_data(&data, argc, argv);
 	read_map(&data);
 	parser(&data);
-	init_player(&data);
-	data.mlx.mlx_ptr = mlx_init();
-	data.mlx.win = mlx_new_window(data.mlx.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "Haunted House");
-	mlx_hook(data.mlx.win, 33, 1L << 17, close_window, &data);
-	mlx_key_hook(data.mlx.win, &key_press, &data);
-	mlx_loop(data.mlx.mlx_ptr);
+	// init_player(&data);
+	// data.mlx.mlx_ptr = mlx_init();
+	// data.mlx.win = mlx_new_window(data.mlx.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "Haunted House");
+	// mlx_hook(data.mlx.win, 33, 1L << 17, close_window, &data);
+	// mlx_key_hook(data.mlx.win, &key_press, &data);
+	// mlx_loop(data.mlx.mlx_ptr);
 }
 
 void	init_data(t_data *data, int argc, char **argv)
@@ -35,6 +35,7 @@ void	init_data(t_data *data, int argc, char **argv)
 	data->c_color = NULL;
 	data->f_color = NULL;
 	data->control = 0;
+	data->big_line = 0;
 }
 
 void	parser(t_data *data)
@@ -42,34 +43,63 @@ void	parser(t_data *data)
 	if (data->argc != 2)
 		print_error("ERROR!\nNumber of parameters is invalid!\n");
 	fill_structures_loop(data);
+	count_col(data);
 	map_checker(data);
+}
+
+void	count_col(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while(data->map[i] != NULL)
+	{
+		if (ft_strlen(data->map[i]) > data->big_line)
+			data->big_line = ft_strlen(data->map[i]);
+		i++;
+	}
 }
 
 void	map_checker(t_data *data)
 {
+	
 	search_ocurrence_ground(data);
 	
 }
 
+
 void	search_ocurrence_ground(t_data *data)
 {
 	int i;
-	int j;
-	
+	size_t j;
+	size_t len_col;
+
+
 	i = 0;
-	while(data->map[i] != NULL)
+	data->control = 0;
+	while(i < data->nb_rows - 1)
 	{
 		j = 0;
-		while(data->map[i][j] != NULL)
+		len_col = ft_strlen(data->map[i]);
+		while(j < len_col)
 		{
+			if (j == len_col)
+				j = 0;
 			if (data->map[i][j] == '0')
 			{
-				break ;				
+				printf("oi\n");
+				data->control = 1;
+				break ;	
 			}
-		}	
+							
+			j++;
+		}
+		if (data->control == 1)
+			break;
+		i++;
 	}
 
-	init_flood_fill(i, j);
+	init_flood_fill(data, i, j);
 
 	i = 0;
 	while(data->map[i] != NULL)
@@ -79,20 +109,32 @@ void	search_ocurrence_ground(t_data *data)
 	}
 }
 
-void	init_flood_fill(int row, int col)
+void	init_flood_fill(t_data *data, int row, size_t col)
 {
-	char new_color;
-	char prev_color;
+	char	new_color;
+	char	prev_color;
 	
-	new_color = '%';
-	prev_color = data->map[row, col];
+	new_color = 'C';
+	prev_color = '0';
+
+	printf("%c\n",data->map[row][col]);
+	if (data->map[row][col] != prev_color)
+		return ;
 	
-	data->map[row, col] = new_color;
+	if (row < 0 || row >= data->nb_rows || col < 0 || col >= data->big_line)
+		return ;
 	
-	init_flood_fill(row + 1, col);
-	init_flood_fill(row - 1, col);
-	init_flood_fill(row, col - 1);
-	init_flood_fill(row, col + 1);
+	color_change(data, row, col, new_color);
+	
+	init_flood_fill(data, row + 1, col);
+	init_flood_fill(data, row - 1, col);
+	init_flood_fill(data, row, col - 1);
+	init_flood_fill(data, row, col + 1);
+}
+
+void	color_change(t_data *data, int row, size_t col, char new_color)
+{
+	data->map[row][col] = new_color;
 }
 
 void	fill_structures_loop(t_data *data)
@@ -119,13 +161,6 @@ void	fill_structures_loop(t_data *data)
 		}
 		i++;
 	}
-
-	 /* i = 0;
-	 while(data->map[i] != NULL)
-	 {
-	 	printf("%s\n", data->map[i]);
-	 	i++;
-	 } */
 }
 
 void	fill_map(t_data *data, char *line, int i)
