@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 02:22:28 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/11 03:12:08 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/10/14 02:28:22 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,12 @@ void	move_player(t_data *data)
 	new_player_y = data->player.y + sin(data->player.rot_angle) * move_step;
 	new_player_x = new_player_x - sin(-data->player.rot_angle) * side_step;
 	new_player_y = new_player_y - cos(-data->player.rot_angle) * side_step;
-	data->player.x = new_player_x;
-	data->player.y = new_player_y;
+
+	if (!map_has_wall_at(new_player_x, new_player_y, data))
+	{
+		data->player.x = new_player_x;
+		data->player.y = new_player_y;
+	}
 }
 
 void	update_game(t_data *data)

@@ -6,7 +6,7 @@
 #    By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 20:49:56 by jfrancis          #+#    #+#              #
-#    Updated: 2022/10/11 02:24:54 by jfrancis         ###   ########.fr        #
+#    Updated: 2022/10/11 03:30:47 by jfrancis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ KEYS_DIR = keys
 INIT_DIR = init
 RENDER_DIR = render
 GAME_DIR = game
+UTILS_DIR = utils
 
 BASE =	main.c \
 
@@ -42,17 +43,21 @@ RENDER = render.c \
 
 GAME = game_loop.c \
 
+UTILS = map_utils.c \
+
 SRC = $(BASE) \
 		$(KEYS) \
 		$(INIT) \
 		$(RENDER) \
-		$(GAME)
+		$(GAME) \
+		$(UTILS)
 
 SRC_FULL = $(addprefix $(SRC_DIR)/, $(BASE)) \
 			$(addprefix $(SRC_DIR)/$(KEYS_DIR)/, $(KEYS)) \
 			$(addprefix $(SRC_DIR)/$(INIT_DIR)/, $(INIT)) \
 			$(addprefix $(SRC_DIR)/$(RENDER_DIR)/, $(RENDER)) \
-			$(addprefix $(SRC_DIR)/$(GAME_DIR)/, $(GAME))
+			$(addprefix $(SRC_DIR)/$(GAME_DIR)/, $(GAME)) \
+			$(addprefix $(SRC_DIR)/$(UTILS_DIR)/, $(UTILS))
 
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FULL))
 
@@ -60,7 +65,8 @@ VPATH = includes \
 		src src/keys \
 		src/init \
 		src/render \
-		src/game
+		src/game \
+		src/utils
 
 
 all: $(NAME)
@@ -74,6 +80,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(OBJ_DIR)/$(INIT_DIR)
 	mkdir -p $(OBJ_DIR)/$(RENDER_DIR)
 	mkdir -p $(OBJ_DIR)/$(GAME_DIR)
+	mkdir -p $(OBJ_DIR)/$(UTILS_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR)
 
 $(MINILBX):

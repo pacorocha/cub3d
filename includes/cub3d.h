@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/11 02:51:42 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/10/11 03:41:22 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,8 @@ void	render_player(t_data *data);
 
 // game
 int		game_loop(t_data *data);
+
+// utils
+int	map_has_wall_at(float x, float y, t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:58:24 by coder             #+#    #+#             */
-/*   Updated: 2022/10/11 03:10:29 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/10/14 02:34:35 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	get_player_pos(t_data *data)
 				data->player.x = j * TILE_SIZE + (TILE_SIZE / 2);
 				data->player.y = i * TILE_SIZE + (TILE_SIZE / 2);
 				data->player.init_pos = data->map[i][j];
+				data->map[i][j] = '0';
 				return (0);
 			}
 			j++;

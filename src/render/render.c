@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 03:29:01 by coder             #+#    #+#             */
-/*   Updated: 2022/10/11 02:22:00 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/10/14 02:35:29 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,6 @@ void	render_player(t_data *data)
 	color = WHITE;
 	render_rect(&data->img, (t_rect){data->player.x, data->player.y,
 		data->player.width, data->player.height, color});
-	draw_line(&data->img, data->player.x, data->player.y, data->player.x + cos(data->player.rot_angle) * 40, data->player.y + sin(data->player.rot_angle) * 40, WHITE);
+	// a linha é helper, apagar depois
+	draw_line(&data->img, data->player.x, data->player.y, data->player.x + cos(data->player.rot_angle) * 6, data->player.y + sin(data->player.rot_angle) * 6, WHITE);
 }
