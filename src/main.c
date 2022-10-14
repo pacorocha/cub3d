@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/12 13:43:31 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/14 02:10:40 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,11 @@ void	search_ocurrence_ground(t_data *data)
 		{
 			if (j == len_col)
 				j = 0;
-			if (data->map[i][j] == '0')
+			if (data->map[i][j] == '1')
 			{
-				printf("oi\n");
 				data->control = 1;
 				break ;	
-			}
-							
+			}				
 			j++;
 		}
 		if (data->control == 1)
@@ -115,21 +113,34 @@ void	init_flood_fill(t_data *data, int row, size_t col)
 	char	prev_color;
 	
 	new_color = 'C';
-	prev_color = '0';
+	prev_color = '1';
 
-	printf("%c\n",data->map[row][col]);
 	if (data->map[row][col] != prev_color)
 		return ;
-	
+	printf("Coluna atual: %zu\n", col);
+	printf("Linha atual: %d\n", row);
 	if (row < 0 || row >= data->nb_rows || col < 0 || col >= data->big_line)
 		return ;
 	
 	color_change(data, row, col, new_color);
 	
-	init_flood_fill(data, row + 1, col);
-	init_flood_fill(data, row - 1, col);
-	init_flood_fill(data, row, col - 1);
-	init_flood_fill(data, row, col + 1);
+	if (row != data->nb_rows - 1)
+		//if (data->map[row + 1][col] == '1')
+		init_flood_fill(data, row + 1, col);
+	if (col != data->big_line && col != 0)
+		//if (data->map[row][col - 1] == '1')
+		init_flood_fill(data, row, col - 1);
+	if (col != data->big_line)
+		//if (data->map[row][col + 1] == '1')
+		init_flood_fill(data, row, col + 1);
+	
+	if (row != 0)
+		//if (data->map[row - 1][col] == '1')
+		init_flood_fill(data, row - 1, col);
+
+	// flood fill pra bordas 
+	
+	// if ( char - 1 == '0') else (open = 1)
 }
 
 void	color_change(t_data *data, int row, size_t col, char new_color)
