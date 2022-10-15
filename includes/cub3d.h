@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/08 17:48:20 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/15 03:22:22 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	search_ocurrence_ground(t_data *data);
 void	init_flood_fill(t_data *data, int row, size_t col);
 void	count_col(t_data *data);
 void	color_change(t_data *data, int row, size_t col, char new_color);
+void	Sul (t_data *data, int row, size_t col);
+void	Leste (t_data *data, int row, size_t col);
 
 //utils parse
 int     check_flags_cardinal_directions(char *line);

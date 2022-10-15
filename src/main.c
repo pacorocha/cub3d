@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/14 02:10:40 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/15 05:00:03 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,32 +115,89 @@ void	init_flood_fill(t_data *data, int row, size_t col)
 	new_color = 'C';
 	prev_color = '1';
 
+	data->big_line = ft_strlen(data->map[row]);
+	printf("%zu\n", data->big_line);
+
+	printf("Ponto atual no mapa antes da verific: %c\n", data->map[row][col]);
 	if (data->map[row][col] != prev_color)
-		return ;
+		print_error("Mapa Invalido!\n");
 	printf("Coluna atual: %zu\n", col);
 	printf("Linha atual: %d\n", row);
-	if (row < 0 || row >= data->nb_rows || col < 0 || col >= data->big_line)
-		return ;
+	
+	// if (row < 0 || row >= data->nb_rows || col < 0 || col >= data->big_line)
+	// 	return ;
+
 	
 	color_change(data, row, col, new_color);
 	
-	if (row != data->nb_rows - 1)
-		//if (data->map[row + 1][col] == '1')
+	printf("Ponto atual no mapa: %c\n", data->map[row][col]);
+	//Sul
+	if (row < data->nb_rows - 1 && data->map[row + 1][col] == '1')
+	{
 		init_flood_fill(data, row + 1, col);
-	if (col != data->big_line && col != 0)
-		//if (data->map[row][col - 1] == '1')
-		init_flood_fill(data, row, col - 1);
-	if (col != data->big_line)
-		//if (data->map[row][col + 1] == '1')
-		init_flood_fill(data, row, col + 1);
-	
-	if (row != 0)
-		//if (data->map[row - 1][col] == '1')
-		init_flood_fill(data, row - 1, col);
+	}
 
-	// flood fill pra bordas 
+	//Leste
+	if (col < data->big_line && data->map[row][col + 1] == '1')
+	{
+		init_flood_fill(data, row, col + 1);
+		// else
+		// 	print_error("Mapa inválido!!!!\n");	
+	}
+		
 	
-	// if ( char - 1 == '0') else (open = 1)
+	//Norte
+	if (row > 0 && data->map[row - 1][col] == '1')
+	{
+		init_flood_fill(data, row - 1, col);
+		// else
+		// 	print_error("Mapa inválido!!!!\n");
+	}
+		
+		
+	//Oeste
+	if ((col < data->big_line && col > 0) && data->map[row - 1][col] == '1')
+	{
+		init_flood_fill(data, row, col - 1);
+		// else
+		// 	print_error("Mapa inválido!!!!\n");
+	}
+		
+	//Noroeste
+	if ((row - 1 > 0 && col - 1 > 0) && data->map[row - 1][col - 1] == '1')
+	{
+		init_flood_fill(data, row - 1, col -1);
+		// else
+		// 	print_error("Mapa inválido!!!!\n");
+	}
+		
+	
+	//Sudoeste
+	if ((row < data->nb_rows - 1 && col > 0) && data->map[row + 1][col - 1] == '1')
+	{
+		init_flood_fill(data, row + 1, col - 1);
+		// else
+		// 	print_error("Mapa inválido!!!!\n");
+	}
+		
+
+	//Sudeste
+	if ((row + 1 < data->nb_rows - 1 && col + 1 < data->big_line) && data->map[row + 1][col + 1] == '1')
+	{
+		init_flood_fill(data, row + 1, col + 1);
+		// else
+		// 	print_error("Mapa inválido!!!!\n");
+	}
+		
+	
+	//Nordeste
+	if ((row > 0 && col < data->big_line) && data->map[row - 1][col + 1] == '1')
+	{
+		init_flood_fill(data, row - 1, col + 1);
+		// else
+		// 	print_error("Mapa inválido!!!!\n");
+	}
+		
 }
 
 void	color_change(t_data *data, int row, size_t col, char new_color)
@@ -318,5 +375,5 @@ char	**lines(char *file, t_data *data)
 int	print_error(char *msg)
 {
 	printf("%s\n", msg);
-	return (FALSE);
+	exit(1);
 }
