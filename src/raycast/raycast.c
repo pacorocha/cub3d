@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 02:45:07 by coder             #+#    #+#             */
-/*   Updated: 2022/10/19 04:53:21 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/19 05:17:53 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,39 @@ void	check_h_data(float ray_angle, t_ray_data *h_data, t_data *data)
 		}
 	}
 }
+
+void	check_v_data(float ray_angle, t_ray_data *v_data, t_data *data)
+{
+	init_v_data(ray_angle, v_data, data);
+	while (is_inside_map(v_data->next_touch_x, v_data->next_touch_y, data))
+	{
+		v_data->x_to_check = v_data->next_touch_x;
+		v_data->y_to_check = v_data->next_touch_y;
+		if (is_ray_facing_left(ray_angle))
+			v_data->x_to_check -= 1;
+		if (map_has_wall_at(v_data->x_to_check, v_data->y_to_check, data))
+		{
+			v_data->wall_hit_x = v_data->next_touch_x;
+			v_data->wall_hit_y = v_data->next_touch_y;
+			v_data->wall_content = data->map[(int)floor(v_data->y_to_check / TILE_SIZE)][(int)floor(v_data->x_to_check / TILE_SIZE)];
+			v_data->found_wall = TRUE;
+			break ;
+		}
+		else
+		{
+			v_data->next_touch_x += v_data->x_step;
+			v_data->next_touch_y += v_data->y_step;
+		}
+	}
+}
+
 void	cast_ray(float ray_angle, int strip, t_data *data)
 {
 	t_ray_data	h_data;
-	// t_ray_data	v_data;
+	t_ray_data	v_data;
 	
 	check_h_data(ray_angle, &h_data, data);
+	check_v_data(ray_angle, &v_data, data);
 	printf("%i", strip);
 }
 

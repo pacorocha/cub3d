@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/19 04:53:44 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/19 05:11:44 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int		is_inside_map(float x, float y, t_data *data);
 // raycast
 void	init_ray_data(t_ray_data *ray_data);
 void	init_h_data(float ray_angle, t_ray_data *h_data, t_data *data);
+void	init_v_data(float ray_angle, t_ray_data *v_data, t_data *data);
 
 void	cast_all_rays(t_data *data);
 void	cast_ray(float ray_angle, int strip, t_data *data);
