@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/11 03:41:22 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/10/19 04:53:44 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,20 @@ void	render_player(t_data *data);
 int		game_loop(t_data *data);
 
 // utils
-int	map_has_wall_at(float x, float y, t_data *data);
+int		map_has_wall_at(float x, float y, t_data *data);
+int		is_inside_map(float x, float y, t_data *data);
+
+// raycast
+void	init_ray_data(t_ray_data *ray_data);
+void	init_h_data(float ray_angle, t_ray_data *h_data, t_data *data);
+
+void	cast_all_rays(t_data *data);
+void	cast_ray(float ray_angle, int strip, t_data *data);
+float	normalize_angle(float angle);
+
+int		is_ray_facing_down(float angle);
+int		is_ray_facing_up(float angle);
+int		is_ray_facing_right(float angle);
+int		is_ray_facing_left(float angle);
 
 #endif
