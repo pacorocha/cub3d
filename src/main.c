@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/19 01:26:34 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/20 04:39:14 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,12 @@ void	search_ocurrence_ground(t_data *data)
 	init_flood_fill(data, i, j);
 	i = 0;
 
-	while (i < data->nb_rows)
-	{
-		printf("%s\n", data->map[i]);
-		i++;
-	}
-	//check_invalid_map(data);
+	// while (i < data->nb_rows)
+	// {
+	// 	printf("%s\n", data->map[i]);
+	// 	i++;
+	// }
+	check_invalid_map(data);
 }
 
 void	check_invalid_map(t_data *data)
@@ -117,14 +117,14 @@ void	check_invalid_map(t_data *data)
 
 	i = 0;
 	row_limit = data->nb_rows - 1;
-	while(i < row_limit)
+	while(i < data->nb_rows)
 	{
 		j = 0;
 		len_row = ft_strlen(data->map[i]);
 		while (j < len_row)
 		{
-			if (j == len_row)
-				j = 0;
+			printf("%zu\n", len_row);
+			printf("%i\n", i);
 			if (data->map[i][0] == 'L' || data->map[i][0] == '0'
 			|| data->map[i][len_row] == 'L' || data->map[i][len_row] == '0'
 			|| data->map[0][j] == 'L' || data->map[0][j] == '0'
@@ -132,13 +132,23 @@ void	check_invalid_map(t_data *data)
 				print_error("Invalid Map, OI!!");
 			
 			if ((i > 0 && i < row_limit) || (j > 0 && j < len_row))
-				if ((data->map[i + 1][j] != '0' && data->map[i + 1][j] != '1' && data->map[i + 1][j] != 'N')
-				|| (data->map[i - 1][j] != '0' && data->map[i - 1][j] != '1' && data->map[i - 1][j] != 'N')
-				|| (data->map[i][j + 1] != '0' && data->map[i][j + 1] != '1' && data->map[i][j + 1] != 'N')
-				|| (data->map[i][j - 1] != '0' && data->map[i][j - 1] != '1' && data->map[i][j - 1] != 'N'))
+			{
+				if (((data->map[i + 1][j] != 'L' && data->map[i + 1][j] != '0') && data->map[i + 1][j] != '1' && data->map[i + 1][j] != 'N')
+				|| ((data->map[i - 1][j] != 'L' && data->map[i - 1][j] != '0') && data->map[i - 1][j] != '1' && data->map[i - 1][j] != 'N')
+				|| ((data->map[i][j + 1] != 'L' && data->map[i][j + 1] != '0') && data->map[i][j + 1] != '1' && data->map[i][j + 1] != 'N')
+				|| ((data->map[i][j - 1] != 'L' && data->map[i][j - 1] != '0') && data->map[i][j - 1] != '1' && data->map[i][j - 1] != 'N'))
+				{
+					//printf("%zu\n", j);
+					//printf("%i\n", i);
+					printf("%s\n", data->map[i]);
+					printf("%c\n", data->map[i][j]);
 					print_error("Invalid Map, fantasy");
+				}
+			}		
 			j++;
 		}
+		if (j == len_row)
+			j = 0;
 		i++;
 	}
 }
