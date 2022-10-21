@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/19 00:40:42 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/21 03:26:02 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ void	char_change(t_data *data, int row, size_t col, char new_color);
 void	Sul (t_data *data, int row, size_t col);
 void	Leste (t_data *data, int row, size_t col);
 void	check_invalid_map(t_data *data);
+void	checking_color(t_data *data);
+void	check_color(char *color);
+
 //utils parse
 int     check_flags_cardinal_directions(char *line);
 int     check_flags_colors(char *line);

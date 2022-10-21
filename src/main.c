@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/20 04:39:14 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/21 04:38:06 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,46 @@ void	count_col(t_data *data)
 
 void	map_checker(t_data *data)
 {
-	
+	//checking texture(data);
+	checking_color(data);
 	search_ocurrence_ground(data);
 	
 }
 
+void	checking_color(t_data *data)
+{
+	check_color(data->f_color);
+	check_color(data->c_color);
+}
+
+void	check_color(char *color)
+{
+	char **rgb;
+	int	i;
+	int	j;
+	int	is_num;
+	int len_num;
+
+	i = 0;
+	rgb = ft_split(color, ',');
+	while(rgb[i] != NULL)
+	{
+		j = 0;
+		len_num = ft_strlen(rgb[i]);
+		while (j < len_num)
+		{
+			is_num = ft_isdigit(rgb[i][j]);
+			if (!is_num)
+				print_error("Invalid color!! Choose a possible color from the RGB scale.");
+			if (ft_atoi(rgb[i]) > 255 || ft_atoi(rgb[i]) < 0)
+				print_error("Invalid color!! Choose a possible color from the RGB scale.");
+			j++;
+		}
+		i++;
+	}
+	if (i < 3)
+		print_error("Invalid color!! Choose a possible color from the RGB scale.");
+}
 
 void	search_ocurrence_ground(t_data *data)
 {
@@ -98,14 +133,14 @@ void	search_ocurrence_ground(t_data *data)
 	}
 
 	init_flood_fill(data, i, j);
-	i = 0;
+	//i = 0;
 
 	// while (i < data->nb_rows)
 	// {
 	// 	printf("%s\n", data->map[i]);
 	// 	i++;
 	// }
-	check_invalid_map(data);
+	//check_invalid_map(data);
 }
 
 void	check_invalid_map(t_data *data)
