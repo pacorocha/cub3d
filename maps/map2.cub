@@ -3,14 +3,12 @@ SO textures/second_brick_layer.png
 EA textures/third_brick_layer.png
 WE textures/fourth_brick_layer.png
 
-F 12,11,144
+F 12,123,3
 C 40,40,40
 
-D
+1011
+101101
+100001
+100000
 111111
-1000011
-1000011
-1N00111
-100011C1
-1000111
-1111
+111
