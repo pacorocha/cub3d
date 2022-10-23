@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 03:29:01 by coder             #+#    #+#             */
-/*   Updated: 2022/10/19 05:21:30 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/23 03:13:34 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,4 +113,16 @@ void	render_player(t_data *data)
 		data->player.width, data->player.height, color});
 	// a linha é helper, apagar depois
 	draw_line(&data->img, data->player.x, data->player.y, data->player.x + cos(data->player.rot_angle) * 10, data->player.y + sin(data->player.rot_angle) * 10, WHITE);
+}
+
+void render_rays(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (i < NUM_RAYS)
+	{
+		draw_line(&data->img, data->player.x, data->player.y, data->rays[i].wall_hit_x, data->rays[i].wall_hit_y, BLUE);
+		i++;
+	}
 }

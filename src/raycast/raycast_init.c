@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 04:27:11 by coder             #+#    #+#             */
-/*   Updated: 2022/10/19 05:18:27 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/23 03:46:00 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	init_h_data(float ray_angle, t_ray_data *h_data, t_data *data)
 	h_data->y_intercept = floor(data->player.y / TILE_SIZE) * TILE_SIZE;
 	if (is_ray_facing_down(ray_angle))
 		h_data->y_intercept += TILE_SIZE;
-	h_data->x_intercept = data->player.x + (h_data->y_intercept - data->player.y) / tan(ray_angle);
+	h_data->x_intercept = data->player.x
+		+ (h_data->y_intercept - data->player.y) / tan(ray_angle);
 	h_data->y_step = TILE_SIZE;
 	if (is_ray_facing_up(ray_angle))
 		h_data->y_step *= -1;
@@ -53,7 +54,7 @@ void	init_v_data(float ray_angle, t_ray_data *v_data, t_data *data)
 		v_data->x_step *= -1;
 	v_data->y_step = TILE_SIZE * tan(ray_angle);
 	if ((is_ray_facing_up(ray_angle) && v_data->y_step > 0))
-		v_data->y_step *= -1;
+		v_data->y_step *= 1;
 	if ((is_ray_facing_down(ray_angle) && v_data->y_step < 0))
 		v_data->y_step *= -1;
 	v_data->next_touch_x = v_data->x_intercept;

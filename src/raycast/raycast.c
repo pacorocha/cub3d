@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 02:45:07 by coder             #+#    #+#             */
-/*   Updated: 2022/10/19 05:17:53 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/23 03:52:34 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	check_h_data(float ray_angle, t_ray_data *h_data, t_data *data)
 {
 	init_h_data(ray_angle, h_data, data);
-	
 	while (is_inside_map(h_data->next_touch_x, h_data->next_touch_y, data))
 	{
 		h_data->x_to_check = h_data->next_touch_x;
@@ -67,10 +66,25 @@ void	cast_ray(float ray_angle, int strip, t_data *data)
 {
 	t_ray_data	h_data;
 	t_ray_data	v_data;
-	
+
 	check_h_data(ray_angle, &h_data, data);
 	check_v_data(ray_angle, &v_data, data);
-	printf("%i", strip);
+	if (v_data.hit_d < h_data.hit_d)
+	{
+		data->rays[strip].distance = v_data.hit_d;
+		data->rays[strip].wall_hit_x = v_data.wall_hit_x;
+		data->rays[strip].wall_hit_y = v_data.wall_hit_y;
+		data->rays[strip].was_hit_vert = TRUE;
+		data->rays[strip].ray_angle = ray_angle;
+	}
+	else
+	{
+		data->rays[strip].distance = h_data.hit_d;
+		data->rays[strip].wall_hit_x = h_data.wall_hit_x;
+		data->rays[strip].wall_hit_y = h_data.wall_hit_y;
+		data->rays[strip].was_hit_vert = FALSE;
+		data->rays[strip].ray_angle = ray_angle;
+	}
 }
 
 void	cast_all_rays(t_data *data)
