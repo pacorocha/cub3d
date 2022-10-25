@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/22 03:44:21 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/26 01:00:18 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	read_map(t_data *data);
 char	**lines(char *file, t_data *data);
 int		check_end_of_file(char *file, char *sufx);
 void	fill_structures_loop(t_data *data);
+void	add_char_lines(t_data *data);
 
 //map_checker
 void	map_checker(t_data *data);
@@ -46,6 +47,8 @@ void	Leste (t_data *data, int row, size_t col);
 void	check_invalid_map(t_data *data);
 void	checking_color(t_data *data);
 void	check_color(char *color);
+int		is_open(t_data *data, int row, size_t col);
+int		is_space(char c);
 
 //utils parse
 int     check_flags_cardinal_directions(char *line);

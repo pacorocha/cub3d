@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/22 04:58:08 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/26 01:36:10 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,40 @@ void	parser(t_data *data)
 		print_error("ERROR!\nNumber of parameters is invalid!\n");
 	fill_structures_loop(data);
 	count_col(data);
+	add_char_lines(data);
 	map_checker(data);
+}
+
+void	add_char_lines(t_data *data)
+{
+	int i;
+	size_t j;
+	size_t	len_num;
+	
+	i = 0;
+	while(data->map[i] != NULL)
+	{
+		j = 0;
+		len_num = data->big_line + 1;
+		while (j < len_num)
+		{
+			
+			if (ft_strlen(data->map[i]) <= len_num)
+				ft_strlcat(data->map[i], "D", len_num);
+			j++;
+		}
+		
+		i++;
+	}
+
+
+
+	i = 0;
+	while(data->map[i] != NULL)
+	{
+		printf("%s\n", data->map[i]);
+		i++;
+	}
 }
 
 void	count_col(t_data *data)
@@ -143,57 +176,57 @@ void	search_ocurrence_ground(t_data *data)
 		printf("%s\n", data->map[i]);
 		i++;
 	}
-	check_invalid_map(data);
+	//check_invalid_map(data);
 }
 
-void	check_invalid_map(t_data *data)
-{
-	int i;
-	size_t	j;
-	size_t len_row;
-	int	row_limit;
+// void	check_invalid_map(t_data *data)
+// {
+// 	int i;
+// 	size_t	j;
+// 	size_t len_row;
+// 	int	row_limit;
 
-	i = 0;
-	row_limit = data->nb_rows - 1;
-	while(i < data->nb_rows)
-	{
-		j = 0;
-		len_row = ft_strlen(data->map[i]);
-		while (j < len_row)
-		{
-			// printf("%zu\n", len_row);
-			// printf("%i\n", i);
-			if (data->map[i][0] != '1' || data->map[i][len_row - 1] != '1')
-				print_error("Invalid Map, OI!!");
+// 	i = 0;
+// 	row_limit = data->nb_rows - 1;
+// 	while(i < data->nb_rows)
+// 	{
+// 		j = 0;
+// 		len_row = ft_strlen(data->map[i]);
+// 		while (j < len_row)
+// 		{
+// 			// printf("%zu\n", len_row);
+// 			// printf("%i\n", i);
+// 			if (data->map[i][0] != '1' || data->map[i][len_row - 1] != '1')
+// 				print_error("Invalid Map, OI!!");
 
 			
-			// if ((i > 0 && i < row_limit) || (j > 0 && j < len_row))
-			// {
-			// 	if (((data->map[i + 1][j] != 'L' && data->map[i + 1][j] != '0') && data->map[i + 1][j] != '1' && data->map[i + 1][j] != 'N')
-			// 	|| ((data->map[i - 1][j] != 'L' && data->map[i - 1][j] != '0') && data->map[i - 1][j] != '1' && data->map[i - 1][j] != 'N')
-			// 	|| ((data->map[i][j + 1] != 'L' && data->map[i][j + 1] != '0') && data->map[i][j + 1] != '1' && data->map[i][j + 1] != 'N')
-			// 	|| ((data->map[i][j - 1] != 'L' && data->map[i][j - 1] != '0') && data->map[i][j - 1] != '1' && data->map[i][j - 1] != 'N'))
-			// 	{
-			// 		//printf("%zu\n", j);
-			// 		//printf("%i\n", i);
-			// 		printf("%s\n", data->map[i]);
-			// 		printf("%c\n", data->map[i][j]);
-			// 		print_error("Invalid Map, fantasy");
-			// 	}
-			// }		
-			j++;
-		}
-		if (j == len_row)
-			j = 0;
-		i++;
-	}
-}
+// 			// if ((i > 0 && i < row_limit) || (j > 0 && j < len_row))
+// 			// {
+// 			// 	if (((data->map[i + 1][j] != 'L' && data->map[i + 1][j] != '0') && data->map[i + 1][j] != '1' && data->map[i + 1][j] != 'N')
+// 			// 	|| ((data->map[i - 1][j] != 'L' && data->map[i - 1][j] != '0') && data->map[i - 1][j] != '1' && data->map[i - 1][j] != 'N')
+// 			// 	|| ((data->map[i][j + 1] != 'L' && data->map[i][j + 1] != '0') && data->map[i][j + 1] != '1' && data->map[i][j + 1] != 'N')
+// 			// 	|| ((data->map[i][j - 1] != 'L' && data->map[i][j - 1] != '0') && data->map[i][j - 1] != '1' && data->map[i][j - 1] != 'N'))
+// 			// 	{
+// 			// 		//printf("%zu\n", j);
+// 			// 		//printf("%i\n", i);
+// 			// 		printf("%s\n", data->map[i]);
+// 			// 		printf("%c\n", data->map[i][j]);
+// 			// 		print_error("Invalid Map, fantasy");
+// 			// 	}
+// 			// }		
+// 			j++;
+// 		}
+// 		if (j == len_row)
+// 			j = 0;
+// 		i++;
+// 	}
+// }
 
 void	init_flood_fill(t_data *data, int row, size_t col)
 {
 	char	new_color;
 	char	prev_color;
-	int		i;
+	//int		i;
 		
 	new_color = 'L';
 	prev_color = '0';
@@ -203,29 +236,35 @@ void	init_flood_fill(t_data *data, int row, size_t col)
 	// printf("Coluna: %zu\n", col);
 	// printf("Atual: %c\n", data->map[row][col]);
 
-	if (row == data->nb_rows - 1)
-	{
-		return ;
-	}
+	// if (row == data->nb_rows - 1)
+	// {
+	// 	return ;
+	// }
 		
 	if (data->map[row][col] != prev_color)
 	{
-		printf("oi1111\n");
+		//printf("oi1111\n");
 		return ;
 	}
 
 	if (row < 0 || row > data->nb_rows || col < 0 || col > data->big_line)
 	{
-		printf("oi22222\n");
+		//printf("oi22222\n");
 		return ;
 	}
 
-	i = 0;
-	while (i < data->nb_rows)
+	if (data->map[row][col] == '0' || data->map[row][col] == 'N')
 	{
-		printf("%s\n", data->map[i]);
-		i++;
+		if (is_open(data, row, col))
+			print_error("Map Invalid!! floor");
 	}
+
+	// i = 0;
+	// while (i < data->nb_rows)
+	// {
+	// 	printf("%s\n", data->map[i]);
+	// 	i++;
+	// }
 
 	char_change(data, row, col, new_color);
 	
@@ -233,55 +272,57 @@ void	init_flood_fill(t_data *data, int row, size_t col)
 	//Leste
 	if (col < data->big_line && col > 0)
 	{
-		if (data->map[row][col] == '0')
-		{
-			printf("Leste\n");
-			init_flood_fill(data, row, col + 1);
-		}
-		else
-		{
-			init_flood_fill(data, row + 1, col);
-		}
+		init_flood_fill(data, row, col + 1);
 	}//Sul
-	else if (row < data->nb_rows - 1)
+	if (row < data->nb_rows - 1)
 	{
-		if (data->map[row][col] == '0')
-		{
-			printf("Sul\n");
-			init_flood_fill(data, row, col);
-		}
+		init_flood_fill(data, row + 1, col);
 		
 	}//Oeste
-	else if (col < data->big_line && col > 0)
+	if (col < data->big_line && col > 0)
 	{
 		printf("Oeste\n");
 		init_flood_fill(data, row, col - 1);
 	}//Norte
-	else if (row > 0)
+	if (row > 0)
 	{
 		printf("Norte\n");
 		init_flood_fill(data, row - 1, col);
 	}//Noroeste
-	else if (row - 1 > 0 && col - 1 > 0)
+	if (row - 1 > 0 && col - 1 > 0)
 	{
 		printf("Noroeste\n");
 		init_flood_fill(data, row - 1, col -1);
 	}//Sudoeste
-	else if (row < data->nb_rows - 1 && col > 0)
+	if (row < data->nb_rows - 1 && col > 0)
 	{
 		printf("Sudoeste\n");
 		init_flood_fill(data, row + 1, col - 1);
 	}//Sudeste
-	else if (row + 1 < data->nb_rows - 1 && col + 1 < data->big_line)
+	if (row + 1 < data->nb_rows - 1 && col + 1 < data->big_line)
 	{
 		printf("Sudeste\n");
 		init_flood_fill(data, row + 1, col + 1);
 	}//Nordeste
-	else if (row > 0 && col < data->big_line)
+	if (row > 0 && col < data->big_line)
 	{
 		printf("Nordeste\n");
 		init_flood_fill(data, row - 1, col + 1);
 	}		
+}
+
+int	is_open(t_data *data, int row, size_t col)
+{
+	if (is_space(data->map[row][col + 1]) || is_space(data->map[row][col - 1]) || is_space(data->map[row + 1][col]) || is_space(data->map[row - 1][col]))
+		return (TRUE);
+	return (FALSE);
+}
+
+int	is_space(char c)
+{
+	if (c == '\t' || c == ' ' || c == '\n' || c == '\0')
+		return (TRUE);
+	return (FALSE);
 }
 
 void	char_change(t_data *data, int row, size_t col, char new_color)
@@ -308,8 +349,10 @@ void	fill_structures_loop(t_data *data)
 				fill_arr_colors(data, data->cub[i]);
 				data->counter++;
 			}
-			else
+			else if (i > 6)
 				fill_map(data, data->cub[i], i);
+			else
+				print_error("Map Invalid!! Please choose a map valid!!!");
 		}
 		i++;
 	}
