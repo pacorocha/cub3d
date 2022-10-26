@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/26 02:21:12 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/27 01:12:51 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,99 +173,41 @@ void	init_flood_fill(t_data *data, int row, size_t col)
 {
 	char	new_color;
 	char	prev_color;
-	//int		i;
-		
+
 	new_color = 'L';
 	prev_color = '0';
-
 	data->big_line = ft_strlen(data->map[row]);
-	// printf("Linha: %i\n", row);
-	// printf("Coluna: %zu\n", col);
-	// printf("Atual: %c\n", data->map[row][col]);
-
-	// if (row == data->nb_rows - 1)
-	// {
-	// 	return ;
-	// }
-		
 	if (data->map[row][col] != prev_color)
-	{
-		//printf("oi1111\n");
 		return ;
-	}
-
 	if (row < 0 || row > data->nb_rows || col < 0 || col > data->big_line)
-	{
-		//printf("oi22222\n");
 		return ;
-	}
-
 	if (data->map[row][col] == 'L' || data->map[row][col] == '0' || data->map[row][col] == 'N')
-	{
 		if (is_open(data, row, col))
-		{
-			printf("%i\n", row);
-			printf("%zu\n", col);
 			print_error("Map Invalid!! floor");
-		}
-			
-	}
-
-	// i = 0;
-	// while (i < data->nb_rows)
-	// {
-	// 	printf("%s\n", data->map[i]);
-	// 	i++;
-	// }
-
 	char_change(data, row, col, new_color);
-	
-
-	//Leste
 	if (col < data->big_line && col > 0)
-	{
 		init_flood_fill(data, row, col + 1);
-	}//Sul
 	if (row < data->nb_rows - 1)
-	{
-		init_flood_fill(data, row + 1, col);
-		
-	}//Oeste
+		init_flood_fill(data, row + 1, col);	
 	if (col < data->big_line && col > 0)
-	{
-		printf("Oeste\n");
 		init_flood_fill(data, row, col - 1);
-	}//Norte
 	if (row > 0)
-	{
-		printf("Norte\n");
 		init_flood_fill(data, row - 1, col);
-	}//Noroeste
 	if (row - 1 > 0 && col - 1 > 0)
-	{
-		printf("Noroeste\n");
 		init_flood_fill(data, row - 1, col -1);
-	}//Sudoeste
 	if (row < data->nb_rows - 1 && col > 0)
-	{
-		printf("Sudoeste\n");
 		init_flood_fill(data, row + 1, col - 1);
-	}//Sudeste
 	if (row + 1 < data->nb_rows - 1 && col + 1 < data->big_line)
-	{
-		printf("Sudeste\n");
 		init_flood_fill(data, row + 1, col + 1);
-	}//Nordeste
 	if (row > 0 && col < data->big_line)
-	{
-		printf("Nordeste\n");
-		init_flood_fill(data, row - 1, col + 1);
-	}		
+		init_flood_fill(data, row - 1, col + 1);	
 }
 
 int	is_open(t_data *data, int row, size_t col)
 {
-	if (data->map[0][col] == '0' || data->map[0][col] == 'L')
+	if (data->map[0][col] == '0' || data->map[0][col] == 'L'
+		|| data->map[data->nb_rows - 1][col] == '0'
+		|| data->map[data->nb_rows - 1][col] == 'L')
 		return (TRUE);
 	if (is_space(data->map[row][col + 1]) || is_space(data->map[row][col - 1]) || is_space(data->map[row + 1][col]) || is_space(data->map[row - 1][col]))
 		return (TRUE);
@@ -376,8 +318,6 @@ void	read_map(t_data *data)
 	while (gnl)
 		gnl = get_next_line(content, &data->cub[i++]);
 	data->cub[i] = NULL;
-	//count_nb_col(data);
-	//game->col = (ft_strlen(game->cub[0]) - 1);
 	close(content);
 }
 
