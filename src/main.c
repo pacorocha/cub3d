@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/26 01:36:10 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/26 02:21:12 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	add_char_lines(t_data *data)
 		len_num = data->big_line + 1;
 		while (j < len_num)
 		{
-			
 			if (ft_strlen(data->map[i]) <= len_num)
 				ft_strlcat(data->map[i], "D", len_num);
 			j++;
@@ -70,14 +69,6 @@ void	add_char_lines(t_data *data)
 		i++;
 	}
 
-
-
-	i = 0;
-	while(data->map[i] != NULL)
-	{
-		printf("%s\n", data->map[i]);
-		i++;
-	}
 }
 
 void	count_col(t_data *data)
@@ -176,51 +167,7 @@ void	search_ocurrence_ground(t_data *data)
 		printf("%s\n", data->map[i]);
 		i++;
 	}
-	//check_invalid_map(data);
 }
-
-// void	check_invalid_map(t_data *data)
-// {
-// 	int i;
-// 	size_t	j;
-// 	size_t len_row;
-// 	int	row_limit;
-
-// 	i = 0;
-// 	row_limit = data->nb_rows - 1;
-// 	while(i < data->nb_rows)
-// 	{
-// 		j = 0;
-// 		len_row = ft_strlen(data->map[i]);
-// 		while (j < len_row)
-// 		{
-// 			// printf("%zu\n", len_row);
-// 			// printf("%i\n", i);
-// 			if (data->map[i][0] != '1' || data->map[i][len_row - 1] != '1')
-// 				print_error("Invalid Map, OI!!");
-
-			
-// 			// if ((i > 0 && i < row_limit) || (j > 0 && j < len_row))
-// 			// {
-// 			// 	if (((data->map[i + 1][j] != 'L' && data->map[i + 1][j] != '0') && data->map[i + 1][j] != '1' && data->map[i + 1][j] != 'N')
-// 			// 	|| ((data->map[i - 1][j] != 'L' && data->map[i - 1][j] != '0') && data->map[i - 1][j] != '1' && data->map[i - 1][j] != 'N')
-// 			// 	|| ((data->map[i][j + 1] != 'L' && data->map[i][j + 1] != '0') && data->map[i][j + 1] != '1' && data->map[i][j + 1] != 'N')
-// 			// 	|| ((data->map[i][j - 1] != 'L' && data->map[i][j - 1] != '0') && data->map[i][j - 1] != '1' && data->map[i][j - 1] != 'N'))
-// 			// 	{
-// 			// 		//printf("%zu\n", j);
-// 			// 		//printf("%i\n", i);
-// 			// 		printf("%s\n", data->map[i]);
-// 			// 		printf("%c\n", data->map[i][j]);
-// 			// 		print_error("Invalid Map, fantasy");
-// 			// 	}
-// 			// }		
-// 			j++;
-// 		}
-// 		if (j == len_row)
-// 			j = 0;
-// 		i++;
-// 	}
-// }
 
 void	init_flood_fill(t_data *data, int row, size_t col)
 {
@@ -253,10 +200,15 @@ void	init_flood_fill(t_data *data, int row, size_t col)
 		return ;
 	}
 
-	if (data->map[row][col] == '0' || data->map[row][col] == 'N')
+	if (data->map[row][col] == 'L' || data->map[row][col] == '0' || data->map[row][col] == 'N')
 	{
 		if (is_open(data, row, col))
+		{
+			printf("%i\n", row);
+			printf("%zu\n", col);
 			print_error("Map Invalid!! floor");
+		}
+			
 	}
 
 	// i = 0;
@@ -313,6 +265,8 @@ void	init_flood_fill(t_data *data, int row, size_t col)
 
 int	is_open(t_data *data, int row, size_t col)
 {
+	if (data->map[0][col] == '0' || data->map[0][col] == 'L')
+		return (TRUE);
 	if (is_space(data->map[row][col + 1]) || is_space(data->map[row][col - 1]) || is_space(data->map[row + 1][col]) || is_space(data->map[row - 1][col]))
 		return (TRUE);
 	return (FALSE);
@@ -320,7 +274,7 @@ int	is_open(t_data *data, int row, size_t col)
 
 int	is_space(char c)
 {
-	if (c == '\t' || c == ' ' || c == '\n' || c == '\0')
+	if (c == '\t' || c == ' ' || c == '\n' || c == '\0' || c == 'D')
 		return (TRUE);
 	return (FALSE);
 }
