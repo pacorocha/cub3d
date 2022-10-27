@@ -6,18 +6,17 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 03:58:21 by coder             #+#    #+#             */
-/*   Updated: 2022/10/26 04:35:48 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/10/27 04:21:27 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-float	normalize_angle(float angle)
+void	normalize_angle(float *angle)
 {
-	angle = remainder(angle, TWO_PI);
-	if (angle < 0)
-		angle = TWO_PI + angle;
-	return (angle);
+	*angle = remainder(*angle, TWO_PI);
+	if (*angle < 0)
+		*angle = TWO_PI + *angle;
 }
 
 float	distance_btw_ab(float a1, float a2, float b1, float b2)

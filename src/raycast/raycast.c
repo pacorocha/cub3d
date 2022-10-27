@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 02:45:07 by coder             #+#    #+#             */
-/*   Updated: 2022/10/26 04:08:23 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/10/27 05:27:50 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,12 @@ void	cast_all_rays(t_data *data)
 	int		strip;
 
 	strip = 0;
-	ray_angle = normalize_angle(data->player.rot_angle - (FOV_ANGLE / 2));
+	ray_angle = data->player.rot_angle - (FOV_ANGLE / 2);
 	while (strip < NUM_RAYS)
 	{
-		ray_angle += FOV_ANGLE / NUM_RAYS;
-		ray_angle = normalize_angle(ray_angle);
+		ray_angle = data->player.rot_angle + atan((strip - NUM_RAYS / 2)
+			/ ((WINDOW_WIDTH / 2) / tan(FOV_ANGLE / 2)));
+		normalize_angle(&ray_angle);
 		cast_ray(ray_angle, strip, data);
 		strip++;
 	}

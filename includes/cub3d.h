@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/26 02:16:45 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/10/27 04:20:17 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	init_v_data(float ray_angle, t_ray_data *v_data, t_data *data);
 void	cast_all_rays(t_data *data);
 void	cast_ray(float ray_angle, int strip, t_data *data);
 
-float	normalize_angle(float angle);
+void	normalize_angle(float *angle);
 float	distance_btw_ab(float a1, float a2, float b1, float b2);
 
 int		is_ray_facing_down(float angle);

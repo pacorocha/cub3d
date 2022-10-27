@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 02:22:28 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/26 04:05:21 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/10/27 05:19:55 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	move_player(t_data *data)
 	float	new_player_y;
 
 	data->player.rot_angle += data->player.turn_dir * data->player.turn_spd;
-	data->player.rot_angle = normalize_angle(data->player.rot_angle);
+	normalize_angle(&data->player.rot_angle);
 	side_step = data->player.side_dir * data->player.walk_spd;
 	move_step = data->player.walk_dir * data->player.walk_spd;
 	if (move_step && side_step)
