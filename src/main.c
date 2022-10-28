@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/27 01:12:51 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/28 23:10:25 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,47 @@ void	count_col(t_data *data)
 
 void	map_checker(t_data *data)
 {
-	//checking_texture(data);
-	checking_color(data);
-	search_ocurrence_ground(data);
+	checking_texture(data);
+	// checking_color(data);
+	// search_ocurrence_ground(data);
 	
 }
 
+void	checking_texture(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	
+	while(data->directions[i] != NULL)
+	{
+		if (is_invalid_file_texture(data->directions[i]))
+			print_error("Error!");
+		i++;
+	}
+	printf("%s\n", data->directions[2]);
+	
+}
+
+int	is_invalid_file_texture(char *texture)
+{
+	char **arr_split;
+
+	arr_split = ft_split(texture, ' ');
+
+	if (ft_strncmp(arr_split[1], "textures/", 9))
+	{
+		free_array(arr_split);
+		return TRUE;
+	}
+	else if (!check_end_of_file(arr_split[1], "png"))
+	{
+		free_array(arr_split);
+		return TRUE;
+	}
+	free_array(arr_split);
+	return FALSE;	
+}
 
 void	checking_color(t_data *data)
 {
@@ -183,7 +218,7 @@ void	init_flood_fill(t_data *data, int row, size_t col)
 		return ;
 	if (data->map[row][col] == 'L' || data->map[row][col] == '0' || data->map[row][col] == 'N')
 		if (is_open(data, row, col))
-			print_error("Map Invalid!! floor");
+			print_error("Map Invalid!! Please choose a map valid!!!");
 	char_change(data, row, col, new_color);
 	if (col < data->big_line && col > 0)
 		init_flood_fill(data, row, col + 1);
@@ -350,10 +385,10 @@ int	check_end_of_file(char *file, char *sufx)
 
 int	check_flags_cardinal_directions(char *line)
 {
-	if (!ft_strncmp(line, "NO", 2) ||
-	!ft_strncmp(line, "SO", 2) ||
-	!ft_strncmp(line, "WE", 2) ||
-	!ft_strncmp(line, "EA", 2))
+	if (!ft_strncmp(line, "NO ", 3) ||
+	!ft_strncmp(line, "SO ", 3) ||
+	!ft_strncmp(line, "WE ", 3) ||
+	!ft_strncmp(line, "EA ", 3))
 		return (1);
 
 	return (0);
