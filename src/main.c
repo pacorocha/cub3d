@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/28 23:10:25 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/29 01:18:49 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	init_data(t_data *data, int argc, char **argv)
 void	parser(t_data *data)
 {
 	if (data->argc != 2)
-		print_error("ERROR!\nNumber of parameters is invalid!\n");
+		print_error("Error");
 	fill_structures_loop(data);
 	count_col(data);
 	add_char_lines(data);
@@ -83,14 +83,14 @@ void	count_col(t_data *data)
 		i++;
 	}
 	if (data->big_line < 3)
-		print_error("Map Invalid!! Please choose a map valid!!!");
+		print_error("Error");
 }
 
 void	map_checker(t_data *data)
 {
 	checking_texture(data);
-	// checking_color(data);
-	// search_ocurrence_ground(data);
+	checking_color(data);
+	search_ocurrence_ground(data);
 	
 }
 
@@ -103,11 +103,9 @@ void	checking_texture(t_data *data)
 	while(data->directions[i] != NULL)
 	{
 		if (is_invalid_file_texture(data->directions[i]))
-			print_error("Error!");
+			print_error("Error");
 		i++;
-	}
-	printf("%s\n", data->directions[2]);
-	
+	}	
 }
 
 int	is_invalid_file_texture(char *texture)
@@ -121,7 +119,7 @@ int	is_invalid_file_texture(char *texture)
 		free_array(arr_split);
 		return TRUE;
 	}
-	else if (!check_end_of_file(arr_split[1], "png"))
+	else if (!check_end_of_file(arr_split[1], "xpm"))
 	{
 		free_array(arr_split);
 		return TRUE;
@@ -154,15 +152,15 @@ void	check_color(char *color)
 		{
 			is_num = ft_isdigit(rgb[i][j]);
 			if (!is_num)
-				print_error("Invalid color!! Choose a possible color from the RGB scale.");
+				print_error("Error");
 			if (ft_atoi(rgb[i]) > 255 || ft_atoi(rgb[i]) < 0)
-				print_error("Invalid color!! Choose a possible color from the RGB scale.");
+				print_error("Error");
 			j++;
 		}
 		i++;
 	}
 	if (i < 3)
-		print_error("Invalid color!! Choose a possible color from the RGB scale.");
+		print_error("Error");
 }
 
 void	search_ocurrence_ground(t_data *data)
@@ -176,12 +174,10 @@ void	search_ocurrence_ground(t_data *data)
 	data->control = 0;
 	while(i < data->nb_rows - 1)
 	{
-		printf("Linha tal: %i\n", i);
 		j = 0;
 		len_col = ft_strlen(data->map[i]);
 		while(j < len_col)
 		{
-			printf("Coluna tal: %zu\n", j);
 			if (data->map[i][j] == '0')
 			{
 				data->control = 1;
@@ -195,13 +191,6 @@ void	search_ocurrence_ground(t_data *data)
 	}
 
 	init_flood_fill(data, i, j);
-	i = 0;
-
-	while (i < data->nb_rows)
-	{
-		printf("%s\n", data->map[i]);
-		i++;
-	}
 }
 
 void	init_flood_fill(t_data *data, int row, size_t col)
@@ -218,7 +207,7 @@ void	init_flood_fill(t_data *data, int row, size_t col)
 		return ;
 	if (data->map[row][col] == 'L' || data->map[row][col] == '0' || data->map[row][col] == 'N')
 		if (is_open(data, row, col))
-			print_error("Map Invalid!! Please choose a map valid!!!");
+			print_error("Error");
 	char_change(data, row, col, new_color);
 	if (col < data->big_line && col > 0)
 		init_flood_fill(data, row, col + 1);
@@ -283,7 +272,7 @@ void	fill_structures_loop(t_data *data)
 			else if (i > 6)
 				fill_map(data, data->cub[i], i);
 			else
-				print_error("Map Invalid!! Please choose a map valid!!!");
+				print_error("Error");
 		}
 		i++;
 	}
@@ -296,7 +285,7 @@ void	fill_map(t_data *data, char *line, int i)
 		data->counter = 0;
 		data->nb_rows = data->nb_rows - i;
 		if (data->nb_rows < 3)
-			print_error("Map Invalid!! Please choose a map valid!!");
+			print_error("Error");
 		data->map = (char **)ft_calloc(data->nb_rows + 1, sizeof(char *));
 		data->map[data->counter] = ft_strdup(line);
 	}
@@ -413,7 +402,7 @@ char	**lines(char *file, t_data *data)
 	if (!fd)
 		return (NULL);
 	if (!check_end_of_file(file, "cub"))
-		print_error("Every map must have a .cub extension\n");
+		print_error("Error");
 	data->nb_rows = 1;
 	read_line = 1;
 	while (read_line)
