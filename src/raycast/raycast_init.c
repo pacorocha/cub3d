@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 04:27:11 by coder             #+#    #+#             */
-/*   Updated: 2022/10/26 01:52:20 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/10/29 04:17:34 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	init_v_data(float ray_angle, t_ray_data *v_data, t_data *data)
 		v_data->x_step *= -1;
 	v_data->y_step = TILE_SIZE * tan(ray_angle);
 	if ((is_ray_facing_up(ray_angle) && v_data->y_step > 0))
-		v_data->y_step *= 1;
+		v_data->y_step *= -1;
 	if ((is_ray_facing_down(ray_angle) && v_data->y_step < 0))
 		v_data->y_step *= -1;
 	v_data->next_touch_x = v_data->x_intercept;

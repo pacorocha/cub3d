@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 03:58:21 by coder             #+#    #+#             */
-/*   Updated: 2022/10/27 04:21:27 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/10/29 02:50:53 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	normalize_angle(float *angle)
 {
-	*angle = remainder(*angle, TWO_PI);
+	*angle = fmod(*angle, TWO_PI);
 	if (*angle < 0)
 		*angle = TWO_PI + *angle;
 }

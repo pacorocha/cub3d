@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_helpers.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 02:59:17 by coder             #+#    #+#             */
-/*   Updated: 2022/10/19 02:59:50 by coder            ###   ########.fr       */
+/*   Updated: 2022/10/29 03:47:48 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	is_ray_facing_up(float angle)
 
 int	is_ray_facing_right(float angle)
 {
-	return (angle < 0.5 * PI || angle > 1.5 * PI);
+	return (angle < PI / 2 || angle > 3 * PI / 2);
 }
 
 int	is_ray_facing_left(float angle)

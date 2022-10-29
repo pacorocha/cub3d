@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 03:28:55 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/23 03:31:55 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/10/28 03:23:14 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	map_has_wall_at(float x, float y, t_data *data)
 	int	map_x;
 	int	map_y;
 
-	if (x < 0 || x >= data->nb_cols * TILE_SIZE || y < 0 || y > data->nb_rows * TILE_SIZE)
+	if (x < 0 || x >= data->nb_cols * TILE_SIZE || y < 0 || y >= data->nb_rows * TILE_SIZE)
 	{
 		return (FALSE);
 	}
@@ -28,8 +28,8 @@ int	map_has_wall_at(float x, float y, t_data *data)
 
 int	is_inside_map(float x, float y, t_data *data)
 {
-	if (x >= 0 && x <= data->nb_cols * TILE_SIZE
-		&& y >= 0 && y <= data->nb_rows * TILE_SIZE)
+	if (x >= 0 && x < data->nb_cols * TILE_SIZE
+		&& y >= 0 && y < data->nb_rows * TILE_SIZE)
 	{
 		return (TRUE);
 	}

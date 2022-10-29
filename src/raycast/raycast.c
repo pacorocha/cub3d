@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 02:45:07 by coder             #+#    #+#             */
-/*   Updated: 2022/10/27 05:27:50 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/10/29 04:27:15 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ void	cast_ray(float ray_angle, int strip, t_data *data)
 
 	check_h_data(ray_angle, &h_data, data);
 	check_v_data(ray_angle, &v_data, data);
-	if (v_data.hit_d < h_data.hit_d)
+	normalize_angle(&ray_angle);
+	if (v_data.hit_d <= h_data.hit_d)
 	{
 		data->rays[strip].distance = v_data.hit_d;
 		data->rays[strip].wall_hit_x = v_data.wall_hit_x;
