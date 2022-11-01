@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 02:22:28 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/29 04:02:37 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/01 03:07:36 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	update_game(t_data *data)
 int	game_loop(t_data *data)
 {
 	update_game(data);
+	render_layer(data, RED);
 	render_map(data);
 	render_rays(data);
 	render_player(data);

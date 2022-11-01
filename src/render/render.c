@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 03:29:01 by coder             #+#    #+#             */
-/*   Updated: 2022/10/27 05:31:59 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/01 03:26:01 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void draw_line(t_img *img, float beginX, float beginY, float endX, float endY, i
 	}
 }
 
-void	render_background(t_img *img, int color)
+void	render_layer(t_data *data, int color)
 {
 	int	i;
 	int	j;
@@ -60,7 +60,7 @@ void	render_background(t_img *img, int color)
 	{
 		j = 0;
 		while (j < WINDOW_WIDTH)
-			img_pixel_put(img, j++, i, color);
+			img_pixel_put(&data->img, j++, i, color);
 		++i;
 	}
 }

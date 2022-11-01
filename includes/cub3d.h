@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/27 04:20:17 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/01 03:06:02 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	set_map_size(t_data *data);
 void	render_map(t_data *data);
 void	render_player(t_data *data);
 void	render_rays(t_data *data);
+void	render_layer(t_data *data, int color);
 
 // game
 int		game_loop(t_data *data);
