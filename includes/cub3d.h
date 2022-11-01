@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/28 23:10:33 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/01 01:50:12 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	add_char_lines(t_data *data);
 void	map_checker(t_data *data);
 void	search_ocurrence_ground(t_data *data);
 void	init_flood_fill(t_data *data, int row, size_t col);
-void	count_col(t_data *data);
+void	count_col(t_data *data, int i);
 void	char_change(t_data *data, int row, size_t col, char new_color);
 void	Sul (t_data *data, int row, size_t col);
 void	Leste (t_data *data, int row, size_t col);

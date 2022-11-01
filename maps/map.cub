@@ -1,7 +1,7 @@
-NO assets/images/redbrick.xpm
-SO assets/images/grenbrick.xpm
-EA assets/images/bluebrick.xpm
-WE assets/images/yellowbrick.xpm
+NO textures/redbrick.xpm
+SO textures/grenbrick.xpm
+EA textures/bluebrick.xpm
+WE textures/yellowbrick.xpm
 C 104,120,132
 F 228,95,0
 

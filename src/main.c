@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/29 01:18:49 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/01 02:36:21 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ void	init_data(t_data *data, int argc, char **argv)
 void	parser(t_data *data)
 {
 	if (data->argc != 2)
-		print_error("Error");
+		print_error("Error, args");
 	fill_structures_loop(data);
-	count_col(data);
 	add_char_lines(data);
 	map_checker(data);
 }
@@ -55,35 +54,44 @@ void	add_char_lines(t_data *data)
 	size_t	len_num;
 	
 	i = 0;
+	len_num = data->big_line + 1;
 	while(data->map[i] != NULL)
 	{
 		j = 0;
-		len_num = data->big_line + 1;
 		while (j < len_num)
 		{
 			if (ft_strlen(data->map[i]) <= len_num)
 				ft_strlcat(data->map[i], "D", len_num);
 			j++;
 		}
-		
 		i++;
+	}
+
+	
+	i = 0;
+
+	while(data->map[i] != NULL)
+	{
+		printf("%s\n", data->map[i]);
+		i++;	
 	}
 
 }
 
-void	count_col(t_data *data)
+void	count_col(t_data *data, int i)
 {
-	int	i;
-
-	i = 0;
-	while(data->map[i] != NULL)
+	//printf("Big_line: %zu\n", data->big_line);
+	while(data->cub[i] != NULL)
 	{
-		if (ft_strlen(data->map[i]) > data->big_line)
-			data->big_line = ft_strlen(data->map[i]);
+		if (ft_strlen(data->cub[i]) > data->big_line)
+		{
+			data->big_line = ft_strlen(data->cub[i]);
+			//printf("Big_line: %zu\n", data->big_line);
+		}
 		i++;
 	}
 	if (data->big_line < 3)
-		print_error("Error");
+		print_error("Error, line < 3");
 }
 
 void	map_checker(t_data *data)
@@ -103,7 +111,7 @@ void	checking_texture(t_data *data)
 	while(data->directions[i] != NULL)
 	{
 		if (is_invalid_file_texture(data->directions[i]))
-			print_error("Error");
+			print_error("Error, texture invalid");
 		i++;
 	}	
 }
@@ -152,15 +160,15 @@ void	check_color(char *color)
 		{
 			is_num = ft_isdigit(rgb[i][j]);
 			if (!is_num)
-				print_error("Error");
+				print_error("Error, color not a number");
 			if (ft_atoi(rgb[i]) > 255 || ft_atoi(rgb[i]) < 0)
-				print_error("Error");
+				print_error("Error, color > 255 or < 0 ");
 			j++;
 		}
 		i++;
 	}
 	if (i < 3)
-		print_error("Error");
+		print_error("Error color < 3");
 }
 
 void	search_ocurrence_ground(t_data *data)
@@ -191,6 +199,15 @@ void	search_ocurrence_ground(t_data *data)
 	}
 
 	init_flood_fill(data, i, j);
+	// i = 0;
+
+	// while (data->map[i] != NULL)
+	// {
+	// 	printf("%s\n", data->map[i]);
+	// 	i++;
+	// }
+
+	
 }
 
 void	init_flood_fill(t_data *data, int row, size_t col)
@@ -205,9 +222,10 @@ void	init_flood_fill(t_data *data, int row, size_t col)
 		return ;
 	if (row < 0 || row > data->nb_rows || col < 0 || col > data->big_line)
 		return ;
-	if (data->map[row][col] == 'L' || data->map[row][col] == '0' || data->map[row][col] == 'N')
+	if (data->map[row][col] == 'L' || data->map[row][col] == '0' || data->map[row][col] == 'N'
+		|| data->map[row][col] != '1')
 		if (is_open(data, row, col))
-			print_error("Error");
+			print_error("Error, open map");
 	char_change(data, row, col, new_color);
 	if (col < data->big_line && col > 0)
 		init_flood_fill(data, row, col + 1);
@@ -240,7 +258,7 @@ int	is_open(t_data *data, int row, size_t col)
 
 int	is_space(char c)
 {
-	if (c == '\t' || c == ' ' || c == '\n' || c == '\0' || c == 'D')
+	if (c == '\t' || c == ' ' || c == '\n' || c == '\0' || c == 'D' || (c != '1' && c != '0' && c != 'L' && c != 'N'))
 		return (TRUE);
 	return (FALSE);
 }
@@ -255,6 +273,7 @@ void	fill_structures_loop(t_data *data)
 	int i;
 	
 	i = 0;
+
 	while(data->cub[i] != NULL)
 	{
 		if (data->cub[i][0] != '\0')
@@ -269,10 +288,14 @@ void	fill_structures_loop(t_data *data)
 				fill_arr_colors(data, data->cub[i]);
 				data->counter++;
 			}
-			else if (i > 6)
+			else if (i >= 6)
+			{
+				count_col(data, i);
 				fill_map(data, data->cub[i], i);
+			}	
 			else
-				print_error("Error");
+				print_error("Error, not init valid directions or colors");
+				
 		}
 		i++;
 	}
@@ -287,12 +310,12 @@ void	fill_map(t_data *data, char *line, int i)
 		if (data->nb_rows < 3)
 			print_error("Error");
 		data->map = (char **)ft_calloc(data->nb_rows + 1, sizeof(char *));
-		data->map[data->counter] = ft_strdup(line);
+		data->map[data->counter] = ft_strdup_len(line, data->big_line);
 	}
 	else
 	{
 		data->counter++;
-		data->map[data->counter] = ft_strdup(line);
+		data->map[data->counter] = ft_strdup_len(line, data->big_line);
 		data->control = 1;
 	}
 	if(data->counter == data->nb_rows - 1)
@@ -402,7 +425,7 @@ char	**lines(char *file, t_data *data)
 	if (!fd)
 		return (NULL);
 	if (!check_end_of_file(file, "cub"))
-		print_error("Error");
+		print_error("Error, cub");
 	data->nb_rows = 1;
 	read_line = 1;
 	while (read_line)
