@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/01 02:36:21 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/02 01:31:19 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	add_char_lines(t_data *data)
 		}
 		i++;
 	}
-
 	
 	i = 0;
 
@@ -75,19 +74,14 @@ void	add_char_lines(t_data *data)
 		printf("%s\n", data->map[i]);
 		i++;	
 	}
-
 }
 
 void	count_col(t_data *data, int i)
 {
-	//printf("Big_line: %zu\n", data->big_line);
 	while(data->cub[i] != NULL)
 	{
 		if (ft_strlen(data->cub[i]) > data->big_line)
-		{
 			data->big_line = ft_strlen(data->cub[i]);
-			//printf("Big_line: %zu\n", data->big_line);
-		}
 		i++;
 	}
 	if (data->big_line < 3)
@@ -199,15 +193,6 @@ void	search_ocurrence_ground(t_data *data)
 	}
 
 	init_flood_fill(data, i, j);
-	// i = 0;
-
-	// while (data->map[i] != NULL)
-	// {
-	// 	printf("%s\n", data->map[i]);
-	// 	i++;
-	// }
-
-	
 }
 
 void	init_flood_fill(t_data *data, int row, size_t col)
@@ -248,6 +233,7 @@ void	init_flood_fill(t_data *data, int row, size_t col)
 int	is_open(t_data *data, int row, size_t col)
 {
 	if (data->map[0][col] == '0' || data->map[0][col] == 'L'
+		|| data->map[row][0] == '0' || data->map[row][0] == 'L'
 		|| data->map[data->nb_rows - 1][col] == '0'
 		|| data->map[data->nb_rows - 1][col] == 'L')
 		return (TRUE);
@@ -283,7 +269,7 @@ void	fill_structures_loop(t_data *data)
 				fill_arr_textures(data, data->cub[i], i);
 				data->counter++;
 			}
-			else if (check_flags_colors(data->cub[i]))
+			else if (check_flags_colors(data->cub[i]) && data->counter >= 3)
 			{
 				fill_arr_colors(data, data->cub[i]);
 				data->counter++;
@@ -294,8 +280,12 @@ void	fill_structures_loop(t_data *data)
 				fill_map(data, data->cub[i], i);
 			}	
 			else
+			{
+				printf("Linha: %i\n", i);
+				printf("Conteudo: %s\n", data->cub[i]);
 				print_error("Error, not init valid directions or colors");
-				
+
+			}
 		}
 		i++;
 	}
