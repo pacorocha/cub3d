@@ -13,6 +13,33 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+typedef struct s_ray_data
+{
+	float	x_intercept;
+	float	y_intercept;
+	float	x_step;
+	float	y_step;
+	int		found_wall;
+	float	wall_hit_x;
+	float	wall_hit_y;
+	int		wall_content;
+	float	next_touch_x;
+	float	next_touch_y;
+	float	x_to_check;
+	float	y_to_check;
+	float	hit_d;
+} t_ray_data;
+
+typedef struct s_ray
+{
+	float	ray_angle;
+	float	wall_hit_x;
+	float	wall_hit_y;
+	float	distance;
+	int		was_hit_vert;
+	int		wall_hit_content;
+}	t_ray;
+
 typedef struct s_mlx
 {
 	void	*mlx_ptr;
@@ -59,6 +86,7 @@ typedef struct s_data
 	t_mlx	mlx;
 	t_player player;
 	t_img		img;
+  t_ray		rays[NUM_RAYS];
     char	**directions;
     char	*f_color;
     char	*c_color;

@@ -32,6 +32,7 @@ INIT_DIR = init
 RENDER_DIR = render
 GAME_DIR = game
 UTILS_DIR = utils
+RAYCAST_DIR = raycast
 
 BASE =	main.c \
 
@@ -45,19 +46,26 @@ GAME = game_loop.c \
 
 UTILS = map_utils.c \
 
+RAYCAST = raycast.c \
+		raycast_math.c \
+		raycast_helpers.c \
+		raycast_init.c
+
 SRC = $(BASE) \
 		$(KEYS) \
 		$(INIT) \
 		$(RENDER) \
 		$(GAME) \
-		$(UTILS)
+		$(UTILS) \
+		$(RAYCAST)
 
 SRC_FULL = $(addprefix $(SRC_DIR)/, $(BASE)) \
 			$(addprefix $(SRC_DIR)/$(KEYS_DIR)/, $(KEYS)) \
 			$(addprefix $(SRC_DIR)/$(INIT_DIR)/, $(INIT)) \
 			$(addprefix $(SRC_DIR)/$(RENDER_DIR)/, $(RENDER)) \
 			$(addprefix $(SRC_DIR)/$(GAME_DIR)/, $(GAME)) \
-			$(addprefix $(SRC_DIR)/$(UTILS_DIR)/, $(UTILS))
+			$(addprefix $(SRC_DIR)/$(UTILS_DIR)/, $(UTILS)) \
+			$(addprefix $(SRC_DIR)/$(RAYCAST_DIR)/, $(RAYCAST))
 
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FULL))
 
@@ -66,7 +74,8 @@ VPATH = includes \
 		src/init \
 		src/render \
 		src/game \
-		src/utils
+		src/utils \
+		src/raycast
 
 
 all: $(NAME)
@@ -81,6 +90,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(OBJ_DIR)/$(RENDER_DIR)
 	mkdir -p $(OBJ_DIR)/$(GAME_DIR)
 	mkdir -p $(OBJ_DIR)/$(UTILS_DIR)
+	mkdir -p $(OBJ_DIR)/$(RAYCAST_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR)
 
 $(MINILBX):

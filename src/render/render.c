@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 03:29:01 by coder             #+#    #+#             */
-/*   Updated: 2022/10/14 02:35:29 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/01 03:26:01 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void draw_line(t_img *img, float beginX, float beginY, float endX, float endY, i
 	}
 }
 
-void	render_background(t_img *img, int color)
+void	render_layer(t_data *data, int color)
 {
 	int	i;
 	int	j;
@@ -60,7 +60,7 @@ void	render_background(t_img *img, int color)
 	{
 		j = 0;
 		while (j < WINDOW_WIDTH)
-			img_pixel_put(img, j++, i, color);
+			img_pixel_put(&data->img, j++, i, color);
 		++i;
 	}
 }
@@ -112,5 +112,17 @@ void	render_player(t_data *data)
 	render_rect(&data->img, (t_rect){data->player.x, data->player.y,
 		data->player.width, data->player.height, color});
 	// a linha é helper, apagar depois
-	draw_line(&data->img, data->player.x, data->player.y, data->player.x + cos(data->player.rot_angle) * 6, data->player.y + sin(data->player.rot_angle) * 6, WHITE);
+	draw_line(&data->img, data->player.x, data->player.y, data->player.x + cos(data->player.rot_angle) * 10, data->player.y + sin(data->player.rot_angle) * 10, WHITE);
+}
+
+void render_rays(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (i < NUM_RAYS)
+	{
+		draw_line(&data->img, data->player.x, data->player.y, data->rays[i].wall_hit_x, data->rays[i].wall_hit_y, BLUE);
+		i++;
+	}
 }

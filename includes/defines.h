@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 06:28:51 by coder             #+#    #+#             */
-/*   Updated: 2022/10/14 01:56:55 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/10/29 19:35:59 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@
 
 # define CHAR_PLAYER "NSWE"
 # define PLAYER_SIZE 1
-# define FOV_ANGLE 1.0472; // rounded (60 * PI / 180)
+# define FOV_ANGLE 60 * PI / 180
+# define NUM_RAYS WINDOW_WIDTH
+# define FLT_MAX 3.40282346638528859812e+38F
 
 #define RED 0xB00612
 #define GREEN 0x26871C
