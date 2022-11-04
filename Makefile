@@ -6,7 +6,7 @@
 #    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 20:49:56 by jfrancis          #+#    #+#              #
-#    Updated: 2022/11/04 01:12:47 by coder            ###   ########.fr        #
+#    Updated: 2022/11/04 02:50:58 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ RENDER_DIR = render
 GAME_DIR = game
 UTILS_DIR = utils
 RAYCAST_DIR = raycast
+PARSER_DIR = parser
+READER_MAP_DIR = reader_map
 
 BASE =	main.c \
 
@@ -45,11 +47,21 @@ RENDER = render.c \
 GAME = game_loop.c \
 
 UTILS = map_utils.c \
+		error_utils.c \
+		free_utils.c \
+		read_utils.c \
 
 RAYCAST = raycast.c \
 		raycast_math.c \
 		raycast_helpers.c \
 		raycast_init.c
+
+PARSER = check_flags.c \
+		checker.c \
+		filling.c \
+		flood_fill_checker.c \
+
+READER_MAP = reader_map.c \
 
 SRC = $(BASE) \
 		$(KEYS) \
@@ -57,7 +69,9 @@ SRC = $(BASE) \
 		$(RENDER) \
 		$(GAME) \
 		$(UTILS) \
-		$(RAYCAST)
+		$(RAYCAST) \
+		$(PARSER) \
+		$(READER_MAP) \
 
 SRC_FULL = $(addprefix $(SRC_DIR)/, $(BASE)) \
 			$(addprefix $(SRC_DIR)/$(KEYS_DIR)/, $(KEYS)) \
@@ -65,8 +79,10 @@ SRC_FULL = $(addprefix $(SRC_DIR)/, $(BASE)) \
 			$(addprefix $(SRC_DIR)/$(RENDER_DIR)/, $(RENDER)) \
 			$(addprefix $(SRC_DIR)/$(GAME_DIR)/, $(GAME)) \
 			$(addprefix $(SRC_DIR)/$(UTILS_DIR)/, $(UTILS)) \
-			$(addprefix $(SRC_DIR)/$(RAYCAST_DIR)/, $(RAYCAST))
-
+			$(addprefix $(SRC_DIR)/$(RAYCAST_DIR)/, $(RAYCAST)) \
+			$(addprefix $(SRC_DIR)/$(PARSER_DIR)/, $(PARSER)) \
+			$(addprefix $(SRC_DIR)/$(READER_MAP_DIR)/, $(READER_MAP)) \
+			
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FULL))
 
 VPATH = includes \
@@ -75,7 +91,9 @@ VPATH = includes \
 		src/render \
 		src/game \
 		src/utils \
-		src/raycast
+		src/raycast \
+		src/parser \
+		src/reader_map \
 
 
 all: $(NAME)
@@ -91,6 +109,8 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(OBJ_DIR)/$(GAME_DIR)
 	mkdir -p $(OBJ_DIR)/$(UTILS_DIR)
 	mkdir -p $(OBJ_DIR)/$(RAYCAST_DIR)
+	mkdir -p $(OBJ_DIR)/$(PARSER_DIR)
+	mkdir -p $(OBJ_DIR)/$(READER_MAP_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR)
 
 $(MINILBX):
