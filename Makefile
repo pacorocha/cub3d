@@ -6,7 +6,7 @@
 #    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 20:49:56 by jfrancis          #+#    #+#              #
-#    Updated: 2022/10/25 22:55:02 by coder            ###   ########.fr        #
+#    Updated: 2022/11/04 01:12:47 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,7 @@ LIBFT = $(LIBFTDIR)/libft.a
 MINILBXDIR = libs/minilibx-linux
 MINILBX = $(MINILBXDIR)/libmlx.a
 
-LIBFLAGS = -lXext -lX11 -lmx
-LDLIBFT = -L$(LIBFTDIR) -lft
+LDLIBFT = -L$(LIBFTDIR) -lft -lm
 LDMINILIBX = -L$(MINILIBX) -lmlx -lXext -lX11
 
 OBJ_DIR = build
@@ -30,25 +29,45 @@ INC_DIR = includes
 SRC_DIR = src
 KEYS_DIR = keys
 INIT_DIR = init
+RENDER_DIR = render
+GAME_DIR = game
+UTILS_DIR = utils
 
 BASE =	main.c \
-		
+
 KEYS = keys_utils.c \
 
 INIT = init.c \
 
+RENDER = render.c \
+
+GAME = game_loop.c \
+
+UTILS = map_utils.c \
+
 SRC = $(BASE) \
-		$(KEYS)
+		$(KEYS) \
+		$(INIT) \
+		$(RENDER) \
+		$(GAME) \
+		$(UTILS)
 
 SRC_FULL = $(addprefix $(SRC_DIR)/, $(BASE)) \
 			$(addprefix $(SRC_DIR)/$(KEYS_DIR)/, $(KEYS)) \
-			$(addprefix $(SRC_DIR)/$(INIT_DIR)/, $(INIT))
+			$(addprefix $(SRC_DIR)/$(INIT_DIR)/, $(INIT)) \
+			$(addprefix $(SRC_DIR)/$(RENDER_DIR)/, $(RENDER)) \
+			$(addprefix $(SRC_DIR)/$(GAME_DIR)/, $(GAME)) \
+			$(addprefix $(SRC_DIR)/$(UTILS_DIR)/, $(UTILS))
 
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FULL))
 
 VPATH = includes \
 		src src/keys \
-		
+		src/init \
+		src/render \
+		src/game \
+		src/utils
+
 
 all: $(NAME)
 
@@ -59,6 +78,9 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(OBJ_DIR)
 	mkdir -p $(OBJ_DIR)/$(KEYS_DIR)
 	mkdir -p $(OBJ_DIR)/$(INIT_DIR)
+	mkdir -p $(OBJ_DIR)/$(RENDER_DIR)
+	mkdir -p $(OBJ_DIR)/$(GAME_DIR)
+	mkdir -p $(OBJ_DIR)/$(UTILS_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INC_DIR)
 
 $(MINILBX):

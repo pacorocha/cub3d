@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/04 01:05:34 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/04 01:14:49 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,13 @@ int	main(int argc, char **argv)
 	init_player(&data);
 	data.mlx.mlx_ptr = mlx_init();
 	data.mlx.win = mlx_new_window(data.mlx.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "Haunted House");
+	data.img.img_ptr = mlx_new_image(data.mlx.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+	data.img.addr = mlx_get_data_addr(data.img.img_ptr, &data.img.bpp,
+			&data.img.line_len, &data.img.endian);
 	mlx_hook(data.mlx.win, 33, 1L << 17, close_window, &data);
-	mlx_key_hook(data.mlx.win, &key_press, &data);
+	mlx_hook(data.mlx.win, 2, 1L << 0, key_press, &data);
+	mlx_hook(data.mlx.win, 3, 1L << 1, key_release, &data);
+	mlx_loop_hook(data.mlx.mlx_ptr, &game_loop, &data);
 	mlx_loop(data.mlx.mlx_ptr);
 }
 
@@ -257,7 +262,7 @@ void	char_change(t_data *data, int row, size_t col, char new_color)
 void	fill_structures_loop(t_data *data)
 {
 	int i;
-	
+
 	i = 0;
 
 	while(data->cub[i] != NULL)
@@ -319,7 +324,7 @@ void	fill_arr_textures(t_data *data, char *line, int i)
 {
 	if (i == 0)
 	{
-		data->directions = (char **)ft_calloc(5, sizeof(char *));		
+		data->directions = (char **)ft_calloc(5, sizeof(char *));
 		data->directions[i] = line;
 	}
 	else
@@ -338,7 +343,7 @@ void	fill_arr_colors(t_data *data, char *line)
 		data->f_color = ft_strdup(str_splitted[1]);
 	else
 		data->c_color = ft_strdup(str_splitted[1]);
-	
+
 	free(str_splitted);
 }
 
