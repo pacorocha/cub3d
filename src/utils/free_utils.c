@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 21:13:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/01 02:05:07 by coder            ###   ########.fr       */
+/*   Created: 2022/11/04 02:39:58 by coder             #+#    #+#             */
+/*   Updated: 2022/11/04 02:40:09 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
 
-char	*ft_strdup(const char *s)
+void	free_array(char **arr)
 {
-	size_t	size;
-	char	*dest;
+	int i;
 
-	size = ft_strlen(s) + 1;
-	dest = malloc(size);
-	if (dest == NULL)
-		return (NULL);
-	ft_memcpy(dest, s, size);
-	return (dest);
+	i = 0;
+	while ((arr)[i])
+	{
+		free((arr)[i]);
+		i++;
+	}
+	free(arr);
 }

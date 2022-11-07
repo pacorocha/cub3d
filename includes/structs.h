@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:06:08 by coder             #+#    #+#             */
-/*   Updated: 2022/11/04 00:55:07 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/04 01:11:50 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,21 +77,22 @@ typedef struct s_player
 
 typedef struct s_data
 {
-	int			nb_rows;
-	int			nb_cols;
-	char		**map;
-	int			argc;
-	char		*file;
-	char		**cub;
-	t_mlx		mlx;
-	t_player	player;
+    int	    nb_rows;
+	int		nb_cols;
+	char	**map;
+    int		argc;
+    char	*file;
+    char	**cub;
+	t_mlx	mlx;
+	t_player player;
 	t_img		img;
-	t_ray		rays[NUM_RAYS];
-	char		**directions;
-	char		*f_color;
-	char		*c_color;
-	int			counter;
-	int			control;
-}	t_data;
+  t_ray		rays[NUM_RAYS];
+    char	**directions;
+    char	*f_color;
+    char	*c_color;
+	int		counter;
+	int		control;
+	size_t	big_line;
+} t_data;
 
 #endif

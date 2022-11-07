@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   read_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 21:13:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/01 02:05:07 by coder            ###   ########.fr       */
+/*   Created: 2022/11/04 02:37:03 by coder             #+#    #+#             */
+/*   Updated: 2022/11/04 02:51:13 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
 
-char	*ft_strdup(const char *s)
+int	check_end_of_file(char *file, char *sufx)
 {
-	size_t	size;
-	char	*dest;
+	int	counter;
 
-	size = ft_strlen(s) + 1;
-	dest = malloc(size);
-	if (dest == NULL)
-		return (NULL);
-	ft_memcpy(dest, s, size);
-	return (dest);
+	counter = 0;
+	while (file[counter + 1])
+		counter++;
+	while (counter >= 0 && file[counter] != '.')
+		counter--;
+	if (counter >= 0 && !ft_strcmp(file + counter + 1, sufx))
+		return (1);
+	return (0);
 }
