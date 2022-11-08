@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 03:28:55 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/30 01:45:11 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/03 00:39:58 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	map_has_wall_at(float x, float y, t_data *data)
 
 	map_x = floor(x / TILE_SIZE);
 	map_y = floor(y / TILE_SIZE);
-	if (x < 0 || x > data->nb_cols * TILE_SIZE || y < 0 || y > data->nb_rows * TILE_SIZE)
+	if (x < 0 || x > data->nb_cols * TILE_SIZE || y < 0
+		|| y > data->nb_rows * TILE_SIZE)
 	{
 		return (FALSE);
 	}

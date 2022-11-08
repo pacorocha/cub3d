@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 06:28:51 by coder             #+#    #+#             */
-/*   Updated: 2022/10/29 19:35:59 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/03 01:04:06 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 # define PI 3.14159265
 # define TWO_PI 6.28318530
 
-# define WINDOW_WIDTH 1024
-# define WINDOW_HEIGHT 768
+# define WIN_WIDTH 1024
+# define WIN_HEIGHT 768
 
 # define CHAR_PLAYER "NSWE"
 # define PLAYER_SIZE 1
 # define FOV_ANGLE 60 * PI / 180
-# define NUM_RAYS WINDOW_WIDTH
+# define NUM_RAYS WIN_WIDTH
 # define FLT_MAX 3.40282346638528859812e+38F
 
 #define RED 0xB00612

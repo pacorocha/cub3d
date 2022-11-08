@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 03:29:01 by coder             #+#    #+#             */
-/*   Updated: 2022/11/01 03:26:01 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/03 02:30:52 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_rect
 	int color;
 }	t_rect;
 
-static void	img_pixel_put(t_img *img, int x, int y, int color)
+void	img_pixel_put(t_img *img, int x, int y, int color)
 {
 	char    *pixel;
 
@@ -56,10 +56,10 @@ void	render_layer(t_data *data, int color)
 	int	j;
 
 	i = 0;
-	while (i < WINDOW_HEIGHT)
+	while (i < WIN_HEIGHT)
 	{
 		j = 0;
-		while (j < WINDOW_WIDTH)
+		while (j < WIN_WIDTH)
 			img_pixel_put(&data->img, j++, i, color);
 		++i;
 	}

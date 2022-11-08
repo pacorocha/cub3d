@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/11 03:06:07 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/03 00:45:42 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	main(int argc, char **argv)
 	parser(&data);
 	init_player(&data);
 	data.mlx.mlx_ptr = mlx_init();
-	data.mlx.win = mlx_new_window(data.mlx.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "Haunted House");
-	data.img.img_ptr = mlx_new_image(data.mlx.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+	data.mlx.win = mlx_new_window(data.mlx.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "Haunted House");
+	data.img.img_ptr = mlx_new_image(data.mlx.mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
 	data.img.addr = mlx_get_data_addr(data.img.img_ptr, &data.img.bpp,
 			&data.img.line_len, &data.img.endian);
 	mlx_hook(data.mlx.win, 33, 1L << 17, close_window, &data);
