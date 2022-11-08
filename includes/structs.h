@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:06:08 by coder             #+#    #+#             */
 /*   Updated: 2022/11/04 01:11:50 by coder            ###   ########.fr       */
@@ -65,7 +65,7 @@ typedef struct s_player
 	float	y;
 	float	width;
 	float	height;
-	float	fov_angle;
+	float	view_angle;
 	int		turn_dir;
 	int		walk_dir;
 	int		side_dir;

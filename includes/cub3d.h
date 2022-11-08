@@ -71,10 +71,12 @@ float	set_player_direction(char c);
 void	set_map_size(t_data *data);
 
 //render
+void	img_pixel_put(t_img *img, int x, int y, int color);
 void	render_map(t_data *data);
 void	render_player(t_data *data);
 void	render_rays(t_data *data);
 void	render_layer(t_data *data, int color);
+void	project_3d_walls(t_data *data);
 
 // game
 int		game_loop(t_data *data);

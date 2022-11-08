@@ -21,8 +21,8 @@ int	main(int argc, char **argv)
 	parser(&data);
 	init_player(&data);
 	data.mlx.mlx_ptr = mlx_init();
-	data.mlx.win = mlx_new_window(data.mlx.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "Haunted House");
-	data.img.img_ptr = mlx_new_image(data.mlx.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+	data.mlx.win = mlx_new_window(data.mlx.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "Haunted House");
+	data.img.img_ptr = mlx_new_image(data.mlx.mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
 	data.img.addr = mlx_get_data_addr(data.img.img_ptr, &data.img.bpp,
 			&data.img.line_len, &data.img.endian);
 	mlx_hook(data.mlx.win, 33, 1L << 17, close_window, &data);

@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 02:45:07 by coder             #+#    #+#             */
-/*   Updated: 2022/10/30 03:22:17 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/07 20:32:10 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	check_h_data(float ray_angle, t_ray_data *h_data, t_data *data)
 			h_data->wall_hit_x = h_data->next_touch_x;
 			h_data->wall_hit_y = h_data->next_touch_y;
 			h_data->wall_content = data->map[(int)floor(h_data->y_to_check
-				/ TILE_SIZE)][(int)floor(h_data->x_to_check / TILE_SIZE)];
+					/ TILE_SIZE)][(int)floor(h_data->x_to_check / TILE_SIZE)];
 			h_data->found_wall = TRUE;
 			h_data->hit_d = distance_btw_ab(data->player.x, data->player.y,
 					h_data->wall_hit_x, h_data->wall_hit_y);
@@ -54,9 +54,9 @@ void	check_v_data(float ray_angle, t_ray_data *v_data, t_data *data)
 			v_data->wall_hit_x = v_data->next_touch_x;
 			v_data->wall_hit_y = v_data->next_touch_y;
 			v_data->wall_content = data->map[(int)floor(v_data->y_to_check
-				/ TILE_SIZE)][(int)floor(v_data->x_to_check / TILE_SIZE)];
+					/ TILE_SIZE)][(int)floor(v_data->x_to_check / TILE_SIZE)];
 			v_data->hit_d = distance_btw_ab(data->player.x, data->player.y,
-				v_data->wall_hit_x, v_data->wall_hit_y);
+					v_data->wall_hit_x, v_data->wall_hit_y);
 			v_data->found_wall = TRUE;
 			break ;
 		}
@@ -75,7 +75,6 @@ void	cast_ray(float ray_angle, int strip, t_data *data)
 
 	check_h_data(ray_angle, &h_data, data);
 	check_v_data(ray_angle, &v_data, data);
-
 	if (v_data.hit_d < h_data.hit_d)
 	{
 		data->rays[strip].distance = v_data.hit_d;
@@ -97,15 +96,17 @@ void	cast_ray(float ray_angle, int strip, t_data *data)
 void	cast_all_rays(t_data *data)
 {
 	float	ray_angle;
+	float	d_proj_plane;
 	int		strip;
 
 	strip = 0;
-	ray_angle = data->player.rot_angle - (FOV_ANGLE / 2);
+	d_proj_plane = (WIN_WIDTH / 2) / tan(FOV_ANGLE / 2);
+	ray_angle = data->player.rot_angle;
 	while (strip < NUM_RAYS)
 	{
 		ray_angle = data->player.rot_angle + atan((strip - NUM_RAYS / 2)
-			/ ((WINDOW_WIDTH / 2) / tan(FOV_ANGLE / 2)));
-		normalize_angle(&ray_angle);
+				/ d_proj_plane);
+		// normalize_angle(&ray_angle);
 		cast_ray(ray_angle, strip, data);
 		strip++;
 	}

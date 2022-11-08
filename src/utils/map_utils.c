@@ -19,7 +19,8 @@ int	map_has_wall_at(float x, float y, t_data *data)
 
 	map_x = floor(x / TILE_SIZE);
 	map_y = floor(y / TILE_SIZE);
-	if (x < 0 || x > data->nb_cols * TILE_SIZE || y < 0 || y > data->nb_rows * TILE_SIZE)
+	if (x < 0 || x > data->nb_cols * TILE_SIZE || y < 0
+		|| y > data->nb_rows * TILE_SIZE)
 	{
 		return (FALSE);
 	}
@@ -28,8 +29,8 @@ int	map_has_wall_at(float x, float y, t_data *data)
 
 int	is_inside_map(float x, float y, t_data *data)
 {
-	if (x >= 0 && x < data->nb_cols * TILE_SIZE
-		&& y >= 0 && y < data->nb_rows * TILE_SIZE)
+	if (x > 0 && x < data->nb_cols * TILE_SIZE
+		&& y > 0 && y < data->nb_rows * TILE_SIZE)
 	{
 		return (TRUE);
 	}
