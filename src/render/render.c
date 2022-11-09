@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 03:29:01 by coder             #+#    #+#             */
-/*   Updated: 2022/11/09 20:11:29 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/09 20:50:29 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void render_map(t_data *data) {
 		j = 0;
 		while (j < data->nb_cols)
 		{
-			if (data->map[i][j] == '0' || data->map[i][j] == 'L')
+			if (data->map[i][j] == 'L' || data->map[i][j] == '0')
 				color = RED;
 			if (data->map[i][j] == '1')
 				color = GREEN;

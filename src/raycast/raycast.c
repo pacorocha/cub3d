@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 02:45:07 by coder             #+#    #+#             */
-/*   Updated: 2022/11/07 20:32:10 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/09 20:30:44 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	cast_all_rays(t_data *data)
 	{
 		ray_angle = data->player.rot_angle + atan((strip - NUM_RAYS / 2)
 				/ d_proj_plane);
-		// normalize_angle(&ray_angle);
+		normalize_angle(&ray_angle);
 		cast_ray(ray_angle, strip, data);
 		strip++;
 	}

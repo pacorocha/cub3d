@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 03:28:55 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/04 02:40:46 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/09 20:51:16 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	map_has_wall_at(float x, float y, t_data *data)
 	{
 		return (FALSE);
 	}
-	return (data->map[map_y][map_x] != '0');
+	return (data->map[map_y][map_x] != '0' && data->map[map_y][map_x] != 'L');
 }
 
 int	is_inside_map(float x, float y, t_data *data)

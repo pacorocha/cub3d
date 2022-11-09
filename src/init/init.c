@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:58:24 by coder             #+#    #+#             */
-/*   Updated: 2022/11/07 20:38:27 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/09 20:46:43 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ float	set_player_direction(char c)
 
 void	init_player(t_data *data)
 {
-	// set_map_size(data);
+	set_map_size(data);
 	get_player_pos(data);
 	data->player.rot_angle = set_player_direction(data->player.init_pos);
 	data->player.width = PLAYER_SIZE;
