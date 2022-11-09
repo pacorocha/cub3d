@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill_checker.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:29:00 by coder             #+#    #+#             */
-/*   Updated: 2022/11/04 02:30:37 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/09 20:07:02 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	search_ocurrence_ground(t_data *data)
 			{
 				data->control = 1;
 				break ;
-			}		
+			}
 			j++;
 		}
 		if (data->control == 1)
@@ -50,7 +50,7 @@ void	flood_fill(t_data *data, int row, size_t col)
 	data->big_line = ft_strlen(data->map[row]);
 	if (data->map[row][col] != prev_color)
 		return ;
-	if (row < 0 || row > data->nb_rows || col < 0 || col > data->big_line)
+	if (row < 0 || row > data->nb_rows || (int)col < 0 || col > data->big_line)
 		return ;
 	if (data->map[row][col] == 'L' || data->map[row][col] == '0' || data->map[row][col] == 'N'
 		|| data->map[row][col] != '1')
@@ -60,7 +60,7 @@ void	flood_fill(t_data *data, int row, size_t col)
 	if (col < data->big_line && col > 0)
 		flood_fill(data, row, col + 1);
 	if (row < data->nb_rows - 1)
-		flood_fill(data, row + 1, col);	
+		flood_fill(data, row + 1, col);
 	if (col < data->big_line && col > 0)
 		flood_fill(data, row, col - 1);
 	if (row > 0)
@@ -72,7 +72,7 @@ void	flood_fill(t_data *data, int row, size_t col)
 	if (row + 1 < data->nb_rows - 1 && col + 1 < data->big_line)
 		flood_fill(data, row + 1, col + 1);
 	if (row > 0 && col < data->big_line)
-		flood_fill(data, row - 1, col + 1);	
+		flood_fill(data, row - 1, col + 1);
 }
 
 int	is_open(t_data *data, int row, size_t col)

@@ -6,7 +6,7 @@
 #    By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 20:49:56 by jfrancis          #+#    #+#              #
-#    Updated: 2022/11/03 02:06:50 by jfrancis         ###   ########.fr        #
+#    Updated: 2022/11/09 20:08:43 by jfrancis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ PARSER = check_flags.c \
 		filling.c \
 		flood_fill_checker.c \
 
-READER_MAP = reader_map.c \
+READER_MAP = read_map.c \
 
 SRC = $(BASE) \
 		$(KEYS) \
@@ -83,7 +83,7 @@ SRC_FULL = $(addprefix $(SRC_DIR)/, $(BASE)) \
 			$(addprefix $(SRC_DIR)/$(RAYCAST_DIR)/, $(RAYCAST)) \
 			$(addprefix $(SRC_DIR)/$(PARSER_DIR)/, $(PARSER)) \
 			$(addprefix $(SRC_DIR)/$(READER_MAP_DIR)/, $(READER_MAP)) \
-			
+
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FULL))
 
 VPATH = includes \
