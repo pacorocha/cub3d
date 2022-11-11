@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 02:59:17 by coder             #+#    #+#             */
-/*   Updated: 2022/10/29 20:42:55 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/09 21:20:18 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	is_ray_facing_up(float angle)
 
 int	is_ray_facing_right(float angle)
 {
-	return (angle < PI / 2 || angle > 3 * PI / 2);
+	return (angle < PI * 0.5 || angle > 1.5 * PI);
 }
 
 int	is_ray_facing_left(float angle)

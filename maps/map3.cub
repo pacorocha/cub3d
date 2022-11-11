@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO textures/redbrick.xpm
+SO textures/grenbrick.xpm
+EA textures/bluebrick.xpm
+WE textures/yellowbrick.xpm
 
 F 220,100,0
 C 225,30,0
@@ -10,7 +10,7 @@ C 225,30,0
 10000000000100000000001
 10111011110101111011101
 10111011110101111011101
-10000000000E00000000001
+10000000000000000000001
 10111010111111101011101
 10000010000100001000001
 11111011110101111011111
