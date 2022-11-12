@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_init.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 04:27:11 by coder             #+#    #+#             */
-/*   Updated: 2022/10/30 02:02:29 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/12 01:32:11 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init_ray_data(t_ray_data *ray_data)
 	ray_data->found_wall = FALSE;
 	ray_data->wall_hit_x = 0;
 	ray_data->wall_hit_y = 0;
+	ray_data->wall_color = 0;
 	ray_data->wall_content = 0;
 	ray_data->hit_d = FLT_MAX;
 }

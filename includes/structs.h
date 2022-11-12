@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:06:08 by coder             #+#    #+#             */
-/*   Updated: 2022/11/04 01:11:50 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/09 21:12:13 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_ray_data
 	int		found_wall;
 	float	wall_hit_x;
 	float	wall_hit_y;
+	float	wall_color;
 	int		wall_content;
 	float	next_touch_x;
 	float	next_touch_y;
