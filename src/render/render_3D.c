@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_3D.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 00:38:02 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/03 02:34:11 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/12 02:40:23 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ void	project_3d_walls(t_data *data)
 	float	projd_wall_h;
 
 	i = 0;
-	proj_plane_d = (WIN_WIDTH / 2) / tan(FOV_ANGLE /2);
+	proj_plane_d = (WIN_WIDTH / 2) / tan(FOV_ANGLE / 2);
 	while (i < NUM_RAYS)
 	{
 		projd_wall_h = (TILE_SIZE / data->rays[i].distance) * proj_plane_d;
 		strip_wall_h = (int)projd_wall_h;
 		wall_top = (WIN_HEIGHT / 2) - (strip_wall_h / 2);
 		wall_bottom = (WIN_HEIGHT / 2) + (strip_wall_h / 2);
-		y = wall_top;
 		if (wall_top < 0)
 			wall_top = 0;
+		y = wall_top;
 		if (wall_bottom > WIN_HEIGHT)
 			wall_bottom = WIN_HEIGHT;
 		while (y < wall_bottom)

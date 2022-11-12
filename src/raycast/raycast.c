@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 02:45:07 by coder             #+#    #+#             */
-/*   Updated: 2022/11/09 21:45:19 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/13 00:22:29 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	check_h_data(float ray_angle, t_ray_data *h_data, t_data *data)
 			h_data->wall_content = data->map[(int)floor(h_data->y_to_check
 					/ TILE_SIZE)][(int)floor(h_data->x_to_check / TILE_SIZE)];
 			h_data->found_wall = TRUE;
-			h_data->hit_d = distance_btw_ab(data->player.x, data->player.y,
-					h_data->wall_hit_x, h_data->wall_hit_y);
 			break ;
 		}
 		else
@@ -55,8 +53,6 @@ void	check_v_data(float ray_angle, t_ray_data *v_data, t_data *data)
 			v_data->wall_hit_y = v_data->next_touch_y;
 			v_data->wall_content = data->map[(int)floor(v_data->y_to_check
 					/ TILE_SIZE)][(int)floor(v_data->x_to_check / TILE_SIZE)];
-			v_data->hit_d = distance_btw_ab(data->player.x, data->player.y,
-					v_data->wall_hit_x, v_data->wall_hit_y);
 			v_data->found_wall = TRUE;
 			break ;
 		}
@@ -75,7 +71,15 @@ void	cast_ray(float ray_angle, int strip, t_data *data)
 
 	normalize_angle(&ray_angle);
 	check_h_data(ray_angle, &h_data, data);
+	
+	if (h_data.found_wall == TRUE)
+		h_data.hit_d = distance_btw_ab(data->player.x, h_data.wall_hit_x,
+			data->player.y, h_data.wall_hit_y);
 	check_v_data(ray_angle, &v_data, data);
+	if (v_data.found_wall == TRUE)
+		v_data.hit_d = distance_btw_ab(data->player.x, v_data.wall_hit_x, 
+			data->player.y, v_data.wall_hit_y);
+
 	if (v_data.hit_d < h_data.hit_d)
 	{
 		data->rays[strip].distance = v_data.hit_d;
