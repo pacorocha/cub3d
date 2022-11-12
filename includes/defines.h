@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 06:28:51 by coder             #+#    #+#             */
-/*   Updated: 2022/11/03 01:04:06 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/12 19:19:42 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 #define RED 0xB00612
 #define GREEN 0x26871C
 #define OFFBLACK 0x191919
+#define OFFWHITE 0xA7A7A7
 #define BLACK 0x000000
 #define WHITE 0xFFFFFF
 #define BLUE 0x06304A
