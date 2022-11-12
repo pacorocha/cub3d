@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_3D.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 00:38:02 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/12 02:40:23 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/12 19:19:55 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@ void	project_3d_walls(t_data *data)
 	int	strip_wall_h;
 	int	wall_top;
 	int	wall_bottom;
+	int	color;
 	float	proj_plane_d;
 	float	projd_wall_h;
+	float	perp_d;
 
 	i = 0;
 	proj_plane_d = (WIN_WIDTH / 2) / tan(FOV_ANGLE / 2);
 	while (i < NUM_RAYS)
 	{
-		projd_wall_h = (TILE_SIZE / data->rays[i].distance) * proj_plane_d;
+		perp_d = data->rays[i].distance * cos(data->rays[i].ray_angle
+			- data->player.rot_angle);
+		projd_wall_h = (TILE_SIZE / perp_d) * proj_plane_d;
 		strip_wall_h = (int)projd_wall_h;
 		wall_top = (WIN_HEIGHT / 2) - (strip_wall_h / 2);
 		wall_bottom = (WIN_HEIGHT / 2) + (strip_wall_h / 2);
@@ -37,7 +41,11 @@ void	project_3d_walls(t_data *data)
 			wall_bottom = WIN_HEIGHT;
 		while (y < wall_bottom)
 		{
-			img_pixel_put(&data->img, i, y, WHITE);
+			if (data->rays[i].was_hit_vert)
+				color = WHITE;
+			else
+				color = OFFWHITE;
+			img_pixel_put(&data->img, i, y, color);
 			y++;
 		}
 		i++;
