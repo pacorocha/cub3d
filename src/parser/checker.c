@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:25:33 by coder             #+#    #+#             */
-/*   Updated: 2022/11/04 02:32:17 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/13 21:05:44 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ void	checking_texture(t_data *data)
 	int	i;
 
 	i = 0;
-	
+
 	while(data->directions[i] != NULL)
 	{
 		if (is_invalid_file_texture(data->directions[i]))
 			print_error("Error, texture invalid");
 		i++;
-	}	
+	}
 }
 
 int	is_invalid_file_texture(char *texture)
@@ -50,7 +50,7 @@ int	is_invalid_file_texture(char *texture)
 		return TRUE;
 	}
 	free_array(arr_split);
-	return FALSE;	
+	return FALSE;
 }
 
 void	checking_color(t_data *data)
@@ -84,6 +84,6 @@ void	check_color(char *color)
 		}
 		i++;
 	}
-	if (i < 3)
-		print_error("Error color < 3");
+	if (i != 3)
+		print_error("Error color must 3 coma separated values");
 }
