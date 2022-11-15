@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/09 20:48:23 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/14 20:16:41 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 int	main(int argc, char **argv)
 {
-	t_data data;
+	t_data	data;
+
 	init_data(&data, argc, argv);
 	read_map(&data);
 	parser(&data);
 	init_player(&data);
 	data.mlx.mlx_ptr = mlx_init();
-	data.mlx.win = mlx_new_window(data.mlx.mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "Haunted House");
+	data.mlx.win = mlx_new_window(data.mlx.mlx_ptr, WIN_WIDTH, WIN_HEIGHT,
+			"Haunted House");
 	data.img.img_ptr = mlx_new_image(data.mlx.mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
 	data.img.addr = mlx_get_data_addr(data.img.img_ptr, &data.img.bpp,
 			&data.img.line_len, &data.img.endian);

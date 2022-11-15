@@ -6,7 +6,7 @@
 #    By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 20:49:56 by jfrancis          #+#    #+#              #
-#    Updated: 2022/11/09 20:08:43 by jfrancis         ###   ########.fr        #
+#    Updated: 2022/11/14 20:05:34 by jfrancis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ UTILS = map_utils.c \
 		error_utils.c \
 		free_utils.c \
 		read_utils.c \
+		draw_utils.c \
 
 RAYCAST = raycast.c \
 		raycast_math.c \

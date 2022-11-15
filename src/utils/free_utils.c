@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:39:58 by coder             #+#    #+#             */
-/*   Updated: 2022/11/04 02:40:09 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/14 20:07:51 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_array(char **arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while ((arr)[i])

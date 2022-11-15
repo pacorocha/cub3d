@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:06:08 by coder             #+#    #+#             */
-/*   Updated: 2022/11/09 21:12:13 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/14 20:01:42 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,24 @@ typedef struct s_ray_data
 	float	y_to_check;
 	float	hit_d;
 } t_ray_data;
+
+typedef struct s_rect
+{
+	int	x;
+	int	y;
+	int width;
+	int height;
+	int color;
+}	t_rect;
+
+typedef struct s_line
+{
+	float	x_one;
+	float	y_one;
+	float	x_two;
+	float	y_two;
+	int		color;
+} t_line;
 
 typedef struct s_ray
 {
