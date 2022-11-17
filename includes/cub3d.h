@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/04 02:30:20 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/16 22:03:41 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ float	set_player_direction(char c);
 void	set_map_size(t_data *data);
 
 //render
-void	img_pixel_put(t_img *img, int x, int y, int color);
 void	render_map(t_data *data);
 void	render_player(t_data *data);
 void	render_rays(t_data *data);
 void	render_layer(t_data *data, int color);
 void	project_3d_walls(t_data *data);
+void	render_background(t_data *data);
 
 // game
 int		game_loop(t_data *data);
@@ -84,6 +84,9 @@ int		game_loop(t_data *data);
 // utils
 int		map_has_wall_at(float x, float y, t_data *data);
 int		is_inside_map(float x, float y, t_data *data);
+void	draw_line(t_img *img, t_line line);
+void	img_pixel_put(t_img *img, int x, int y, int color);
+int		get_color(char *color);
 
 // raycast
 void	init_ray_data(t_ray_data *ray_data);

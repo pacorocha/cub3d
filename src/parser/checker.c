@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:25:33 by coder             #+#    #+#             */
-/*   Updated: 2022/11/13 21:05:44 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/16 21:51:36 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	checking_color(t_data *data)
 {
 	check_color(data->f_color);
 	check_color(data->c_color);
+	data->specs.f_rgb = get_color(data->f_color);
+	data->specs.c_rgb = get_color(data->c_color);
 }
 
 void	check_color(char *color)

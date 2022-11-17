@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:37:15 by coder             #+#    #+#             */
-/*   Updated: 2022/11/04 02:49:17 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/14 20:11:55 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	read_map(t_data *data)
 {
-	int content;
+	int	content;
 	int	gnl;
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:06:08 by coder             #+#    #+#             */
-/*   Updated: 2022/11/09 21:12:13 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/16 21:48:27 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,24 @@ typedef struct s_ray_data
 	float	y_to_check;
 	float	hit_d;
 } t_ray_data;
+
+typedef struct s_rect
+{
+	int	x;
+	int	y;
+	int width;
+	int height;
+	int color;
+}	t_rect;
+
+typedef struct s_line
+{
+	float	x_one;
+	float	y_one;
+	float	x_two;
+	float	y_two;
+	int		color;
+} t_line;
 
 typedef struct s_ray
 {
@@ -76,6 +94,12 @@ typedef struct s_player
 	char	init_pos;
 }	t_player;
 
+typedef struct s_specs
+{
+	int	c_rgb;
+	int f_rgb;
+} t_specs;
+
 typedef struct s_data
 {
     int	    nb_rows;
@@ -84,6 +108,7 @@ typedef struct s_data
     int		argc;
     char	*file;
     char	**cub;
+	t_specs	specs;
 	t_mlx	mlx;
 	t_player player;
 	t_img		img;
