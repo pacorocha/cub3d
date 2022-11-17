@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:04:01 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/14 20:11:21 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/16 21:39:44 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,17 @@ void	draw_line(t_img *img, t_line line)
 		pixel_y += delta_y;
 		--pixels;
 	}
+}
+
+int	get_color(char *color)
+{
+	char **rgb;
+	int i_rgb;
+
+	rgb = ft_split(color, ',');
+	i_rgb = 0;
+	i_rgb += (ft_atoi(rgb[0]) & 0xFF) << 16;
+	i_rgb += (ft_atoi(rgb[1]) & 0XFF) << 8;
+	i_rgb += (ft_atoi(rgb[2]) & 0XFF);
+	return (i_rgb);
 }

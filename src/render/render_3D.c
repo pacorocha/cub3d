@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 00:38:02 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/12 19:19:55 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/16 22:03:05 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,27 @@ void	project_3d_walls(t_data *data)
 			y++;
 		}
 		i++;
+	}
+}
+
+void	render_background(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < WIN_HEIGHT / 2)
+	{
+		j = 0;
+		while (j < WIN_WIDTH)
+			img_pixel_put(&data->img, j++, i, data->specs.c_rgb);
+		++i;
+	}
+	while (i < WIN_HEIGHT)
+	{
+		j = 0;
+		while (j < WIN_WIDTH)
+			img_pixel_put(&data->img, j++, i, data->specs.f_rgb);
+		++i;
 	}
 }

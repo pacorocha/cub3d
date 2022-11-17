@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:06:08 by coder             #+#    #+#             */
-/*   Updated: 2022/11/14 20:01:42 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/16 21:48:27 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,12 @@ typedef struct s_player
 	char	init_pos;
 }	t_player;
 
+typedef struct s_specs
+{
+	int	c_rgb;
+	int f_rgb;
+} t_specs;
+
 typedef struct s_data
 {
     int	    nb_rows;
@@ -102,6 +108,7 @@ typedef struct s_data
     int		argc;
     char	*file;
     char	**cub;
+	t_specs	specs;
 	t_mlx	mlx;
 	t_player player;
 	t_img		img;
