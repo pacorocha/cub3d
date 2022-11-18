@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 02:22:28 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/16 22:03:51 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/18 01:32:22 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,42 @@ int	game_loop(t_data *data)
 	// render_map(data);
 	// render_rays(data);
 	// render_player(data);
+	render_texture(data);
 	project_3d_walls(data);
 	mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.win,
 		data->img.img_ptr, 0, 0);
 	return (0);
+}
+
+void    render_texture(t_data *data)
+{
+    //ha uma função da minilibx q pega pixel por pixel 
+    int    i;
+    int    j;
+
+    data->texture = malloc(sizeof(int *) * (int)TEX_WIDTH * (int)TEX_HEIGHT);
+    i = 0;
+
+    while (i < TEX_HEIGHT)
+    {
+        j = 0;
+        while (j < TEX_WIDTH)
+        {
+            // if (i % 8 && j % 8)
+            //     data->texture[TEX_WIDTH * i + j] = 0xFF0000FF;
+            // else
+            //     data->texture[TEX_WIDTH * i + j] = 0xFF000000;
+
+			color_pixel = verify_color(data);
+
+			data->texture[TEX_WIDTH * i + j] = color_pixel;
+            j++;
+        }
+        i++;
+    }
+}
+
+void verify_color(t_data *data)
+{
+	
 }

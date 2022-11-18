@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/16 22:03:41 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/18 00:34:44 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	render_rays(t_data *data);
 void	render_layer(t_data *data, int color);
 void	project_3d_walls(t_data *data);
 void	render_background(t_data *data);
+void    render_texture(t_data *data);
 
 // game
 int		game_loop(t_data *data);

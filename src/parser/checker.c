@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:25:33 by coder             #+#    #+#             */
-/*   Updated: 2022/11/16 21:51:36 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/18 01:00:50 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	is_invalid_file_texture(char *texture)
 
 	arr_split = ft_split(texture, ' ');
 
-	if (ft_strncmp(arr_split[1], "textures/", 9))
+	if (ft_strncmp(arr_split[1], "Assets/", 7))
 	{
 		free_array(arr_split);
 		return TRUE;

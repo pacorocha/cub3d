@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 06:28:51 by coder             #+#    #+#             */
-/*   Updated: 2022/11/12 19:19:42 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/18 00:43:42 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # define TRUE 1
 # define FALSE 0
+
+# define TEX_WIDTH 64
+# define TEX_HEIGHT 64
 
 # define PI 3.14159265
 # define TWO_PI 6.28318530
@@ -36,7 +39,7 @@
 #define WHITE 0xFFFFFF
 #define BLUE 0x06304A
 
-# define TILE_SIZE 16
+# define TILE_SIZE 64
 
 # define KEY_ESC (0xff1b)
 # define KEY_Q (0x71)

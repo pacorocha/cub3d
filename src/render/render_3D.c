@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_3D.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 00:38:02 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/16 22:03:05 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/18 00:48:19 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	project_3d_walls(t_data *data)
 {
-	int	i;
-	int	y;
-	int	strip_wall_h;
-	int	wall_top;
-	int	wall_bottom;
-	int	color;
+	int		i;
+	int		y;
+	int		strip_wall_h;
+	int		wall_top;
+	int		wall_bottom;
+	int		color;
+	int		tex_offset_x;
+	int		tex_offset_y;
+	int		d_from_top;
 	float	proj_plane_d;
 	float	projd_wall_h;
 	float	perp_d;
@@ -39,12 +42,19 @@ void	project_3d_walls(t_data *data)
 		y = wall_top;
 		if (wall_bottom > WIN_HEIGHT)
 			wall_bottom = WIN_HEIGHT;
+
+
+		//texture 
+		if (data->rays[i].was_hit_vert)
+			tex_offset_x = (int)data->rays[i].wall_hit_y % TILE_SIZE;
+		else
+			tex_offset_x = (int)data->rays[i].wall_hit_x % TILE_SIZE;
+		
 		while (y < wall_bottom)
 		{
-			if (data->rays[i].was_hit_vert)
-				color = WHITE;
-			else
-				color = OFFWHITE;
+			d_from_top = y + (strip_wall_h / 2) - (WIN_HEIGHT / 2);
+			tex_offset_y = d_from_top * ((float)TEX_HEIGHT / strip_wall_h);
+			color = data->texture[(TEX_WIDTH * tex_offset_y) + tex_offset_x];
 			img_pixel_put(&data->img, i, y, color);
 			y++;
 		}
