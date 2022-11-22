@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 02:22:28 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/22 03:56:40 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/22 10:40:21 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	game_loop(t_data *data)
 	// render_player(data);
 	render_texture(data);
 	project_3d_walls(data);
-	
+
 	mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.win,
 		data->img.img_ptr, 0, 0);
 	return (0);
@@ -63,21 +63,20 @@ int	game_loop(t_data *data)
 
 void    render_texture(t_data *data)
 {
-    //ha uma função da minilibx q pega pixel por pixel 
-    int    i;
-    int    j;
+    //ha uma função da minilibx q pega pixel por pixel
+    // int    i;
+    // int    j;
 
-	t_img text;
-	
-	data->texture = malloc(sizeof(int *) * (int)TEX_WIDTH * (int)TEX_HEIGHT);
+	// t_img text;
 
-	text.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr, "./wall_texture.xpm", &text.width, &text.height);
-	text.pixels = mlx_get_data_addr(text.img_ptr, &text.bpp, &text.line_len, &text.endian);
+	// data->texture = malloc(sizeof(int *) * (int)TEX_WIDTH * (int)TEX_HEIGHT);
 
-	printf("Pixels: %s\n", text.pixels);
-    i = 0;
+	data->texture.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr, "./wall_texture.xpm", &data->texture.width, &data->texture.height);
+	data->texture.pixels = mlx_get_data_addr(data->texture.img_ptr, &data->texture.bpp, &data->texture.line_len, &data->texture.endian);
 
-    while (i < TEX_HEIGHT)
+	// i = 0;
+
+    /* while (i < TEX_HEIGHT)
     {
         j = 0;
         while (j < TEX_WIDTH)
@@ -88,11 +87,10 @@ void    render_texture(t_data *data)
             //     data->texture[TEX_WIDTH * i + j] = 0xFF000000;
 
 			//color_pixel = verify_color(data);
-
-			data->texture[TEX_WIDTH * i + j] = text.pixels[i];
+			data->texture[TEX_WIDTH * i + j] = text.pixels[i * TEX_WIDTH + j];
             j++;
         }
         i++;
-    }
+    } */
 }
 
