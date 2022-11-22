@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 02:22:28 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/18 01:32:22 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/22 03:56:40 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	game_loop(t_data *data)
 	// render_player(data);
 	render_texture(data);
 	project_3d_walls(data);
+	
 	mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.win,
 		data->img.img_ptr, 0, 0);
 	return (0);
@@ -66,7 +67,14 @@ void    render_texture(t_data *data)
     int    i;
     int    j;
 
-    data->texture = malloc(sizeof(int *) * (int)TEX_WIDTH * (int)TEX_HEIGHT);
+	t_img text;
+	
+	data->texture = malloc(sizeof(int *) * (int)TEX_WIDTH * (int)TEX_HEIGHT);
+
+	text.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr, "./wall_texture.xpm", &text.width, &text.height);
+	text.pixels = mlx_get_data_addr(text.img_ptr, &text.bpp, &text.line_len, &text.endian);
+
+	printf("Pixels: %s\n", text.pixels);
     i = 0;
 
     while (i < TEX_HEIGHT)
@@ -79,16 +87,12 @@ void    render_texture(t_data *data)
             // else
             //     data->texture[TEX_WIDTH * i + j] = 0xFF000000;
 
-			color_pixel = verify_color(data);
+			//color_pixel = verify_color(data);
 
-			data->texture[TEX_WIDTH * i + j] = color_pixel;
+			data->texture[TEX_WIDTH * i + j] = text.pixels[i];
             j++;
         }
         i++;
     }
 }
 
-void verify_color(t_data *data)
-{
-	
-}

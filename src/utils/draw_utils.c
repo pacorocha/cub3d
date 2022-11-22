@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:04:01 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/16 21:39:44 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/22 02:25:15 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	img_pixel_put(t_img *img, int x, int y, int color)
 {
 	char	*pixel;
 
-	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	pixel = img->pixels + (y * img->line_len + x * (img->bpp / 8));
 	*(int *)pixel = color;
 }
 

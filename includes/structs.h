@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:06:08 by coder             #+#    #+#             */
-/*   Updated: 2022/11/18 00:33:35 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/22 02:22:43 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct s_mlx
 typedef struct s_img
 {
 	int		bpp;
-	char	*addr;
+	char	*pixels;
 	int		line_len;
 	int		endian;
 	int		width;
@@ -76,6 +76,7 @@ typedef struct s_img
 	int		color;
 	void	*img_ptr;
 	int		*dump;
+	
 }	t_img;
 
 typedef struct s_player

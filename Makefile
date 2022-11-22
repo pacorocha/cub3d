@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 20:49:56 by jfrancis          #+#    #+#              #
-#    Updated: 2022/11/14 20:05:34 by jfrancis         ###   ########.fr        #
+#    Updated: 2022/11/22 03:37:50 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3D
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g3
 CC = gcc
 RM = rm -rf
 
