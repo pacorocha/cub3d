@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:58:24 by coder             #+#    #+#             */
-/*   Updated: 2022/11/09 20:46:43 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/23 19:44:43 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ void	init_player(t_data *data)
 	data->player.turn_dir = 0;
 	data->player.side_dir = 0;
 	data->player.walk_dir = 0;
-	data->player.walk_spd = 0.5;
+	data->player.walk_spd = 5;
 	data->player.turn_spd = 5 * PI / 180;
 }

@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 00:38:02 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/22 10:40:39 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/23 19:43:54 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,6 @@ void	project_3d_walls(t_data *data)
 		y = wall_top;
 		if (wall_bottom > WIN_HEIGHT)
 			wall_bottom = WIN_HEIGHT;
-
-
-		//texture
 		if (data->rays[i].was_hit_vert)
 			tex_offset_x = (int)data->rays[i].wall_hit_y % TILE_SIZE;
 		else
@@ -54,7 +51,7 @@ void	project_3d_walls(t_data *data)
 		{
 			d_from_top = y + (strip_wall_h / 2) - (WIN_HEIGHT / 2);
 			tex_offset_y = d_from_top * ((float)TEX_HEIGHT / strip_wall_h);
-			color = data->texture.pixels[(TEX_WIDTH * tex_offset_y) + tex_offset_x];
+			color = ((int *)data->texture.pixels)[((TEX_WIDTH) * tex_offset_y) + tex_offset_x];
 			img_pixel_put(&data->img, i, y, color);
 			y++;
 		}
