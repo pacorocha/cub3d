@@ -1,7 +1,7 @@
-NO Assets/wall_texture.xpm
-SO Assets/grenbrick.xpm
-EA Assets/bluebrick.xpm
-WE Assets/yellowbrick.xpm
+NO assets/wall_texture.xpm
+SO assets/grenbrick.xpm
+WE assets/yellowbick.xpm
+EA assets/bluebrick.xpm
 C 104,120,132
 F 228,95,0
 

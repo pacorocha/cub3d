@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:25:33 by coder             #+#    #+#             */
-/*   Updated: 2022/11/18 01:00:50 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/23 20:17:05 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,17 @@ int	is_invalid_file_texture(char *texture)
 
 	arr_split = ft_split(texture, ' ');
 
-	if (ft_strncmp(arr_split[1], "Assets/", 7))
+	if (ft_strncmp(arr_split[1], "assets/", 7))
 	{
 		free_array(arr_split);
 		return TRUE;
 	}
 	else if (!check_end_of_file(arr_split[1], "xpm"))
+	{
+		free_array(arr_split);
+		return TRUE;
+	}
+	else if (open(arr_split[1], O_RDONLY) < 0)
 	{
 		free_array(arr_split);
 		return TRUE;

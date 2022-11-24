@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:04:01 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/22 20:50:00 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/23 20:18:48 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,10 @@ int	get_color(char *color)
 	i_rgb += (ft_atoi(rgb[1]) & 0XFF) << 8;
 	i_rgb += (ft_atoi(rgb[2]) & 0XFF);
 	return (i_rgb);
+}
+
+void	get_texture(t_data *data)
+{
+	data->texture.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr, "./assets/wall_texture.xpm", &data->texture.width, &data->texture.height);
+	data->texture.colors = (int *)mlx_get_data_addr(data->texture.img_ptr, &data->texture.bpp, &data->texture.line_len, &data->texture.endian);
 }

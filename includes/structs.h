@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:06:08 by coder             #+#    #+#             */
-/*   Updated: 2022/11/22 10:39:43 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/23 20:52:02 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,14 @@ typedef struct s_img
 {
 	int		bpp;
 	char	*pixels;
+	int		*colors;
 	int		line_len;
 	int		endian;
 	int		width;
 	int		height;
 	int		color;
 	void	*img_ptr;
+	char	*id;
 }	t_img;
 
 typedef struct s_player
@@ -112,7 +114,7 @@ typedef struct s_data
 	t_player player;
 	t_img		img;
   t_ray		rays[NUM_RAYS];
-	t_img	texture; // depois será array de texturas
+	t_img	textures[varias]; // depois será array de texturas
     char	**directions;
     char	*f_color;
     char	*c_color;

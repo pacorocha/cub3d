@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:14:30 by coder             #+#    #+#             */
-/*   Updated: 2022/11/16 22:14:16 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/23 20:41:15 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	fill_structures_loop(t_data *data)
 	{
 		if (data->cub[i][0] != '\0')
 		{
-			if (check_flags_cardinal_directions(data->cub[i]))
+			if (check_flags_cardinal_directions(data->cub[i], data->counter))
 			{
 				fill_arr_textures(data, data->cub[i], i);
 				data->counter++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/18 00:34:44 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/23 20:50:19 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int		is_invalid_file_texture(char *texture);
 void	checking_texture(t_data *data);
 
 //utils parse
-int     check_flags_cardinal_directions(char *line);
-int     check_flags_colors(char *line);
+int		check_flags_cardinal_directions(char *line, int counter);
+int		check_flags_colors(char *line);
 
 //free
 void	free_array(char **arr);
@@ -77,7 +77,6 @@ void	render_rays(t_data *data);
 void	render_layer(t_data *data, int color);
 void	project_3d_walls(t_data *data);
 void	render_background(t_data *data);
-void    render_texture(t_data *data);
 
 // game
 int		game_loop(t_data *data);
@@ -88,6 +87,7 @@ int		is_inside_map(float x, float y, t_data *data);
 void	draw_line(t_img *img, t_line line);
 void	img_pixel_put(t_img *img, int x, int y, int color);
 int		get_color(char *color);
+void    get_texture(t_data *data);
 
 // raycast
 void	init_ray_data(t_ray_data *ray_data);
