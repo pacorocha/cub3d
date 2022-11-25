@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 02:22:28 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/23 19:53:39 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/25 00:46:10 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	game_loop(t_data *data)
 	// render_map(data);
 	// render_rays(data);
 	// render_player(data);
-	get_texture(data);
+	init_textures(data);
 	project_3d_walls(data);
 
 	mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.win,

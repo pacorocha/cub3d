@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_3D.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 00:38:02 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/23 19:55:31 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/25 00:55:58 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	project_3d_walls(t_data *data)
 		{
 			d_from_top = y + (strip_wall_h / 2) - (WIN_HEIGHT / 2);
 			tex_offset_y = d_from_top * ((float)TEX_HEIGHT / strip_wall_h);
-			color = data->texture.colors[((TEX_WIDTH) * tex_offset_y) + tex_offset_x];
+			color = data->textures[1].colors[((TEX_WIDTH) * tex_offset_y) + tex_offset_x];
 			img_pixel_put(&data->img, i, y, color);
 			y++;
 		}

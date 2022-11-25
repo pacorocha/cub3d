@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filling.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:14:30 by coder             #+#    #+#             */
-/*   Updated: 2022/11/23 20:41:15 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/24 23:42:39 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	fill_structures_loop(t_data *data)
 			if (check_flags_cardinal_directions(data->cub[i], data->counter))
 			{
 				fill_arr_textures(data, data->cub[i], i);
+				
 				data->counter++;
 			}
 			else if (check_flags_colors(data->cub[i]) && data->counter >= 3)
@@ -51,7 +52,6 @@ void	fill_structures_loop(t_data *data)
 				printf("Linha: %i\n", i);
 				printf("Conteudo: %s\n", data->cub[i]);
 				print_error("Error, not init valid directions or colors");
-
 			}
 		}
 		i++;

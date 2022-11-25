@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 06:28:51 by coder             #+#    #+#             */
-/*   Updated: 2022/11/18 00:43:42 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/25 00:44:31 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 # define TRUE 1
 # define FALSE 0
 
-# define TEX_WIDTH 64
-# define TEX_HEIGHT 64
+# define TEX_WIDTH 128
+# define TEX_HEIGHT 128
+
+# define NUM_TEX 4
 
 # define PI 3.14159265
 # define TWO_PI 6.28318530
@@ -39,7 +41,7 @@
 #define WHITE 0xFFFFFF
 #define BLUE 0x06304A
 
-# define TILE_SIZE 64
+# define TILE_SIZE 128
 
 # define KEY_ESC (0xff1b)
 # define KEY_Q (0x71)

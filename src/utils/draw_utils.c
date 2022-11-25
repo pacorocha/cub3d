@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:04:01 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/23 20:18:48 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/25 00:10:42 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int	get_color(char *color)
 	return (i_rgb);
 }
 
-void	get_texture(t_data *data)
+void	get_texture(t_data *data, int i)
 {
-	data->texture.img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr, "./assets/wall_texture.xpm", &data->texture.width, &data->texture.height);
-	data->texture.colors = (int *)mlx_get_data_addr(data->texture.img_ptr, &data->texture.bpp, &data->texture.line_len, &data->texture.endian);
+	data->textures[i].img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr, data->textures[i].path, &data->textures[i].width, &data->textures[i].height);
+	data->textures[i].colors = (int *)mlx_get_data_addr(data->textures[i].img_ptr, &data->textures[i].bpp, &data->textures[i].line_len, &data->textures[i].endian);
 }

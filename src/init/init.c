@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:58:24 by coder             #+#    #+#             */
-/*   Updated: 2022/11/23 19:44:43 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/25 01:06:01 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,17 @@ void	init_player(t_data *data)
 	data->player.walk_dir = 0;
 	data->player.walk_spd = 5;
 	data->player.turn_spd = 5 * PI / 180;
+}
+
+void	init_textures(t_data *data)
+{
+	int	i;
+	
+	i = 0;
+	while(i < NUM_TEX)
+	{
+		
+		get_texture(data, i);
+		i++;
+	}
 }

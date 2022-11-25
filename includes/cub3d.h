@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/23 20:50:19 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/25 00:10:18 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,11 @@ int		is_inside_map(float x, float y, t_data *data);
 void	draw_line(t_img *img, t_line line);
 void	img_pixel_put(t_img *img, int x, int y, int color);
 int		get_color(char *color);
-void    get_texture(t_data *data);
+
+//textures
+void	init_textures(t_data *data);
+void	map_texture(t_data *data, int i, char* texture);
+void	get_texture(t_data *data, int i);
 
 // raycast
 void	init_ray_data(t_ray_data *ray_data);

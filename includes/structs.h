@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:06:08 by coder             #+#    #+#             */
-/*   Updated: 2022/11/23 20:52:02 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/25 01:12:55 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct s_img
 	int		height;
 	int		color;
 	void	*img_ptr;
+	char	*path;
 	char	*id;
 }	t_img;
 
@@ -113,8 +114,8 @@ typedef struct s_data
 	t_mlx	mlx;
 	t_player player;
 	t_img		img;
-  t_ray		rays[NUM_RAYS];
-	t_img	textures[varias]; // depois será array de texturas
+  	t_ray		rays[NUM_RAYS];
+	t_img	*textures[NUM_TEX]; // depois será array de texturas
     char	**directions;
     char	*f_color;
     char	*c_color;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:25:33 by coder             #+#    #+#             */
-/*   Updated: 2022/11/23 20:17:05 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/25 01:29:43 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,36 +25,58 @@ void	checking_texture(t_data *data)
 
 	i = 0;
 
+	printf("%s\n", data->directions[3]);
+
 	while(data->directions[i] != NULL)
 	{
+		printf("%i\n", i);
+		printf("Direc: %s\n", data->directions[i]);
 		if (is_invalid_file_texture(data->directions[i]))
 			print_error("Error, texture invalid");
+		else
+			map_texture(data, i, data->directions[i]);
 		i++;
 	}
+}
+
+void	map_texture(t_data *data, int i, char* texture)
+{
+	char	**arr_tex;
+
+	arr_tex = ft_split(texture, ' ');
+	data->textures[i] = (t_img *)malloc(sizeof(t_img));
+	data->textures[i]->id = arr_tex[0];
+	data->textures[i]->path = arr_tex[1];
+	free_array(arr_tex);
 }
 
 int	is_invalid_file_texture(char *texture)
 {
 	char **arr_split;
+	int	file_map;
 
 	arr_split = ft_split(texture, ' ');
-
-	if (ft_strncmp(arr_split[1], "assets/", 7))
+	file_map = open(arr_split[1], O_RDONLY);
+	if (ft_strncmp(arr_split[1], "./assets/", 9))
 	{
 		free_array(arr_split);
+		close(file_map);
 		return TRUE;
 	}
 	else if (!check_end_of_file(arr_split[1], "xpm"))
 	{
 		free_array(arr_split);
+		close(file_map);
 		return TRUE;
 	}
-	else if (open(arr_split[1], O_RDONLY) < 0)
+	else if (file_map < 0)
 	{
 		free_array(arr_split);
+		close(file_map);
 		return TRUE;
 	}
 	free_array(arr_split);
+	close(file_map);
 	return FALSE;
 }
 
