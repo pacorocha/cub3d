@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:04:01 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/25 00:10:42 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/28 23:50:47 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ int	get_color(char *color)
 
 void	get_texture(t_data *data, int i)
 {
-	data->textures[i].img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr, data->textures[i].path, &data->textures[i].width, &data->textures[i].height);
-	data->textures[i].colors = (int *)mlx_get_data_addr(data->textures[i].img_ptr, &data->textures[i].bpp, &data->textures[i].line_len, &data->textures[i].endian);
+	data->textures[i]->img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr, data->textures[i]->path, &data->textures[i]->width, &data->textures[i]->height);
+	data->textures[i]->colors = (int *)mlx_get_data_addr(data->textures[i]->img_ptr, &data->textures[i]->bpp, &data->textures[i]->line_len, &data->textures[i]->endian);
 }

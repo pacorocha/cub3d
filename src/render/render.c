@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 03:29:01 by coder             #+#    #+#             */
-/*   Updated: 2022/11/14 20:15:00 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/29 00:38:52 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	render_map(t_data *data)
 				color = RED;
 			if (data->map[i][j] == '1')
 				color = GREEN;
-			render_rect(&data->img, (t_rect){TILE_SIZE * j, TILE_SIZE * i,
+			render_rect(&data->img, (t_rect){TILE_SIZE * j, TILE_SIZE  * i,
 				TILE_SIZE, TILE_SIZE, color});
 			j++;
 		}

@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:58:24 by coder             #+#    #+#             */
-/*   Updated: 2022/11/25 01:06:01 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/29 00:09:54 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	init_player(t_data *data)
 	data->player.turn_dir = 0;
 	data->player.side_dir = 0;
 	data->player.walk_dir = 0;
-	data->player.walk_spd = 5;
-	data->player.turn_spd = 5 * PI / 180;
+	data->player.walk_spd = 3;
+	data->player.turn_spd = 3 * PI / 180;
 }
 
 void	init_textures(t_data *data)

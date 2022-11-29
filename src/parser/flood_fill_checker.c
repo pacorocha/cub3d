@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:29:00 by coder             #+#    #+#             */
-/*   Updated: 2022/11/13 00:40:07 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/29 00:00:10 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,7 @@ void	flood_fill(t_data *data, int row, size_t col)
 	if (data->map[row][col] == 'L' || data->map[row][col] == '0' || data->map[row][col] == 'N'
 		|| data->map[row][col] != '1')
 		if (is_open(data, row, col))
-		{
-			printf("Char atual: %c\n", data->map[row][col]);
-			printf("linha atual: %s\n", data->map[row]);
-			printf("Linha: %i\n", row);
 			print_error("Error, open map");
-		}
 			
 	char_change(data, row, col, new_color);
 	if (col < data->big_line && col > 0)

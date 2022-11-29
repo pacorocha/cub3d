@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 02:22:28 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/25 00:46:10 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/29 23:23:06 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ int	game_loop(t_data *data)
 	update_game(data);
 	render_layer(data, RED);
 	render_background(data);
-	// render_map(data);
-	// render_rays(data);
-	// render_player(data);
+	//render_map(data);
+	//render_rays(data);
+	//render_player(data);
 	init_textures(data);
 	project_3d_walls(data);
 

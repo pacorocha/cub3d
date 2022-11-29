@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:25:33 by coder             #+#    #+#             */
-/*   Updated: 2022/11/25 01:29:43 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/29 00:05:26 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,8 @@ void	checking_texture(t_data *data)
 
 	i = 0;
 
-	printf("%s\n", data->directions[3]);
-
 	while(data->directions[i] != NULL)
 	{
-		printf("%i\n", i);
-		printf("Direc: %s\n", data->directions[i]);
 		if (is_invalid_file_texture(data->directions[i]))
 			print_error("Error, texture invalid");
 		else
@@ -47,7 +43,7 @@ void	map_texture(t_data *data, int i, char* texture)
 	data->textures[i] = (t_img *)malloc(sizeof(t_img));
 	data->textures[i]->id = arr_tex[0];
 	data->textures[i]->path = arr_tex[1];
-	free_array(arr_tex);
+	//free_array(arr_tex);
 }
 
 int	is_invalid_file_texture(char *texture)
