@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:29:00 by coder             #+#    #+#             */
-/*   Updated: 2022/11/29 00:00:10 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/30 00:27:33 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	search_ocurrence_ground(t_data *data)
 {
-	int i;
-	size_t j;
-	size_t len_col;
+	int		i;
+	size_t	j;
+	size_t	len_col;
 
 	i = 0;
 	data->control = 0;
@@ -42,10 +42,10 @@ void	search_ocurrence_ground(t_data *data)
 
 void	flood_fill(t_data *data, int row, size_t col)
 {
-	char	new_color;
+	//char	new_color;
 	char	prev_color;
 
-	new_color = 'L';
+	//new_color = 'L';
 	prev_color = '0';
 	data->big_line = ft_strlen(data->map[row]);
 	if (data->map[row][col] != prev_color)
@@ -57,7 +57,7 @@ void	flood_fill(t_data *data, int row, size_t col)
 		if (is_open(data, row, col))
 			print_error("Error, open map");
 			
-	char_change(data, row, col, new_color);
+	//char_change(data, row, col, new_color);
 	if (col < data->big_line && col > 0)
 		flood_fill(data, row, col + 1);
 	if (row < data->nb_rows - 1)
@@ -95,7 +95,7 @@ int	is_space(char c)
 	return (FALSE);
 }
 
-void	char_change(t_data *data, int row, size_t col, char new_color)
-{
-	data->map[row][col] = new_color;
-}
+// void	char_change(t_data *data, int row, size_t col, char new_color)
+// {
+// 	data->map[row][col] = new_color;
+// }

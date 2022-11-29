@@ -6,7 +6,7 @@
 #    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 20:49:56 by jfrancis          #+#    #+#              #
-#    Updated: 2022/11/22 03:37:50 by coder            ###   ########.fr        #
+#    Updated: 2022/11/29 23:48:12 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,7 @@ KEYS = keys_utils.c \
 
 INIT = init.c \
 
-RENDER = render.c \
-		 render_3D.c
+RENDER = render_3D.c \
 
 GAME = game_loop.c \
 

@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/25 00:10:18 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/30 00:24:16 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ void	add_char_lines(t_data *data);
 
 //map_checker
 void	map_checker(t_data *data);
+void	char_change(t_data *data, int row, size_t col, char new_color);
+void	checking_sides(t_data *data, int row, size_t col);
 void	search_ocurrence_ground(t_data *data);
 void	flood_fill(t_data *data, int row, size_t col);
 void	count_col(t_data *data, int i);
-void	char_change(t_data *data, int row, size_t col, char new_color);
 void	Sul (t_data *data, int row, size_t col);
 void	Leste (t_data *data, int row, size_t col);
 void	checking_color(t_data *data);
@@ -71,10 +72,6 @@ float	set_player_direction(char c);
 void	set_map_size(t_data *data);
 
 //render
-void	render_map(t_data *data);
-void	render_player(t_data *data);
-void	render_rays(t_data *data);
-void	render_layer(t_data *data, int color);
 void	project_3d_walls(t_data *data);
 void	render_background(t_data *data);
 
