@@ -3,67 +3,76 @@
 /*                                                        :::      ::::::::   */
 /*   render_3D.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 00:38:02 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/29 23:17:54 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/30 19:52:34 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+static void	define_wall_size(t_wall *wall)
+{
+	if (wall->wall_top < 0)
+		wall->wall_top = 0;
+	if (wall->wall_bottom > WIN_HEIGHT)
+		wall->wall_bottom = WIN_HEIGHT;
+}
+
 void	project_3d_walls(t_data *data)
 {
 	int		i;
 	int		y;
-	int		strip_wall_h;
-	int		wall_top;
-	int		wall_bottom;
-	int		color;
-	int		tex_offset_x;
-	int		tex_offset_y;
-	int		d_from_top;
-	float	proj_plane_d;
-	float	projd_wall_h;
-	float	perp_d;
+	t_wall	*wall;
 
 	i = 0;
-	proj_plane_d = (WIN_WIDTH / 2) / tan(FOV_ANGLE / 2);
+	wall = malloc(sizeof(t_wall));
+	wall->proj_plane_d = (WIN_WIDTH / 2) / tan(FOV_ANGLE / 2);
 	while (i < NUM_RAYS)
 	{
-		perp_d = data->rays[i].distance * cos(data->rays[i].ray_angle
-			- data->player.rot_angle);
-		projd_wall_h = (TILE_SIZE / perp_d) * proj_plane_d;
-		strip_wall_h = (int)projd_wall_h;
-		wall_top = (WIN_HEIGHT / 2) - (strip_wall_h / 2);
-		wall_bottom = (WIN_HEIGHT / 2) + (strip_wall_h / 2);
-		if (wall_top < 0)
-			wall_top = 0;
-		y = wall_top;
-		if (wall_bottom > WIN_HEIGHT)
-			wall_bottom = WIN_HEIGHT;
+		wall->perp_d = data->rays[i].distance * cos(data->rays[i].ray_angle
+				- data->player.rot_angle);
+		wall->projd_wall_h = (TILE_SIZE / wall->perp_d) * wall->proj_plane_d;
+		wall->strip_wall_h = (int)wall->projd_wall_h;
+		wall->wall_top = (WIN_HEIGHT / 2) - (wall->strip_wall_h / 2);
+		wall->wall_bottom = (WIN_HEIGHT / 2) + (wall->strip_wall_h / 2);
+		define_wall_size(wall);
+		y = wall->wall_top;
 		if (data->rays[i].was_hit_vert)
-			tex_offset_x = (int)data->rays[i].wall_hit_y % TILE_SIZE;
+			wall->tex_offset_x = (int)data->rays[i].wall_hit_y % TILE_SIZE;
 		else
-			tex_offset_x = (int)data->rays[i].wall_hit_x % TILE_SIZE;
-
-		while (y < wall_bottom)
-		{
-			d_from_top = y + (strip_wall_h / 2) - (WIN_HEIGHT / 2);
-			tex_offset_y = d_from_top * ((float)TEX_HEIGHT / strip_wall_h);
-			if (!data->rays[i].was_hit_vert && is_ray_facing_up(data->rays[i].ray_angle))
-				color = data->textures[0]->colors[((TEX_WIDTH) * tex_offset_y) + tex_offset_x];
-			if (!data->rays[i].was_hit_vert && is_ray_facing_down(data->rays[i].ray_angle))
-				color = data->textures[1]->colors[((TEX_WIDTH) * tex_offset_y) + tex_offset_x];
-			if (data->rays[i].was_hit_vert && is_ray_facing_left(data->rays[i].ray_angle))
-				color = data->textures[2]->colors[((TEX_WIDTH) * tex_offset_y) + tex_offset_x];
-			if (data->rays[i].was_hit_vert && is_ray_facing_right(data->rays[i].ray_angle))
-				color = data->textures[3]->colors[((TEX_WIDTH) * tex_offset_y) + tex_offset_x];
-				
-			img_pixel_put(&data->img, i, y, color);
-			y++;
-		}
+			wall->tex_offset_x = (int)data->rays[i].wall_hit_x % TILE_SIZE;
+		process_wall_textures(data, wall, y, i);
 		i++;
+	}
+}
+
+void	process_wall_textures(t_data *data, t_wall *wall, int y, int i)
+{
+	while (y < wall->wall_bottom)
+	{
+		wall->d_from_top = y + (wall->strip_wall_h / 2) - (WIN_HEIGHT / 2);
+		wall->tex_offset_y
+			= wall->d_from_top * ((float)TEX_HEIGHT / wall->strip_wall_h);
+		if (!data->rays[i].was_hit_vert
+			&& is_ray_facing_up(data->rays[i].ray_angle))
+				wall->color = data->textures[0]->colors[((TEX_WIDTH)
+					* wall->tex_offset_y) + wall->tex_offset_x];
+		if (!data->rays[i].was_hit_vert
+			&& is_ray_facing_down(data->rays[i].ray_angle))
+				wall->color = data->textures[1]->colors[((TEX_WIDTH)
+					* wall->tex_offset_y) + wall->tex_offset_x];
+		if (data->rays[i].was_hit_vert
+			&& is_ray_facing_left(data->rays[i].ray_angle))
+			wall->color = data->textures[2]->colors[((TEX_WIDTH)
+					* wall->tex_offset_y) + wall->tex_offset_x];
+		if (data->rays[i].was_hit_vert
+			&& is_ray_facing_right(data->rays[i].ray_angle))
+			wall->color = data->textures[3]->colors[((TEX_WIDTH)
+					* wall->tex_offset_y) + wall->tex_offset_x];
+		img_pixel_put(&data->img, i, y, wall->color);
+		y++;
 	}
 }
 
