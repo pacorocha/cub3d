@@ -6,7 +6,7 @@
 #    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 20:49:56 by jfrancis          #+#    #+#              #
-#    Updated: 2022/11/29 23:48:12 by coder            ###   ########.fr        #
+#    Updated: 2022/11/30 23:55:51 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,8 @@ PARSER = check_flags.c \
 		checker.c \
 		filling.c \
 		flood_fill_checker.c \
+		flood_fill_utils.c \
+		checker_utils.c \
 
 READER_MAP = read_map.c \
 

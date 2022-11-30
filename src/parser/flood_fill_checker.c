@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:29:00 by coder             #+#    #+#             */
-/*   Updated: 2022/11/30 13:53:13 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/30 23:35:14 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	search_ocurrence_ground(t_data *data)
 
 	i = 0;
 	data->control = 0;
-	while(i < data->nb_rows - 1)
+	while (i < data->nb_rows - 1)
 	{
 		j = 0;
 		len_col = ft_strlen(data->map[i]);
-		while(j < len_col)
+		while (j < len_col)
 		{
 			if (data->map[i][j] == '0')
 			{
@@ -52,12 +52,16 @@ void	flood_fill(t_data *data, int row, size_t col)
 		return ;
 	if (row < 0 || row > data->nb_rows || (int)col < 0 || col > data->big_line)
 		return ;
-	if (data->map[row][col] == 'L' || data->map[row][col] == '0' || data->map[row][col] == 'N'
-		|| data->map[row][col] != '1')
+	if (data->map[row][col] == 'L' || data->map[row][col] == '0'
+		|| data->map[row][col] == 'N' || data->map[row][col] != '1')
 		if (is_open(data, row, col))
 			print_error("Error, open map");
-			
 	char_change(data, row, col, new_color);
+	verification_sides_of_char(data, row, col);
+}
+
+void	verification_sides_of_char(t_data *data, int row, size_t col)
+{
 	if (col < data->big_line && col > 0)
 		flood_fill(data, row, col + 1);
 	if (row < data->nb_rows - 1)
@@ -75,27 +79,3 @@ void	flood_fill(t_data *data, int row, size_t col)
 	if (row > 0 && col < data->big_line)
 		flood_fill(data, row - 1, col + 1);
 }
-
-int	is_open(t_data *data, int row, size_t col)
-{
-	if (data->map[0][col] == '0' || data->map[0][col] == 'L'
-		|| data->map[row][0] == '0' || data->map[row][0] == 'L'
-		|| data->map[data->nb_rows - 1][col] == '0'
-		|| data->map[data->nb_rows - 1][col] == 'L')
-		return (TRUE);
-	if (is_space(data->map[row][col + 1]) || is_space(data->map[row][col - 1]) || is_space(data->map[row + 1][col]) || is_space(data->map[row - 1][col]))
-		return (TRUE);
-	return (FALSE);
-}
-
-int	is_space(char c)
-{
-	if (c == '\t' || c == ' ' || c == '\n' || c == '\0' || c == 'D' || (c != '1' && c != '0' && c != 'L' && ft_strchr(CHAR_PLAYER, c) == NULL))
-		return (TRUE);
-	return (FALSE);
-}
-
-// void	char_change(t_data *data, int row, size_t col, char new_color)
-// {
-// 	data->map[row][col] = new_color;
-// }
