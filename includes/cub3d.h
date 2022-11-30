@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/30 00:24:16 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/30 23:50:46 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	add_char_lines(t_data *data);
 
 //map_checker
 void	map_checker(t_data *data);
+int		is_invalid(char **arr_split, int file_map);
+void	verification_sides_of_char(t_data *data, int row, size_t col);
 void	char_change(t_data *data, int row, size_t col, char new_color);
 void	checking_sides(t_data *data, int row, size_t col);
 void	search_ocurrence_ground(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:25:33 by coder             #+#    #+#             */
-/*   Updated: 2022/11/29 00:05:26 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/30 23:57:21 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ void	checking_texture(t_data *data)
 	int	i;
 
 	i = 0;
-
-	while(data->directions[i] != NULL)
+	while (data->directions[i] != NULL)
 	{
 		if (is_invalid_file_texture(data->directions[i]))
 			print_error("Error, texture invalid");
@@ -35,7 +34,7 @@ void	checking_texture(t_data *data)
 	}
 }
 
-void	map_texture(t_data *data, int i, char* texture)
+void	map_texture(t_data *data, int i, char *texture)
 {
 	char	**arr_tex;
 
@@ -43,37 +42,6 @@ void	map_texture(t_data *data, int i, char* texture)
 	data->textures[i] = (t_img *)malloc(sizeof(t_img));
 	data->textures[i]->id = arr_tex[0];
 	data->textures[i]->path = arr_tex[1];
-	//free_array(arr_tex);
-}
-
-int	is_invalid_file_texture(char *texture)
-{
-	char **arr_split;
-	int	file_map;
-
-	arr_split = ft_split(texture, ' ');
-	file_map = open(arr_split[1], O_RDONLY);
-	if (ft_strncmp(arr_split[1], "./assets/", 9))
-	{
-		free_array(arr_split);
-		close(file_map);
-		return TRUE;
-	}
-	else if (!check_end_of_file(arr_split[1], "xpm"))
-	{
-		free_array(arr_split);
-		close(file_map);
-		return TRUE;
-	}
-	else if (file_map < 0)
-	{
-		free_array(arr_split);
-		close(file_map);
-		return TRUE;
-	}
-	free_array(arr_split);
-	close(file_map);
-	return FALSE;
 }
 
 void	checking_color(t_data *data)
@@ -86,15 +54,15 @@ void	checking_color(t_data *data)
 
 void	check_color(char *color)
 {
-	char **rgb;
-	int	i;
-	int	j;
-	int	is_num;
-	int len_num;
+	char	**rgb;
+	int		i;
+	int		j;
+	int		is_num;
+	int		len_num;
 
 	i = 0;
 	rgb = ft_split(color, ',');
-	while(rgb[i] != NULL)
+	while (rgb[i] != NULL)
 	{
 		j = 0;
 		len_num = ft_strlen(rgb[i]);
