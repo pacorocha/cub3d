@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/25 00:48:53 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/30 21:29:14 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int	main(int argc, char **argv)
 	mlx_hook(data.mlx.win, 3, 1L << 1, key_release, &data);
 	mlx_loop_hook(data.mlx.mlx_ptr, &game_loop, &data);
 	mlx_loop(data.mlx.mlx_ptr);
+	mlx_destroy_window(data.mlx.mlx_ptr, data.mlx.win);
+	mlx_destroy_display(data.mlx.mlx_ptr);
+	free(data.mlx.mlx_ptr);
 }
 
 void	init_data(t_data *data, int argc, char **argv)

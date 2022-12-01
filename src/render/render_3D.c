@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 00:38:02 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/30 19:52:34 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/30 21:28:05 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	project_3d_walls(t_data *data)
 		process_wall_textures(data, wall, y, i);
 		i++;
 	}
+	free(wall);
 }
 
 void	process_wall_textures(t_data *data, t_wall *wall, int y, int i)

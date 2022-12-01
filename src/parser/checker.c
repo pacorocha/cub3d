@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:25:33 by coder             #+#    #+#             */
-/*   Updated: 2022/11/30 23:57:21 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/30 21:33:53 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,16 @@ void	checking_texture(t_data *data)
 void	map_texture(t_data *data, int i, char *texture)
 {
 	char	**arr_tex;
+	char	*id;
+	char	*path;
 
 	arr_tex = ft_split(texture, ' ');
+	id = ft_strdup(arr_tex[0]);
+	path = ft_strdup(arr_tex[1]);
 	data->textures[i] = (t_img *)malloc(sizeof(t_img));
-	data->textures[i]->id = arr_tex[0];
-	data->textures[i]->path = arr_tex[1];
+	data->textures[i]->id = id;
+	data->textures[i]->path = path;
+	free_array(arr_tex);
 }
 
 void	checking_color(t_data *data)
@@ -57,7 +62,6 @@ void	check_color(char *color)
 	char	**rgb;
 	int		i;
 	int		j;
-	int		is_num;
 	int		len_num;
 
 	i = 0;
@@ -68,8 +72,7 @@ void	check_color(char *color)
 		len_num = ft_strlen(rgb[i]);
 		while (j < len_num)
 		{
-			is_num = ft_isdigit(rgb[i][j]);
-			if (!is_num)
+			if (!ft_isdigit(rgb[i][j]))
 				print_error("Error, color not a number");
 			if (ft_atoi(rgb[i]) > 255 || ft_atoi(rgb[i]) < 0)
 				print_error("Error, color > 255 or < 0 ");
@@ -79,4 +82,5 @@ void	check_color(char *color)
 	}
 	if (i != 3)
 		print_error("Error color must 3 coma separated values");
+	free_array(rgb);
 }

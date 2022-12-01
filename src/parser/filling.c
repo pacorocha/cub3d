@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filling.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:14:30 by coder             #+#    #+#             */
-/*   Updated: 2022/11/30 23:44:15 by coder            ###   ########.fr       */
+/*   Updated: 2022/11/30 20:41:18 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	fill_arr_colors(t_data *data, char *line)
 		data->f_color = ft_strdup(str_splitted[1]);
 	else
 		data->c_color = ft_strdup(str_splitted[1]);
-	free(str_splitted);
+	free_array(str_splitted);
 	data->counter++;
 }
 

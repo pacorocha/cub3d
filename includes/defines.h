@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 06:28:51 by coder             #+#    #+#             */
-/*   Updated: 2022/11/30 20:11:27 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/30 20:36:20 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # define TRUE 1
 # define FALSE 0
 
-# define TEX_WIDTH 128
-# define TEX_HEIGHT 128
+# define TEX_WIDTH 64
+# define TEX_HEIGHT 64
 
 # define NUM_TEX 4
 

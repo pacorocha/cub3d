@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:04:01 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/30 19:27:51 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/30 21:30:14 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	get_color(char *color)
 	i_rgb += (ft_atoi(rgb[0]) & 0xFF) << 16;
 	i_rgb += (ft_atoi(rgb[1]) & 0XFF) << 8;
 	i_rgb += (ft_atoi(rgb[2]) & 0XFF);
+	free_array(rgb);
 	return (i_rgb);
 }
 
@@ -66,4 +67,16 @@ void	get_texture(t_data *data, int i)
 		= (int *)mlx_get_data_addr(data->textures[i]->img_ptr,
 			&data->textures[i]->bpp, &data->textures[i]->line_len,
 			&data->textures[i]->endian);
+}
+
+void	destroy_textures(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < NUM_TEX)
+	{
+		mlx_destroy_image(data->mlx.mlx_ptr, data->textures[i]->img_ptr);
+		i++;
+	}
 }
