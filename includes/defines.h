@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 06:28:51 by coder             #+#    #+#             */
-/*   Updated: 2022/11/12 19:19:42 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/30 20:36:20 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@
 # define TRUE 1
 # define FALSE 0
 
+# define TEX_WIDTH 64
+# define TEX_HEIGHT 64
+
+# define NUM_TEX 4
+
 # define PI 3.14159265
 # define TWO_PI 6.28318530
 
@@ -24,19 +29,19 @@
 
 # define CHAR_PLAYER "NSWE"
 # define PLAYER_SIZE 1
-# define FOV_ANGLE 60 * PI / 180
+# define FOV_ANGLE 1.0472
 # define NUM_RAYS WIN_WIDTH
 # define FLT_MAX 3.40282346638528859812e+38F
 
-#define RED 0xB00612
-#define GREEN 0x26871C
-#define OFFBLACK 0x191919
-#define OFFWHITE 0xA7A7A7
-#define BLACK 0x000000
-#define WHITE 0xFFFFFF
-#define BLUE 0x06304A
+# define RED 0xB00612
+# define GREEN 0x26871C
+# define OFFBLACK 0x191919
+# define OFFWHITE 0xA7A7A7
+# define BLACK 0x000000
+# define WHITE 0xFFFFFF
+# define BLUE 0x06304A
 
-# define TILE_SIZE 16
+# define TILE_SIZE 64
 
 # define KEY_ESC (0xff1b)
 # define KEY_Q (0x71)

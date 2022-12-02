@@ -1,7 +1,7 @@
-NO textures/redbrick.xpm
-SO textures/grenbrick.xpm
-EA textures/bluebrick.xpm
-WE textures/yellowbrick.xpm
+NO ./assets/indiana_jones_01.xpm
+SO ./assets/indiana_jones_02.xpm
+WE ./assets/indiana_jones_03.xpm
+EA ./assets/indiana_jones_04.xpm
 C 104,120,132
 F 228,95,0
 

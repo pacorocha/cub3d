@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:58:24 by coder             #+#    #+#             */
-/*   Updated: 2022/11/09 20:46:43 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/11/30 21:13:16 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,18 @@ void	init_player(t_data *data)
 	data->player.turn_dir = 0;
 	data->player.side_dir = 0;
 	data->player.walk_dir = 0;
-	data->player.walk_spd = 0.5;
-	data->player.turn_spd = 5 * PI / 180;
+	data->player.walk_spd = 5;
+	data->player.turn_spd = 3 * PI / 180;
+}
+
+void	init_textures(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < NUM_TEX)
+	{
+		get_texture(data, i);
+		i++;
+	}
 }

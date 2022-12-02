@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 03:09:43 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/10/27 05:17:32 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/02 01:31:58 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,24 @@
 
 int	close_window(t_data *data)
 {
+	int	i;
+	
+	i = 0;
 	mlx_destroy_window(data->mlx.mlx_ptr, data->mlx.win);
 	mlx_destroy_display(data->mlx.mlx_ptr);
 	free(data->mlx.mlx_ptr);
+	free_array(data->cub);
+	free(data->f_color);
+	free(data->c_color);
+	while (i < NUM_TEX)
+	{
+		free(data->textures[i]->id);
+		free(data->textures[i]->path);
+		free(data->textures[i]);
+		i++;
+	}
+	free(data->directions);
+	free_array(data->map);
 	exit(0);
 	return (0);
 }

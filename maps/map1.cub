@@ -1,10 +1,9 @@
-NO textures/path_to_the_north_texture.xpm
-SO textures/path_to_the_south_texture.xpm
-WE textures/path_to_the_west_texture.xpm
-EA textures/path_to_the_east_texture.xpm
-
-F 220,100,0
-C 225,30,0
+NO ./assets/indiana_jones_01.xpm
+SO ./assets/indiana_jones_02.xpm
+WE ./assets/indiana_jones_03.xpm
+EA ./assets/indiana_jones_04.xpm
+C 104,120,132
+F 228,95,0
 
 
                         11111111111
