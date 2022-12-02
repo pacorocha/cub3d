@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:04:01 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/30 21:30:14 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/02 00:44:33 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	destroy_textures(t_data *data)
 	i = 0;
 	while (i < NUM_TEX)
 	{
+		
 		mlx_destroy_image(data->mlx.mlx_ptr, data->textures[i]->img_ptr);
 		i++;
 	}
