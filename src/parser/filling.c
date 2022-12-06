@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:14:30 by coder             #+#    #+#             */
-/*   Updated: 2022/12/02 01:26:09 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/06 01:08:17 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ void	parser(t_data *data)
 {
 	if (data->argc != 2)
 		print_error("Error, args");
+	count_col(data);
 	fill_structures_loop(data);
-	add_char_lines(data);
+	//add_char_lines(data);
 	map_checker(data);
 }
 
@@ -35,10 +36,7 @@ void	fill_structures_loop(t_data *data)
 			else if (check_flags_colors(data->cub[i]) && data->counter >= 3)
 				fill_arr_colors(data, data->cub[i]);
 			else if (i >= 6)
-			{
-				count_col(data, i);
 				fill_map(data, data->cub[i], i);
-			}
 			else
 				print_error("Error, not init valid directions or colors");
 		}
@@ -82,12 +80,12 @@ void	fill_map(t_data *data, char *line, int i)
 		if (data->nb_rows < 3)
 			print_error("Error");
 		data->map = (char **)ft_calloc(data->nb_rows + 1, sizeof(char *));
-		data->map[data->counter] = ft_strdup_len(line, data->big_line);
+		data->map[data->counter] = add_char_lines(data, line);
 	}
 	else
 	{
 		data->counter++;
-		data->map[data->counter] = ft_strdup_len(line, data->big_line);
+		data->map[data->counter] = add_char_lines(data, line);
 		data->control = 1;
 	}
 	if (data->counter == data->nb_rows - 1)

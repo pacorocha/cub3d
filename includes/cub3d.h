@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/30 21:30:38 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/06 01:07:25 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	read_map(t_data *data);
 char	**lines(char *file, t_data *data);
 int		check_end_of_file(char *file, char *sufx);
 void	fill_structures_loop(t_data *data);
-void	add_char_lines(t_data *data);
 
 //map_checker
 void	map_checker(t_data *data);
@@ -44,7 +43,7 @@ void	char_change(t_data *data, int row, size_t col, char new_color);
 void	checking_sides(t_data *data, int row, size_t col);
 void	search_ocurrence_ground(t_data *data);
 void	flood_fill(t_data *data, int row, size_t col);
-void	count_col(t_data *data, int i);
+void	count_col(t_data *data);
 void	checking_color(t_data *data);
 void	check_color(char *color);
 int		is_open(t_data *data, int row, size_t col);
@@ -52,6 +51,7 @@ int		is_space(char c);
 void	checking_texture(t_data *data);
 int		is_invalid_file_texture(char *texture);
 void	checking_texture(t_data *data);
+char	*add_char_lines(t_data *data, char *line);
 
 //utils parse
 int		check_flags_cardinal_directions(char *line, int counter);

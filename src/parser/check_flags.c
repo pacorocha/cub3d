@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:19:58 by coder             #+#    #+#             */
-/*   Updated: 2022/11/30 23:40:07 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/06 01:15:51 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,20 @@ int	check_flags_colors(char *line)
 	return (0);
 }
 
-void	add_char_lines(t_data *data)
+char	*add_char_lines(t_data *data, char *line)
 {
 	int		i;
-	size_t	j;
 	size_t	len_num;
 
 	i = 0;
-	len_num = data->big_line + 1;
-	while (data->map[i] != NULL)
+	len_num = data->big_line;
+
+	while (line[i] != '\0')
 	{
-		j = 0;
-		while (j < len_num)
-		{
-			if (ft_strlen(data->map[i]) <= len_num)
-				ft_strlcat(data->map[i], "D", len_num);
-			j++;
-		}
+		if (ft_strlen(line) <= len_num)
+			ft_strlcat(line, "D", len_num - 1);
 		i++;
 	}
+
+	return (ft_strdup_len(line, data->big_line));
 }

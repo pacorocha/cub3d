@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 03:28:55 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/14 20:09:11 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/03 00:52:29 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,11 @@ int	is_inside_map(float x, float y, t_data *data)
 	return (FALSE);
 }
 
-void	count_col(t_data *data, int i)
+void	count_col(t_data *data)
 {
+	int	i;
+
+	i = 0;
 	while (data->cub[i] != NULL)
 	{
 		if (ft_strlen(data->cub[i]) > data->big_line)

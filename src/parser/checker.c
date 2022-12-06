@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:25:33 by coder             #+#    #+#             */
-/*   Updated: 2022/12/02 00:52:21 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/02 23:39:38 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,14 @@ void	checking_texture(t_data *data)
 	while (data->directions[i] != NULL)
 	{
 		if (is_invalid_file_texture(data->directions[i]))
+		{
+			free(data->directions);
+			free_array(data->map);
+			free_array(data->cub);
+			free(data->f_color);
+			free(data->c_color);
 			print_error("Error, texture invalid");
+		}
 		else
 			map_texture(data, i, data->directions[i]);
 		i++;
