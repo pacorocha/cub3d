@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:58:24 by coder             #+#    #+#             */
-/*   Updated: 2022/11/29 00:09:54 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/07 23:32:57 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 void	set_map_size(t_data *data)
 {
@@ -76,16 +76,17 @@ void	init_player(t_data *data)
 	data->player.walk_dir = 0;
 	data->player.walk_spd = 3;
 	data->player.turn_spd = 3 * PI / 180;
+	data->proj_plane_d = (WIN_WIDTH / 2) / tan(FOV_ANGLE / 2);
 }
 
 void	init_textures(t_data *data)
 {
 	int	i;
-	
+
 	i = 0;
 	while(i < NUM_TEX)
 	{
-		
+
 		get_texture(data, i);
 		i++;
 	}

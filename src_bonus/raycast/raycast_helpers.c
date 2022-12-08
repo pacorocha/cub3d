@@ -6,11 +6,11 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 02:59:17 by coder             #+#    #+#             */
-/*   Updated: 2022/11/09 21:20:18 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:56:19 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 int	is_ray_facing_down(float angle)
 {

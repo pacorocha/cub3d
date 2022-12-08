@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/25 00:10:18 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/07 21:04:15 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@
 # include <math.h>
 # include "../libs/libft/libft.h"
 # include "../libs/minilibx-linux/mlx.h"
-# include "defines.h"
-# include "structs.h"
+# include "defines_bonus.h"
+# include "structs_bonus.h"
 
 void	init_data(t_data *data, int argc, char **argv);
-int     print_error(char *msg);
+int		print_error(char *msg);
 
 //parse
 void	parser(t_data *data);
@@ -34,16 +34,16 @@ void	read_map(t_data *data);
 char	**lines(char *file, t_data *data);
 int		check_end_of_file(char *file, char *sufx);
 void	fill_structures_loop(t_data *data);
-void	add_char_lines(t_data *data);
 
 //map_checker
 void	map_checker(t_data *data);
+int		is_invalid(char **arr_split, int file_map);
+void	verification_sides_of_char(t_data *data, int row, size_t col);
+void	char_change(t_data *data, int row, size_t col, char new_color);
+void	checking_sides(t_data *data, int row, size_t col);
 void	search_ocurrence_ground(t_data *data);
 void	flood_fill(t_data *data, int row, size_t col);
-void	count_col(t_data *data, int i);
-void	char_change(t_data *data, int row, size_t col, char new_color);
-void	Sul (t_data *data, int row, size_t col);
-void	Leste (t_data *data, int row, size_t col);
+void	count_col(t_data *data);
 void	checking_color(t_data *data);
 void	check_color(char *color);
 int		is_open(t_data *data, int row, size_t col);
@@ -51,6 +51,7 @@ int		is_space(char c);
 void	checking_texture(t_data *data);
 int		is_invalid_file_texture(char *texture);
 void	checking_texture(t_data *data);
+char	*add_char_lines(t_data *data, char *line);
 
 //utils parse
 int		check_flags_cardinal_directions(char *line, int counter);
@@ -71,12 +72,14 @@ float	set_player_direction(char c);
 void	set_map_size(t_data *data);
 
 //render
+void	project_3d_walls(t_data *data);
+void	process_wall_textures(t_data *data, t_wall *wall, int y, int i);
+void	render_background(t_data *data);
+void	render_layer(t_data *data, int color);
+int		render_rect(t_img *img, t_rect rect);
 void	render_map(t_data *data);
 void	render_player(t_data *data);
 void	render_rays(t_data *data);
-void	render_layer(t_data *data, int color);
-void	project_3d_walls(t_data *data);
-void	render_background(t_data *data);
 
 // game
 int		game_loop(t_data *data);
@@ -87,10 +90,11 @@ int		is_inside_map(float x, float y, t_data *data);
 void	draw_line(t_img *img, t_line line);
 void	img_pixel_put(t_img *img, int x, int y, int color);
 int		get_color(char *color);
+void	destroy_textures(t_data *data);
 
 //textures
 void	init_textures(t_data *data);
-void	map_texture(t_data *data, int i, char* texture);
+void	map_texture(t_data *data, int i, char *texture);
 void	get_texture(t_data *data, int i);
 
 // raycast

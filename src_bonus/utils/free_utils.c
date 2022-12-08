@@ -6,11 +6,11 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:39:58 by coder             #+#    #+#             */
-/*   Updated: 2022/11/14 20:07:51 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/07 20:57:13 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 void	free_array(char **arr)
 {
