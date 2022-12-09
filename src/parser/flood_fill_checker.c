@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:29:00 by coder             #+#    #+#             */
-/*   Updated: 2022/11/30 23:35:14 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/09 22:33:22 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,11 @@ void	flood_fill(t_data *data, int row, size_t col)
 	if (data->map[row][col] == 'L' || data->map[row][col] == '0'
 		|| data->map[row][col] == 'N' || data->map[row][col] != '1')
 		if (is_open(data, row, col))
+		{
+			free_checker(data);
+			free_textures(data);
 			print_error("Error, open map");
+		}
 	char_change(data, row, col, new_color);
 	verification_sides_of_char(data, row, col);
 }
