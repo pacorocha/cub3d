@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:14:30 by coder             #+#    #+#             */
-/*   Updated: 2022/12/09 21:05:13 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/09 22:04:45 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,16 @@ void	parser(t_data *data)
 	if (data->argc != 2)
 		print_error("Error. Add only one argument");
 	fill_structures_loop(data);
-	add_char_lines(data);
-	map_checker(data);
+	if (data->counter_flow > 5)
+	{
+		add_char_lines(data);
+		map_checker(data);
+	}
+	else
+	{
+		free_array(data->cub);
+		print_error("Error. Invalid File");
+	}	
 }
 
 void	fill_structures_loop(t_data *data)

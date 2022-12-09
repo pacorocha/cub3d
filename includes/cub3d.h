@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/09 21:04:37 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/09 22:08:35 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	fill_arr_textures(t_data *data, char *line, int i);
 void	fill_arr_colors(t_data *data, char *line);
 void	fill_map(t_data *data, char *line, int i);
 void	read_map(t_data *data);
+void	check_fd_map(int fd, char *file);
 char	**lines(char *file, t_data *data);
 int		check_end_of_file(char *file, char *sufx);
 void	fill_structures_loop(t_data *data);
