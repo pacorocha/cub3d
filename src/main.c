@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/09 20:48:53 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 00:52:05 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ void	init_data(t_data *data, int argc, char **argv)
 	data->c_color = NULL;
 	data->f_color = NULL;
 	data->control = 0;
+	data->num_player = 0;
 	data->big_line = 0;
 }

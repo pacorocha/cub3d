@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/09 22:08:35 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/09 23:04:51 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		is_space(char c);
 void	checking_texture(t_data *data);
 int		is_invalid_file_texture(char *texture);
 void	checking_texture(t_data *data);
+void	have_player(t_data *data, char c_current);
 
 //utils parse
 void		check_flags_directions(t_data *data, char *line, int counter);

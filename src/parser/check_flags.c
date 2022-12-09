@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:19:58 by coder             #+#    #+#             */
-/*   Updated: 2022/12/09 21:04:14 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 00:55:27 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,15 @@ void	add_char_lines(t_data *data)
 		{
 			if (ft_strlen(data->map[i]) <= len_num)
 				ft_strlcat(data->map[i], "D", len_num);
+			have_player(data, data->map[i][j]);
 			j++;
 		}
 		i++;
 	}
+}
+
+void	have_player(t_data *data, char c_current)
+{
+	if (c_current == 'N')
+		data->num_player++;
 }

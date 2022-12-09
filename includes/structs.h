@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:06:08 by coder             #+#    #+#             */
-/*   Updated: 2022/12/09 20:31:04 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/09 23:04:11 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ typedef struct s_data
 	int			counter_map;
 	int			control;
 	size_t		big_line;
+	int			num_player;
 }	t_data;
 
 #endif
