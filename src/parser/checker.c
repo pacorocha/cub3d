@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:25:33 by coder             #+#    #+#             */
-/*   Updated: 2022/12/02 00:52:21 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/09 01:43:51 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void	checking_texture(t_data *data)
 	while (data->directions[i] != NULL)
 	{
 		if (is_invalid_file_texture(data->directions[i]))
+		{
+			free_checker(data);
 			print_error("Error, texture invalid");
+		}
 		else
 			map_texture(data, i, data->directions[i]);
 		i++;
@@ -51,13 +54,13 @@ void	map_texture(t_data *data, int i, char *texture)
 
 void	checking_color(t_data *data)
 {
-	check_color(data->f_color);
-	check_color(data->c_color);
+	check_color(data, data->f_color);
+	check_color(data, data->c_color);
 	data->specs.f_rgb = get_color(data->f_color);
 	data->specs.c_rgb = get_color(data->c_color);
 }
 
-void	check_color(char *color)
+void	check_color(t_data *data, char *color)
 {
 	char	**rgb;
 	int		i;
@@ -72,10 +75,7 @@ void	check_color(char *color)
 		len_num = ft_strlen(rgb[i]);
 		while (j < len_num)
 		{
-			if (!ft_isdigit(rgb[i][j]))
-				print_error("Error, color not a number");
-			if (ft_atoi(rgb[i]) > 255 || ft_atoi(rgb[i]) < 0)
-				print_error("Error, color > 255 or < 0 ");
+			check_rgb_char(data, rgb, rgb[i][j], rgb[i]);
 			j++;
 		}
 		i++;

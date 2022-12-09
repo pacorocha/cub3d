@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:14:30 by coder             #+#    #+#             */
-/*   Updated: 2022/12/02 01:26:09 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/09 02:31:00 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,17 @@ void	fill_structures_loop(t_data *data)
 	{
 		if (data->cub[i][0] != '\0')
 		{
-			if (check_flags_cardinal_directions(data->cub[i], data->counter))
+			if (check_flags_cardinal_directions(data, data->cub[i], data->counter))
 				fill_arr_textures(data, data->cub[i], i);
-			else if (check_flags_colors(data->cub[i]) && data->counter >= 3)
+			else if (check_flags_colors(data, data->cub[i], data->counter))
 				fill_arr_colors(data, data->cub[i]);
 			else if (i >= 6)
 			{
 				count_col(data, i);
 				fill_map(data, data->cub[i], i);
 			}
-			else
-				print_error("Error, not init valid directions or colors");
+			// else
+			// 	error_structures(data);
 		}
 		i++;
 	}

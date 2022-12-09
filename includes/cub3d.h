@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/30 21:30:38 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/09 02:39:05 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 void	init_data(t_data *data, int argc, char **argv);
 int		print_error(char *msg);
+void	error_structures(t_data *data);
 
 //parse
 void	parser(t_data *data);
@@ -46,7 +47,7 @@ void	search_ocurrence_ground(t_data *data);
 void	flood_fill(t_data *data, int row, size_t col);
 void	count_col(t_data *data, int i);
 void	checking_color(t_data *data);
-void	check_color(char *color);
+void	check_color(t_data *data, char *color);
 int		is_open(t_data *data, int row, size_t col);
 int		is_space(char c);
 void	checking_texture(t_data *data);
@@ -54,11 +55,14 @@ int		is_invalid_file_texture(char *texture);
 void	checking_texture(t_data *data);
 
 //utils parse
-int		check_flags_cardinal_directions(char *line, int counter);
-int		check_flags_colors(char *line);
+int		check_flags_cardinal_directions(t_data *data, char *line, int counter);
+int		check_flags_colors(t_data *data, char *line, int counter);
 
 //free
 void	free_array(char **arr);
+void	free_checker(t_data *data);
+void	check_rgb_char(t_data *data, char **rgb_arr, char rgb_char, char *rgb);
+void	free_textures(t_data *data);
 
 //keys
 int		key_press(int key_code, t_data *data);

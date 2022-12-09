@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 23:54:57 by coder             #+#    #+#             */
-/*   Updated: 2022/11/30 23:57:58 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/09 01:39:52 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,22 @@ int	is_invalid(char **arr_split, int file_map)
 	free_array(arr_split);
 	close(file_map);
 	return (TRUE);
+}
+
+void	check_rgb_char(t_data *data, char **rgb_arr, char rgb_char, char *rgb)
+{
+	if (!ft_isdigit(rgb_char))
+	{
+		free_checker(data);
+		free_textures(data);
+		free_array(rgb_arr);
+		print_error("Error, color not a number");
+	}
+	if (ft_atoi(&rgb_char) < 0 || ft_atoi(rgb) > 255)
+	{
+		free_checker(data);
+		free_textures(data);
+		free_array(rgb_arr);
+		print_error("Error, color > 255 or < 0 ");
+	}	
 }

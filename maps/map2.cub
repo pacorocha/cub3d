@@ -1,8 +1,8 @@
-NO textures/the_north_texture.xpm
-SO textures/the_south_texture.xpm
-WE textures/the_west_texture.xpm
-EA textures/the_east_texture.xpm
-F 220,100,1
+NO ./assets/indiana_jones_01.xpm
+SO ./assets/indiana_jones_02.xpm
+WE ./assets/indiana_jones_03.xpm
+EA ./assets/indiana_jones_04.xpm
+F 2256654,100,1
 C 225,30,1
 
 
