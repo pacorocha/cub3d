@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/09 02:39:05 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/09 21:04:37 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int		is_invalid_file_texture(char *texture);
 void	checking_texture(t_data *data);
 
 //utils parse
-int		check_flags_cardinal_directions(t_data *data, char *line, int counter);
-int		check_flags_colors(t_data *data, char *line, int counter);
+void		check_flags_directions(t_data *data, char *line, int counter);
+void		check_flags_colors(t_data *data, char *line, int counter);
 
 //free
 void	free_array(char **arr);

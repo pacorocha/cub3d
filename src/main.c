@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/08 22:58:12 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/09 20:48:53 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 void	init_data(t_data *data, int argc, char **argv)
 {
 	data->argc = argc;
-	data->counter = 0;
+	data->counter_flow = 0;
 	data->file = argv[1];
 	data->c_color = NULL;
 	data->f_color = NULL;

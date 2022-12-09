@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:06:08 by coder             #+#    #+#             */
-/*   Updated: 2022/11/30 20:16:15 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/09 20:31:04 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,8 @@ typedef struct s_data
 	char		**directions;
 	char		*f_color;
 	char		*c_color;
-	int			counter;
+	int			counter_flow;
+	int			counter_map;
 	int			control;
 	size_t		big_line;
 }	t_data;
