@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/10 16:07:38 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 20:48:28 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@
 # include "structs.h"
 
 void	init_data(t_data *data, int argc, char **argv);
-int		print_error(char *msg);
-void	error_structures(t_data *data);
 
+//error
+int		print_error(char *msg);
+void	error_colors(t_data *data);
+void	verification_of_rgb_color(t_data *data, int i, char **rgb);
 //parse
 void	parser(t_data *data);
 void	fill_arr_textures(t_data *data, char *line, int i);
@@ -40,7 +42,7 @@ void	add_char_lines(t_data *data);
 
 //map_checker
 void	map_checker(t_data *data);
-int		is_invalid(char **arr_split, int file_map);
+int		is_invalid(char **arr_split);
 void	verification_sides_of_char(t_data *data, int row, size_t col);
 void	char_change(t_data *data, int row, size_t col, char new_color);
 void	checking_sides(t_data *data, int row, size_t col);
@@ -64,7 +66,7 @@ void		check_flags_colors(t_data *data, char *line, int counter);
 void	free_array(char **arr);
 void	free_checker(t_data *data);
 void	check_rgb_char(t_data *data, char **rgb_arr, char rgb_char, char *rgb);
-void	free_textures(t_data *data);
+void	free_textures(t_data *data, int num_tex);
 void	free_minimun_lines_map(t_data *data);
 
 //keys

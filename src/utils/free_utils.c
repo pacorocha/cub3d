@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:39:58 by coder             #+#    #+#             */
-/*   Updated: 2022/12/10 16:07:25 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 17:39:53 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	free_checker(t_data *data)
 	free(data->c_color);
 }
 
-void	free_textures(t_data *data)
+void	free_textures(t_data *data, int num_tex)
 {
 	int	i;
 
 	i = 0;
-	while (i < NUM_TEX)
+	while (i < num_tex)
 	{
 		free(data->textures[i]->id);
 		free(data->textures[i]->path);

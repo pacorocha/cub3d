@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 03:09:43 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/09 21:05:39 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 17:38:50 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	close_window(t_data *data)
 	mlx_destroy_display(data->mlx.mlx_ptr);
 	free(data->mlx.mlx_ptr);
 	free_checker(data);
-	free_textures(data);
+	free_textures(data, NUM_TEX);
 	exit(0);
 	return (0);
 }

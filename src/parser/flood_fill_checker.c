@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:29:00 by coder             #+#    #+#             */
-/*   Updated: 2022/12/10 15:37:04 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 18:15:30 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,13 @@ void	flood_fill(t_data *data, int row, size_t col)
 	if (data->map[row][col] == 'L'
 		|| ft_strchr(CHAR_PLAYER, data->map[row][col])
 		|| data->map[row][col] == '0'
-		|| data->map[row][col] != '1')
+		|| (data->map[row][col] != 'D'
+		&& data->map[row][col] != '1'))
 	{
 		if (is_open(data, row, col))
 		{
 			free_checker(data);
-			free_textures(data);
+			free_textures(data, NUM_TEX);
 			print_error("Error. Invalid Map!!");
 		}
 	}

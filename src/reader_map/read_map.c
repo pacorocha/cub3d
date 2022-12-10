@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:37:15 by coder             #+#    #+#             */
-/*   Updated: 2022/12/09 23:36:52 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 20:53:41 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	**lines(char *file, t_data *data)
 	{
 		read_line = read(fd, &c, 1);
 		if (read_line < 0 || c == '@')
-			print_error("Error. Map Invalid");
+			print_error("Error. Map Invalid!!");
 		if (c == '\n')
 			data->nb_rows++;
 	}
@@ -55,13 +55,7 @@ char	**lines(char *file, t_data *data)
 void	check_fd_map(int fd, char *file)
 {
 	if (!fd || fd < 0)
-	{
-		close(fd);
-		print_error("Error!");
-	}
+		print_error("Error! File does not exist.");
 	if (!check_end_of_file(file, "cub"))
-	{
-		close(fd);
 		print_error("Error. The file must end with .cub");
-	}
 }

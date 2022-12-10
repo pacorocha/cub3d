@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:14:30 by coder             #+#    #+#             */
-/*   Updated: 2022/12/10 16:31:38 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 17:43:46 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void	parser(t_data *data)
 {
 	if (data->argc != 2)
+	{
+		free_array(data->cub);
 		print_error("Error. Add only one argument");
+	}
 	fill_structures_loop(data);
 	if (data->map == NULL)
 		free_minimun_lines_map(data);
@@ -94,7 +97,6 @@ void	fill_arr_colors(t_data *data, char *line)
 
 void	fill_map(t_data *data, char *line, int i)
 {
-	printf("OIii entrei\n");
 	if (data->counter_flow == 6 && data->control == 0)
 	{
 		data->counter_map = 0;
