@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/07 20:48:17 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:54:45 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ int	main(int argc, char **argv)
 void	init_data(t_data *data, int argc, char **argv)
 {
 	data->argc = argc;
-	data->counter = 0;
+	data->counter_flow = 0;
 	data->file = argv[1];
 	data->c_color = NULL;
 	data->f_color = NULL;
 	data->control = 0;
+	data->num_player = 0;
 	data->big_line = 0;
+	data->map = NULL;
 }

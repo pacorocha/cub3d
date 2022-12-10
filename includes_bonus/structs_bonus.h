@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:06:08 by coder             #+#    #+#             */
-/*   Updated: 2022/12/09 23:27:10 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:53:08 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,12 +139,14 @@ typedef struct s_data
 	char		**directions;
 	char		*f_color;
 	char		*c_color;
-	int			counter;
+	int			counter_flow;
+	int			counter_map;
 	int			control;
 	size_t		big_line;
 	float		proj_plane_d;
 	int			show_map;
 	int			show_inst;
+	int			num_player;
 }	t_data;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:04:01 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/10 11:25:48 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:36:06 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,37 @@ void	draw_line(t_img *img, t_line line)
 
 int	get_color(char *color)
 {
-	char **rgb;
-	int i_rgb;
+	char	**rgb;
+	int		i_rgb;
 
 	rgb = ft_split(color, ',');
 	i_rgb = 0;
 	i_rgb += (ft_atoi(rgb[0]) & 0xFF) << 16;
 	i_rgb += (ft_atoi(rgb[1]) & 0XFF) << 8;
 	i_rgb += (ft_atoi(rgb[2]) & 0XFF);
+	free_array(rgb);
 	return (i_rgb);
 }
 
 void	get_texture(t_data *data, int i)
 {
-	data->textures[i]->img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr, data->textures[i]->path, &data->textures[i]->width, &data->textures[i]->height);
-	data->textures[i]->colors = (int *)mlx_get_data_addr(data->textures[i]->img_ptr, &data->textures[i]->bpp, &data->textures[i]->line_len, &data->textures[i]->endian);
+	data->textures[i]->img_ptr = mlx_xpm_file_to_image(data->mlx.mlx_ptr,
+			data->textures[i]->path, &data->textures[i]->width,
+			&data->textures[i]->height);
+	data->textures[i]->colors
+		= (int *)mlx_get_data_addr(data->textures[i]->img_ptr,
+			&data->textures[i]->bpp, &data->textures[i]->line_len,
+			&data->textures[i]->endian);
+}
+
+void	destroy_textures(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < NUM_TEX)
+	{
+		mlx_destroy_image(data->mlx.mlx_ptr, data->textures[i]->img_ptr);
+		i++;
+	}
 }

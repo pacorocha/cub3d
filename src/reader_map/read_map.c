@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:37:15 by coder             #+#    #+#             */
-/*   Updated: 2022/12/03 00:54:52 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 17:23:41 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,28 @@ char	**lines(char *file, t_data *data)
 	int		read_line;
 	char	c;
 
+	c = '@';
 	fd = open(file, O_RDONLY);
-	if (!fd || fd < 0)
-		print_error("Error!");
-	if (!check_end_of_file(file, "cub"))
-		print_error("Error, cub");
+	check_fd_map(fd, file);
 	data->nb_rows = 1;
 	read_line = 1;
 	while (read_line)
 	{
 		read_line = read(fd, &c, 1);
-		if (read_line < 0)
-			return (NULL);
+		if (read_line < 0 || c == '@')
+			print_error("Error. Map Invalid!!");
 		if (c == '\n')
 			data->nb_rows++;
 	}
 	close(fd);
 	data->cub = (char **)ft_calloc(data->nb_rows + 1, sizeof(char *));
 	return (data->cub);
+}
+
+void	check_fd_map(int fd, char *file)
+{
+	if (!fd || fd < 0)
+		print_error("Error! File does not exist.");
+	if (!check_end_of_file(file, "cub"))
+		print_error("Error. The file must end with .cub");
 }

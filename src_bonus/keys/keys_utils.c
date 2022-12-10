@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 03:09:43 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/10 11:55:45 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:32:25 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	close_window(t_data *data)
 	mlx_destroy_window(data->mlx.mlx_ptr, data->mlx.win);
 	mlx_destroy_display(data->mlx.mlx_ptr);
 	free(data->mlx.mlx_ptr);
+	free_checker(data);
+	free_textures(data, NUM_TEX);
 	exit(0);
 	return (0);
 }

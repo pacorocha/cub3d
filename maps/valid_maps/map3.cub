@@ -1,10 +1,9 @@
-NO ./assets/white_wall.xpm
-SO ./assets/white_wall_02.xpm
-WE ./assets/white_wall_hand.xpm
-EA ./assets/white_wall.xpm
-C 158,159,157
-F 215,216,213
-
+NO ./assets/indiana_jones_01.xpm
+SO ./assets/indiana_jones_02.xpm
+WE ./assets/indiana_jones_03.xpm
+EA ./assets/indiana_jones_04.xpm
+F 228,95,0
+C 104,120,132
 
 11111111111111111111111
 10000000000100000000001

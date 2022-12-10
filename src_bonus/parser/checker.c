@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:25:33 by coder             #+#    #+#             */
-/*   Updated: 2022/12/07 20:55:36 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:38:47 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	checking_texture(t_data *data)
 	{
 		if (is_invalid_file_texture(data->directions[i]))
 		{
-			free(data->directions);
-			free_array(data->map);
-			free_array(data->cub);
-			free(data->f_color);
-			free(data->c_color);
-			print_error("Error, texture invalid");
+			free_checker(data);
+			if (i == 1)
+				free(data->textures[i]);
+			else
+				free_textures(data, i);
+			print_error("Error. Texture invalid!");
 		}
 		else
 			map_texture(data, i, data->directions[i]);
@@ -58,13 +58,13 @@ void	map_texture(t_data *data, int i, char *texture)
 
 void	checking_color(t_data *data)
 {
-	check_color(data->f_color);
-	check_color(data->c_color);
+	check_color(data, data->f_color);
+	check_color(data, data->c_color);
 	data->specs.f_rgb = get_color(data->f_color);
 	data->specs.c_rgb = get_color(data->c_color);
 }
 
-void	check_color(char *color)
+void	check_color(t_data *data, char *color)
 {
 	char	**rgb;
 	int		i;
@@ -72,22 +72,22 @@ void	check_color(char *color)
 	int		len_num;
 
 	i = 0;
-	rgb = ft_split(color, ',');
-	while (rgb[i] != NULL)
+	if (ft_strchr(color, ','))
 	{
-		j = 0;
-		len_num = ft_strlen(rgb[i]);
-		while (j < len_num)
+		rgb = ft_split(color, ',');
+		while (rgb[i] != NULL)
 		{
-			if (!ft_isdigit(rgb[i][j]))
-				print_error("Error, color not a number");
-			if (ft_atoi(rgb[i]) > 255 || ft_atoi(rgb[i]) < 0)
-				print_error("Error, color > 255 or < 0 ");
-			j++;
+			j = 0;
+			len_num = ft_strlen(rgb[i]);
+			while (j < len_num)
+			{
+				check_rgb_char(data, rgb, rgb[i][j], rgb[i]);
+				j++;
+			}
+			i++;
 		}
-		i++;
+		verification_of_rgb_color(data, i, rgb);
 	}
-	if (i != 3)
-		print_error("Error color must 3 coma separated values");
-	free_array(rgb);
+	else
+		error_colors(data);
 }

@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 03:09:43 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/09 18:41:56 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:25:52 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,11 @@
 
 int	close_window(t_data *data)
 {
-	int	i;
-
-	i = 0;
 	mlx_destroy_window(data->mlx.mlx_ptr, data->mlx.win);
 	mlx_destroy_display(data->mlx.mlx_ptr);
 	free(data->mlx.mlx_ptr);
-	free_array(data->cub);
-	free(data->f_color);
-	free(data->c_color);
-	while (i < NUM_TEX)
-	{
-		free(data->textures[i]->id);
-		free(data->textures[i]->path);
-		free(data->textures[i]);
-		i++;
-	}
-	free(data->directions);
-	free_array(data->map);
+	free_checker(data);
+	free_textures(data, NUM_TEX);
 	exit(0);
 	return (0);
 }
