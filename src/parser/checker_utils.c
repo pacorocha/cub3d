@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 23:54:57 by coder             #+#    #+#             */
-/*   Updated: 2022/12/10 20:48:01 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 18:54:57 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,22 @@ int	is_invalid(char **arr_split)
 
 void	check_rgb_char(t_data *data, char **rgb_arr, char rgb_char, char *rgb)
 {
-	if (!ft_isdigit(rgb_char))
+	printf("Char: %c\n", rgb_char);
+	if (rgb_char != '\0')
 	{
-		free_checker(data);
-		free_textures(data, NUM_TEX);
-		free_array(rgb_arr);
-		print_error("Error, color not a number");
+		if (!ft_isdigit(rgb_char))
+		{
+			free_checker(data);
+			free_textures(data, NUM_TEX);
+			free_array(rgb_arr);
+			print_error("Error, color not a number");
+		}
+		if (ft_atoi(&rgb_char) < 0 || ft_atoi(rgb) > 255)
+		{
+			free_checker(data);
+			free_textures(data, NUM_TEX);
+			free_array(rgb_arr);
+			print_error("Error, color > 255 or < 0 ");
+		}
 	}
-	if (ft_atoi(&rgb_char) < 0 || ft_atoi(rgb) > 255)
-	{
-		free_checker(data);
-		free_textures(data, NUM_TEX);
-		free_array(rgb_arr);
-		print_error("Error, color > 255 or < 0 ");
-	}	
 }
