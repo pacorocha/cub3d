@@ -6,11 +6,25 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 00:38:02 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/07 22:30:34 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/08 23:05:58 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes_bonus/cub3d_bonus.h"
+
+static void	darken_color(int *color, float factor)
+{
+	int	a;
+	int	r;
+	int	g;
+	int	b;
+
+	a = (*color & 0xFF000000);
+	r = (*color & 0x00FF0000) * factor;
+	g = (*color & 0x0000FF00) * factor;
+	b = (*color & 0x000000FF) * factor;
+	*color = a | (r & 0x00FF0000) | (g & 0x0000FF00) | (b & 0x000000FF);
+}
 
 static void	define_wall_size(t_wall *wall)
 {
@@ -50,6 +64,7 @@ void	project_3d_walls(t_data *data)
 
 void	process_wall_textures(t_data *data, t_wall *wall, int y, int i)
 {
+	float	color_factor;
 	while (y < wall->wall_bottom)
 	{
 		wall->d_from_top = y + (wall->strip_wall_h / 2) - (WIN_HEIGHT / 2);
@@ -71,6 +86,13 @@ void	process_wall_textures(t_data *data, t_wall *wall, int y, int i)
 			&& is_ray_facing_right(data->rays[i].ray_angle))
 			wall->color = data->textures[3]->colors[((TEX_WIDTH)
 					* wall->tex_offset_y) + wall->tex_offset_x];
+		if (FOG_DIST && data->rays[i].distance > FOG_DIST)
+		{
+			color_factor = FOG_DIST / data->rays[i].distance;
+			darken_color(&wall->color, color_factor);
+		}
+		if(data->rays[i].was_hit_vert)
+			darken_color(&wall->color, 0.7);
 		img_pixel_put(&data->img, i, y, wall->color);
 		y++;
 	}

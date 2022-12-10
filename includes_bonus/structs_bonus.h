@@ -6,12 +6,18 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:06:08 by coder             #+#    #+#             */
-/*   Updated: 2022/12/07 22:27:29 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/09 23:27:10 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
+
+typedef struct s_coord
+{
+	int	x;
+	int	y;
+}	t_coord;
 
 typedef struct s_ray_data
 {
@@ -129,6 +135,7 @@ typedef struct s_data
 	t_img		img;
 	t_ray		rays[NUM_RAYS];
 	t_img		*textures[NUM_TEX];
+	t_img		mini_map;
 	char		**directions;
 	char		*f_color;
 	char		*c_color;
@@ -136,6 +143,8 @@ typedef struct s_data
 	int			control;
 	size_t		big_line;
 	float		proj_plane_d;
+	int			show_map;
+	int			show_inst;
 }	t_data;
 
 #endif

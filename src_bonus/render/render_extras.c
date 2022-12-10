@@ -1,31 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_extras.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 03:29:01 by coder             #+#    #+#             */
-/*   Updated: 2022/12/07 20:56:50 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/10 16:58:18 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes_bonus/cub3d_bonus.h"
-
-void	render_layer(t_data *data, int color)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < WIN_HEIGHT)
-	{
-		j = 0;
-		while (j < WIN_WIDTH)
-			img_pixel_put(&data->img, j++, i, color);
-		++i;
-	}
-}
 
 int	render_rect(t_img *img, t_rect rect)
 {
@@ -45,26 +30,27 @@ int	render_rect(t_img *img, t_rect rect)
 
 void	render_map(t_data *data)
 {
-	int	i;
-	int	j;
+	int	y;
+	int	x;
 	int	color;
+	int	scale_f;
 
-	i = 0;
-	j = 0;
-	while (i < data->nb_rows)
+	y = 0;
+	x = 0;
+	scale_f = TILE_SIZE / 8;
+	while (y < data->nb_rows)
 	{
-		j = 0;
-		while (j < data->nb_cols)
+		x = 0;
+		while (x < data->nb_cols)
 		{
-			if (data->map[i][j] == 'L' || data->map[i][j] == '0')
-				color = RED;
-			if (data->map[i][j] == '1')
-				color = GREEN;
-			render_rect(&data->img, (t_rect){TILE_SIZE * j, TILE_SIZE  * i,
-				TILE_SIZE, TILE_SIZE, color});
-			j++;
+			if (data->map[y][x] == '0' || data->map[y][x] == 'L')
+				color = BLACK;
+			if (data->map[y][x] == '1')
+				color = WHITE;
+			render_rect(&data->img, (t_rect){scale_f * x, scale_f * y, 10, 10, color});
+			x++;
 		}
-		i++;
+		y++;
 	}
 }
 
@@ -80,15 +66,15 @@ void	render_player(t_data *data)
 		+ sin(data->player.rot_angle) * 10, WHITE});
 }
 
-void	render_rays(t_data *data)
+void	render_inst(t_data *data)
 {
-	int	i;
+	char *inst_one;
+	char *inst_two;
 
-	i = 0;
-	while (i < NUM_RAYS)
-	{
-		draw_line(&data->img, (t_line){data->player.x, data->player.y,
-			data->rays[i].wall_hit_x, data->rays[i].wall_hit_y, BLUE});
-		i++;
-	}
+	inst_one = "Press E to open and close map.";
+	inst_two = "Press I to close this message.";
+	mlx_string_put(data->mlx.mlx_ptr, data->mlx.win, 45, 47, BLACK,
+		inst_one);
+	mlx_string_put(data->mlx.mlx_ptr, data->mlx.win, 45, 62, BLACK,
+		inst_two);
 }

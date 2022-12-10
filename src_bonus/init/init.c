@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:58:24 by coder             #+#    #+#             */
-/*   Updated: 2022/12/07 23:32:57 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/10 11:26:12 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void	init_player(t_data *data)
 	data->player.walk_spd = 3;
 	data->player.turn_spd = 3 * PI / 180;
 	data->proj_plane_d = (WIN_WIDTH / 2) / tan(FOV_ANGLE / 2);
+	data->show_map = 0;
+	data->show_inst = 1;
 }
 
 void	init_textures(t_data *data)

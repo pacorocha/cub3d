@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 03:09:43 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/07 20:54:49 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/10 11:55:45 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,22 @@ int	key_press(int key_code, t_data *data)
 		data->player.turn_dir = +1;
 	if (key_code == KEY_LEFT)
 		data->player.turn_dir = -1;
+	if (key_code == KEY_E)
+	{
+		if (data->show_map == 0)
+			data->show_map = 1;
+		else
+			data->show_map = 0;
+		if (data->show_inst == 1)
+			data->show_inst = 0;
+	}
+	if (key_code == KEY_I)
+	{
+		if (data->show_inst == 1)
+			data->show_inst = 0;
+		else
+			data->show_inst = 1;
+	}
 	return (0);
 }
 

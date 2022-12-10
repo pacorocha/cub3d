@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 03:09:43 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/02 01:31:58 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/09 18:41:56 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	close_window(t_data *data)
 {
 	int	i;
-	
+
 	i = 0;
 	mlx_destroy_window(data->mlx.mlx_ptr, data->mlx.win);
 	mlx_destroy_display(data->mlx.mlx_ptr);

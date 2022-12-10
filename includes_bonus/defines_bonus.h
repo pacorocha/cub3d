@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 06:28:51 by coder             #+#    #+#             */
-/*   Updated: 2022/12/06 21:45:46 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/09 21:40:27 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define PLAYER_SIZE 1
 # define FOV_ANGLE 1.0472
 # define NUM_RAYS WIN_WIDTH
+# define FOG_DIST 100
 # define FLT_MAX 3.40282346638528859812e+38F
 
 # define RED 0xB00612
@@ -40,6 +41,7 @@
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
 # define BLUE 0x06304A
+# define GRAY 0X8d908d
 
 # define TILE_SIZE 64
 
@@ -50,6 +52,8 @@
 # define KEY_S (0x73)
 # define KEY_D (0x64)
 # define KEY_W (0x77)
+# define KEY_E (0x65)
+# define KEY_I (0x69)
 
 # define KEY_UP (0xff52)
 # define KEY_DOWN (0xff54)

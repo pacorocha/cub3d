@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/07 21:04:15 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/10 16:07:41 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,10 @@ void	set_map_size(t_data *data);
 void	project_3d_walls(t_data *data);
 void	process_wall_textures(t_data *data, t_wall *wall, int y, int i);
 void	render_background(t_data *data);
-void	render_layer(t_data *data, int color);
 int		render_rect(t_img *img, t_rect rect);
 void	render_map(t_data *data);
+void	render_inst(t_data *data);
 void	render_player(t_data *data);
-void	render_rays(t_data *data);
 
 // game
 int		game_loop(t_data *data);
@@ -91,6 +90,7 @@ void	draw_line(t_img *img, t_line line);
 void	img_pixel_put(t_img *img, int x, int y, int color);
 int		get_color(char *color);
 void	destroy_textures(t_data *data);
+void	init_img(t_data *data, t_img *img, int width, int heigth);
 
 //textures
 void	init_textures(t_data *data);
