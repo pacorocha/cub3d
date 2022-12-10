@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:19:58 by coder             #+#    #+#             */
-/*   Updated: 2022/12/10 00:55:27 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 01:30:53 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ void	add_char_lines(t_data *data)
 
 void	have_player(t_data *data, char c_current)
 {
-	if (c_current == 'N')
-		data->num_player++;
+	if (ft_strchr(CHAR_PLAYER, c_current))
+	{
+		if (c_current != '\0')
+			data->num_player++;
+	}
 }

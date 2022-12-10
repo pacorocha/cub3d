@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 23:34:48 by coder             #+#    #+#             */
-/*   Updated: 2022/12/10 00:29:48 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 01:07:38 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 int	is_open(t_data *data, int row, size_t col)
 {
 	if (data->map[0][col] == '0' || data->map[0][col] == 'L'
+		|| data->map[0][col] == 'N'
 		|| data->map[row][0] == '0' || data->map[row][0] == 'L'
+		|| data->map[row][0] == 'N'
 		|| data->map[data->nb_rows - 1][col] == '0'
+		|| data->map[data->nb_rows - 1][col] == 'N'
 		|| data->map[data->nb_rows - 1][col] == 'L')
 		return (TRUE);
 	if (is_space(data->map[row][col + 1]) || is_space(data->map[row][col - 1])
