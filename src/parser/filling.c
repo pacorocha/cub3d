@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:14:30 by coder             #+#    #+#             */
-/*   Updated: 2022/12/10 00:46:10 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 16:06:58 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	fill_map(t_data *data, char *line, int i)
 		data->counter_map = 0;
 		data->nb_rows = data->nb_rows - i;
 		if (data->nb_rows < 3)
-			print_error("Error");
+			free_minimun_lines_map(data);
 		data->map = (char **)ft_calloc(data->nb_rows + 1, sizeof(char *));
 		data->map[data->counter_map] = ft_strdup_len(line, data->big_line);
 	}

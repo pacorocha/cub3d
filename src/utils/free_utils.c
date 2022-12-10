@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:39:58 by coder             #+#    #+#             */
-/*   Updated: 2022/12/09 02:06:36 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 16:07:25 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,13 @@ void	free_textures(t_data *data)
 		free(data->textures[i]);
 		i++;
 	}
+}
+
+void	free_minimun_lines_map(t_data *data)
+{
+	free(data->f_color);
+	free(data->c_color);
+	free(data->directions);
+	free_array(data->cub);
+	print_error("Error. Invalid Map!!");
 }

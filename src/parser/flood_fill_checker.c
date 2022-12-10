@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:29:00 by coder             #+#    #+#             */
-/*   Updated: 2022/12/10 15:26:54 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 15:37:04 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	flood_fill(t_data *data, int row, size_t col)
 		{
 			free_checker(data);
 			free_textures(data);
-			print_error("Error, open map");
+			print_error("Error. Invalid Map!!");
 		}
 	}
 	if (data->map[row][col] != prev_color)

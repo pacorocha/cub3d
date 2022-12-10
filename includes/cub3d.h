@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/09 23:04:51 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 16:07:38 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	free_array(char **arr);
 void	free_checker(t_data *data);
 void	check_rgb_char(t_data *data, char **rgb_arr, char rgb_char, char *rgb);
 void	free_textures(t_data *data);
+void	free_minimun_lines_map(t_data *data);
 
 //keys
 int		key_press(int key_code, t_data *data);
