@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 20:04:01 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/02 00:44:33 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/09 21:06:59 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	destroy_textures(t_data *data)
 	i = 0;
 	while (i < NUM_TEX)
 	{
-		
 		mlx_destroy_image(data->mlx.mlx_ptr, data->textures[i]->img_ptr);
 		i++;
 	}
