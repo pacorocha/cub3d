@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   map_utils_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 03:28:55 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/10 17:42:57 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 09:30:46 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	map_has_wall_at(float x, float y, t_data *data)
 
 	map_x = floor(x / TILE_SIZE);
 	map_y = floor(y / TILE_SIZE);
-	if (x < 0 || x > data->nb_cols * TILE_SIZE || y < 0
+	if (x < 0 || x > ft_strlen(data->map[map_y]) * TILE_SIZE || y < 0
 		|| y > data->nb_rows * TILE_SIZE)
 	{
 		return (FALSE);

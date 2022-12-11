@@ -2,8 +2,8 @@ NO ./assets/white_wall.xpm
 SO ./assets/white_wall_02.xpm
 WE ./assets/white_wall_hand.xpm
 EA ./assets/white_wall.xpm
-F 158,159,157
-C 215,216,213
+F 158,159,57
+C 215,255,213
 
 1111111111111111111111111111111111111111
 1N00000000000000000000000000000000000001
