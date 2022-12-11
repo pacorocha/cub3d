@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 03:09:43 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/10 18:35:23 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 00:44:09 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ int	key_press(int key_code, t_data *data)
 		data->player.turn_dir = +1;
 	if (key_code == KEY_LEFT)
 		data->player.turn_dir = -1;
+	map_keys(data, key_code);
+	return (0);
+}
+
+void	map_keys(t_data *data, int key_code)
+{
 	if (key_code == KEY_E)
 	{
 		if (data->show_map == 0)
@@ -56,7 +62,6 @@ int	key_press(int key_code, t_data *data)
 		else
 			data->show_inst = 1;
 	}
-	return (0);
 }
 
 int	key_release(int key_code, t_data *data)

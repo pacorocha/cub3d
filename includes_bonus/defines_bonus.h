@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   defines_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 06:28:51 by coder             #+#    #+#             */
-/*   Updated: 2022/12/09 21:40:27 by jfrancis         ###   ########.fr       */
+/*   Created: 2022/12/11 00:56:37 by coder             #+#    #+#             */
+/*   Updated: 2022/12/11 00:56:38 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINES_H
-# define DEFINES_H
+#ifndef DEFINES_BONUS_H
+# define DEFINES_BONUS_H
 
 # define TRUE 1
 # define FALSE 0

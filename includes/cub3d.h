@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/10 17:29:36 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 00:55:13 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	add_char_lines(t_data *data);
 void	have_player(t_data *data, char c_current);
 
 //utils parse
-void		check_flags_directions(t_data *data, char *line, int counter);
-void		check_flags_colors(t_data *data, char *line, int counter);
+void	check_flags_directions(t_data *data, char *line, int counter);
+void	check_flags_colors(t_data *data, char *line, int counter);
 
 //free
 void	free_array(char **arr);

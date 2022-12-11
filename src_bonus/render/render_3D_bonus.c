@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   render_3D.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 00:38:02 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/08 23:05:58 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 00:49:06 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes_bonus/cub3d_bonus.h"
 
-static void	darken_color(int *color, float factor)
+void	darken_color(int *color, float factor)
 {
 	int	a;
 	int	r;
@@ -64,34 +64,14 @@ void	project_3d_walls(t_data *data)
 
 void	process_wall_textures(t_data *data, t_wall *wall, int y, int i)
 {
-	float	color_factor;
 	while (y < wall->wall_bottom)
 	{
 		wall->d_from_top = y + (wall->strip_wall_h / 2) - (WIN_HEIGHT / 2);
 		wall->tex_offset_y
 			= wall->d_from_top * ((float)TEX_HEIGHT / wall->strip_wall_h);
-		if (!data->rays[i].was_hit_vert
-			&& is_ray_facing_up(data->rays[i].ray_angle))
-				wall->color = data->textures[0]->colors[((TEX_WIDTH)
-					* wall->tex_offset_y) + wall->tex_offset_x];
-		if (!data->rays[i].was_hit_vert
-			&& is_ray_facing_down(data->rays[i].ray_angle))
-				wall->color = data->textures[1]->colors[((TEX_WIDTH)
-					* wall->tex_offset_y) + wall->tex_offset_x];
-		if (data->rays[i].was_hit_vert
-			&& is_ray_facing_left(data->rays[i].ray_angle))
-			wall->color = data->textures[2]->colors[((TEX_WIDTH)
-					* wall->tex_offset_y) + wall->tex_offset_x];
-		if (data->rays[i].was_hit_vert
-			&& is_ray_facing_right(data->rays[i].ray_angle))
-			wall->color = data->textures[3]->colors[((TEX_WIDTH)
-					* wall->tex_offset_y) + wall->tex_offset_x];
-		if (FOG_DIST && data->rays[i].distance > FOG_DIST)
-		{
-			color_factor = FOG_DIST / data->rays[i].distance;
-			darken_color(&wall->color, color_factor);
-		}
-		if(data->rays[i].was_hit_vert)
+		wall_orientation(data, wall, i);
+		distance_effect(data, wall, i);
+		if (data->rays[i].was_hit_vert)
 			darken_color(&wall->color, 0.7);
 		img_pixel_put(&data->img, i, y, wall->color);
 		y++;

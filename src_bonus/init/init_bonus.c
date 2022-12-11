@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:58:24 by coder             #+#    #+#             */
-/*   Updated: 2022/12/10 11:26:12 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 00:45:19 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,8 @@ void	init_textures(t_data *data)
 	int	i;
 
 	i = 0;
-	while(i < NUM_TEX)
+	while (i < NUM_TEX)
 	{
-
 		get_texture(data, i);
 		i++;
 	}

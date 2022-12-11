@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 02:22:28 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/10 16:22:20 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 00:07:06 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ int	game_loop(t_data *data)
 		data->img.img_ptr, 0, 0);
 	if (data->show_inst == 1)
 		render_inst(data);
+	destroy_textures(data);
 	return (0);
 }

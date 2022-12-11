@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 20:49:56 by jfrancis          #+#    #+#              #
-#    Updated: 2022/12/07 22:37:01 by jfrancis         ###   ########.fr        #
+#    Updated: 2022/12/11 01:20:13 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,8 +48,9 @@ INIT = init.c \
 
 RENDER = render_3D.c \
 
-RENDER_BONUS =	render_3D.c \
-				render_extras.c
+RENDER_BONUS =	render_3D_bonus.c \
+				render_extras_bonus.c \
+				render_wall_bonus.c \
 
 GAME = game_loop.c \
 
@@ -73,6 +74,34 @@ PARSER = check_flags.c \
 
 READER_MAP = read_map.c \
 
+BASE_BONUS = main_bonus.c \
+
+KEYS_BONUS = keys_utils_bonus.c \
+
+INIT_BONUS = init_bonus.c \
+
+GAME_BONUS = game_loop_bonus.c \
+
+UTILS_BONUS = map_utils_bonus.c \
+		error_utils_bonus.c \
+		free_utils_bonus.c \
+		read_utils_bonus.c \
+		draw_utils_bonus.c \
+
+RAYCAST_BONUS = raycast_bonus.c \
+		raycast_math_bonus.c \
+		raycast_helpers_bonus.c \
+		raycast_init_bonus.c
+
+PARSER_BONUS = check_flags_bonus.c \
+		checker_bonus.c \
+		filling_bonus.c \
+		flood_fill_checker_bonus.c \
+		flood_fill_utils_bonus.c \
+		checker_utils_bonus.c \
+
+READER_MAP_BONUS = read_map_bonus.c \
+
 SRC = $(BASE) \
 		$(KEYS) \
 		$(INIT) \
@@ -82,6 +111,16 @@ SRC = $(BASE) \
 		$(RAYCAST) \
 		$(PARSER) \
 		$(READER_MAP) \
+
+SRC_BONUS = $(BASE_BONUS) \
+		$(KEYS_BONUS) \
+		$(INIT_BONUS) \
+		$(RENDER_BONUS) \
+		$(GAME_BONUS) \
+		$(UTILS_BONUS) \
+		$(RAYCAST_BONUS) \
+		$(PARSER_BONUS) \
+		$(READER_MAP_BONUS) \
 
 SRC_FULL = $(addprefix $(SRC_DIR)/, $(BASE)) \
 			$(addprefix $(SRC_DIR)/$(KEYS_DIR)/, $(KEYS)) \
@@ -93,15 +132,15 @@ SRC_FULL = $(addprefix $(SRC_DIR)/, $(BASE)) \
 			$(addprefix $(SRC_DIR)/$(PARSER_DIR)/, $(PARSER)) \
 			$(addprefix $(SRC_DIR)/$(READER_MAP_DIR)/, $(READER_MAP)) \
 
-SRC_FULL_BONUS = $(addprefix $(BONUS_DIR)/, $(BASE)) \
-			$(addprefix $(BONUS_DIR)/$(KEYS_DIR)/, $(KEYS)) \
-			$(addprefix $(BONUS_DIR)/$(INIT_DIR)/, $(INIT)) \
+SRC_FULL_BONUS = $(addprefix $(BONUS_DIR)/, $(BASE_BONUS)) \
+			$(addprefix $(BONUS_DIR)/$(KEYS_DIR)/, $(KEYS_BONUS)) \
+			$(addprefix $(BONUS_DIR)/$(INIT_DIR)/, $(INIT_BONUS)) \
 			$(addprefix $(BONUS_DIR)/$(RENDER_DIR)/, $(RENDER_BONUS)) \
-			$(addprefix $(BONUS_DIR)/$(GAME_DIR)/, $(GAME)) \
-			$(addprefix $(BONUS_DIR)/$(UTILS_DIR)/, $(UTILS)) \
-			$(addprefix $(BONUS_DIR)/$(RAYCAST_DIR)/, $(RAYCAST)) \
-			$(addprefix $(BONUS_DIR)/$(PARSER_DIR)/, $(PARSER)) \
-			$(addprefix $(BONUS_DIR)/$(READER_MAP_DIR)/, $(READER_MAP))
+			$(addprefix $(BONUS_DIR)/$(GAME_DIR)/, $(GAME_BONUS)) \
+			$(addprefix $(BONUS_DIR)/$(UTILS_DIR)/, $(UTILS_BONUS)) \
+			$(addprefix $(BONUS_DIR)/$(RAYCAST_DIR)/, $(RAYCAST_BONUS)) \
+			$(addprefix $(BONUS_DIR)/$(PARSER_DIR)/, $(PARSER_BONUS)) \
+			$(addprefix $(BONUS_DIR)/$(READER_MAP_DIR)/, $(READER_MAP_BONUS))
 
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FULL))
 OBJS_BONUS = $(patsubst $(SRC_BONUS)/%.c, $(OBJ_BONUS)/%.o, $(SRC_FULL_BONUS))

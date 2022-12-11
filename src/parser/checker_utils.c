@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 23:54:57 by coder             #+#    #+#             */
-/*   Updated: 2022/12/10 18:54:57 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/10 23:00:25 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	is_invalid(char **arr_split)
 
 void	check_rgb_char(t_data *data, char **rgb_arr, char rgb_char, char *rgb)
 {
-	printf("Char: %c\n", rgb_char);
 	if (rgb_char != '\0')
 	{
 		if (!ft_isdigit(rgb_char))

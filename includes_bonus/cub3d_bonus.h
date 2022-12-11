@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/10 17:56:00 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 00:51:05 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB3D_BONUS_H
+# define CUB3D_BONUS_H
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -71,6 +71,7 @@ void	free_minimun_lines_map(t_data *data);
 
 //keys
 int		key_press(int key_code, t_data *data);
+void	map_keys(t_data *data, int key_code);
 int		key_release(int key_code, t_data *data);
 int		close_window(t_data *data);
 
@@ -88,6 +89,9 @@ int		render_rect(t_img *img, t_rect rect);
 void	render_map(t_data *data);
 void	render_inst(t_data *data);
 void	render_player(t_data *data);
+void	distance_effect(t_data *data, t_wall *wall, int i);
+void	wall_orientation(t_data *data, t_wall *wall, int i);
+void	darken_color(int *color, float factor);
 
 // game
 int		game_loop(t_data *data);
