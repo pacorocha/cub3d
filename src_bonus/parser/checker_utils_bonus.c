@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 23:54:57 by coder             #+#    #+#             */
-/*   Updated: 2022/12/11 09:31:21 by jfrancis         ###   ########.fr       */
+/*   Created: 2022/12/11 20:23:49 by jfrancis          #+#    #+#             */
+/*   Updated: 2022/12/11 20:23:50 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,51 @@ int	is_invalid(char **arr_split)
 
 void	check_rgb_char(t_data *data, char **rgb_arr, char rgb_char, char *rgb)
 {
-	if (!ft_isdigit(rgb_char))
+	if (rgb_char != '\0')
 	{
-		free_checker(data);
-		free_textures(data, NUM_TEX);
-		free_array(rgb_arr);
-		print_error("Error, color not a number");
+		if (!ft_isdigit(rgb_char))
+		{
+			free_checker(data);
+			free_textures(data, NUM_TEX);
+			free_array(rgb_arr);
+			print_error("Error, color not a number");
+		}
+		if (ft_atoi(rgb) < 0 || ft_atoi(rgb) > 255)
+		{
+			free_checker(data);
+			free_textures(data, NUM_TEX);
+			free_array(rgb_arr);
+			print_error("Error, color > 255 or < 0 ");
+		}
 	}
-	if (ft_atoi(rgb) < 0 || ft_atoi(rgb) > 255)
+}
+
+void	get_map(t_data *data, int i)
+{
+	verification_char_line(data, data->cub[i]);
+	count_col(data, i);
+	fill_map(data, data->cub[i], i);
+}
+
+void	verification_char_line(t_data *data, char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] != '\0')
 	{
-		free_checker(data);
-		free_textures(data, NUM_TEX);
-		free_array(rgb_arr);
-		print_error("Error, color > 255 or < 0 ");
+		if ((line[i] != '1' && line[i] != ' '
+				&& line[i] != '\t' && line[i] != '0')
+			&& !ft_strchr(CHAR_PLAYER, line[i]))
+		{
+			free_array(data->cub);
+			if (data->counter_flow > 6)
+				free_array(data->map);
+			free(data->directions);
+			free(data->f_color);
+			free(data->c_color);
+			print_error("Error! Invalid Map.");
+		}
+		i++;
 	}
 }

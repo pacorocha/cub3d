@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flood_fill_checker.c                               :+:      :+:    :+:   */
+/*   flood_fill_checker_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 02:29:00 by coder             #+#    #+#             */
-/*   Updated: 2022/12/10 17:38:55 by jfrancis         ###   ########.fr       */
+/*   Created: 2022/12/11 20:24:12 by jfrancis          #+#    #+#             */
+/*   Updated: 2022/12/11 20:24:14 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	search_ocurrence_ground(t_data *data)
 		len_col = ft_strlen(data->map[i]);
 		while (j < len_col)
 		{
-			if (data->map[i][j] == '0')
+			if (data->map[i][j] == '0'
+				|| ft_strchr(CHAR_PLAYER, data->map[i][j]))
 			{
 				data->control = 1;
 				break ;

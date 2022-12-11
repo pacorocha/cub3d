@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:40:13 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/10 17:54:45 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 19:57:11 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	init_data(t_data *data, int argc, char **argv)
 	data->c_color = NULL;
 	data->f_color = NULL;
 	data->control = 0;
+	data->counter_map = 0;
 	data->num_player = 0;
 	data->big_line = 0;
 	data->map = NULL;

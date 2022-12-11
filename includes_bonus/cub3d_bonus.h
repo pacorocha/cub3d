@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/11 00:51:05 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/11 20:06:05 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	verification_of_rgb_color(t_data *data, int i, char **rgb);
 
 //parse
 void	parser(t_data *data);
-void	fill_arr_textures(t_data *data, char *line, int i);
+void	fill_arr_textures(t_data *data, char *line);
 void	fill_arr_colors(t_data *data, char *line);
 void	fill_map(t_data *data, char *line, int i);
 void	read_map(t_data *data);
@@ -39,6 +39,7 @@ int		check_end_of_file(char *file, char *sufx);
 void	fill_structures_loop(t_data *data);
 void	check_rgb_char(t_data *data, char **rgb_arr, char rgb_char, char *rgb);
 void	add_char_lines(t_data *data);
+void	verification_char_line(t_data *data, char *line);
 
 //map_checker
 void	map_checker(t_data *data);
@@ -56,11 +57,12 @@ int		is_space(char c);
 void	checking_texture(t_data *data);
 int		is_invalid_file_texture(char *texture);
 void	checking_texture(t_data *data);
+void	get_map(t_data *data, int i);
 void	have_player(t_data *data, char c_current);
 
 //utils parse
 void	check_flags_directions(t_data *data, char *line, int counter);
-void	check_flags_colors(t_data *data, char *line, int counter);
+void	check_flags_colors(t_data *data, char *line);
 
 //free
 void	free_array(char **arr);

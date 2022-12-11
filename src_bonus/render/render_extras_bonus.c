@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_extras.c                                    :+:      :+:    :+:   */
+/*   render_extras_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 03:29:01 by coder             #+#    #+#             */
-/*   Updated: 2022/12/11 00:46:45 by coder            ###   ########.fr       */
+/*   Created: 2022/12/11 20:25:26 by jfrancis          #+#    #+#             */
+/*   Updated: 2022/12/11 20:25:27 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	render_map(t_data *data)
 		{
 			if (data->map[y][x] == '0' || data->map[y][x] == 'L')
 				color = BLACK;
-			if (data->map[y][x] == '1')
+			if (data->map[y][x] == '1' || data->map[y][x] == ' ')
 				color = WHITE;
 			render_rect(&data->img, (t_rect){scale_f * x, scale_f * y,
-				10, 10, color});
+				scale_f, scale_f, color});
 			x++;
 		}
 		y++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 23:54:57 by coder             #+#    #+#             */
-/*   Updated: 2022/12/11 23:40:58 by coder            ###   ########.fr       */
+/*   Created: 2022/12/11 20:18:42 by jfrancis          #+#    #+#             */
+/*   Updated: 2022/12/11 20:18:45 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,5 @@ void	verification_char_line(t_data *data, char *line)
 			print_error("Error! Invalid Map.");
 		}
 		i++;
-	}	
+	}
 }
