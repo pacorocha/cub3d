@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/11 00:55:13 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/11 23:40:09 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	error_colors(t_data *data);
 void	verification_of_rgb_color(t_data *data, int i, char **rgb);
 //parse
 void	parser(t_data *data);
-void	fill_arr_textures(t_data *data, char *line, int i);
+void	fill_arr_textures(t_data *data, char *line);
 void	fill_arr_colors(t_data *data, char *line);
 void	fill_map(t_data *data, char *line, int i);
 void	read_map(t_data *data);
@@ -43,6 +43,7 @@ void	fill_structures_loop(t_data *data);
 void	map_checker(t_data *data);
 int		is_invalid(char **arr_split);
 void	verification_sides_of_char(t_data *data, int row, size_t col);
+void	verification_char_line(t_data *data, char *line);
 void	char_change(t_data *data, int row, size_t col, char new_color);
 void	checking_sides(t_data *data, int row, size_t col);
 void	search_ocurrence_ground(t_data *data);
@@ -60,7 +61,8 @@ void	have_player(t_data *data, char c_current);
 
 //utils parse
 void	check_flags_directions(t_data *data, char *line, int counter);
-void	check_flags_colors(t_data *data, char *line, int counter);
+void	check_flags_colors(t_data *data, char *line);
+void	get_map(t_data *data, int i);
 
 //free
 void	free_array(char **arr);

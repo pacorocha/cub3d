@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 02:22:28 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/02 00:01:24 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/11 19:40:48 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	game_loop(t_data *data)
 	render_background(data);
 	init_textures(data);
 	project_3d_walls(data);
+	destroy_textures(data);
 	mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.win,
 		data->img.img_ptr, 0, 0);
-	destroy_textures(data);
 	return (0);
 }
