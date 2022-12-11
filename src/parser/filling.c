@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filling.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:14:30 by coder             #+#    #+#             */
-/*   Updated: 2022/12/10 17:22:56 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 23:39:46 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,39 +46,39 @@ void	fill_structures_loop(t_data *data)
 	i = 0;
 	while (data->cub[i] != NULL)
 	{
-		if (data->cub[i][0] != '\0')
+		if (data->counter_flow <= 3)
 		{
-			if (data->counter_flow <= 3)
+			if (data->cub[i][0] != '\0')
 			{
 				check_flags_directions(data, data->cub[i], data->counter_flow);
-				fill_arr_textures(data, data->cub[i], i);
-			}
-			else if (data->counter_flow == 4 || data->counter_flow == 5)
-			{
-				check_flags_colors(data, data->cub[i], data->counter_flow);
-				fill_arr_colors(data, data->cub[i]);
-			}
-			else if (data->counter_flow > 5)
-			{
-				count_col(data, i);
-				fill_map(data, data->cub[i], i);
+				fill_arr_textures(data, data->cub[i]);
 			}
 		}
+		else if (data->counter_flow == 4 || data->counter_flow == 5)
+		{
+			if (data->cub[i][0] != '\0')
+			{
+				check_flags_colors(data, data->cub[i]);
+				fill_arr_colors(data, data->cub[i]);
+			}
+		}
+		else if (data->counter_flow > 5)
+			get_map(data, i);
 		i++;
 	}
 }
 
-void	fill_arr_textures(t_data *data, char *line, int i)
+void	fill_arr_textures(t_data *data, char *line)
 {
-	if (i == 0)
+	if (data->counter_flow == 0)
 	{
 		data->directions = (char **)ft_calloc(5, sizeof(char *));
-		data->directions[i] = line;
+		data->directions[data->counter_flow] = line;
 	}
 	else
-		data->directions[i] = line;
-	if (i == 3)
-		data->directions[i + 1] = NULL;
+		data->directions[data->counter_flow] = line;
+	if (data->counter_flow == 3)
+		data->directions[data->counter_flow + 1] = NULL;
 	data->counter_flow++;
 }
 

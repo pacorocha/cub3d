@@ -6,7 +6,7 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:29:00 by coder             #+#    #+#             */
-/*   Updated: 2022/12/10 18:15:30 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/11 23:37:05 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	search_ocurrence_ground(t_data *data)
 		len_col = ft_strlen(data->map[i]);
 		while (j < len_col)
 		{
-			if (data->map[i][j] == '0')
+			if (data->map[i][j] == '0'
+				|| ft_strchr(CHAR_PLAYER, data->map[i][j]))
 			{
 				data->control = 1;
 				break ;
