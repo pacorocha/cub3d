@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filling.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:14:30 by coder             #+#    #+#             */
-/*   Updated: 2022/12/10 17:43:46 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 17:22:56 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	parser(t_data *data)
 	{
 		free_array(data->cub);
 		print_error("Error. Invalid File");
-	}	
+	}
 }
 
 void	fill_structures_loop(t_data *data)
@@ -57,7 +57,7 @@ void	fill_structures_loop(t_data *data)
 			{
 				check_flags_colors(data, data->cub[i], data->counter_flow);
 				fill_arr_colors(data, data->cub[i]);
-			}	
+			}
 			else if (data->counter_flow > 5)
 			{
 				count_col(data, i);

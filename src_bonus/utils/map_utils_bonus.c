@@ -6,11 +6,11 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 03:28:55 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/14 20:09:11 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:42:57 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 int	map_has_wall_at(float x, float y, t_data *data)
 {
@@ -46,5 +46,8 @@ void	count_col(t_data *data, int i)
 		i++;
 	}
 	if (data->big_line < 3)
+	{
+		free_minimun_lines_map(data);
 		print_error("Error, line < 3");
+	}
 }

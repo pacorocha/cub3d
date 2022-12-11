@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   defines.h                                          :+:      :+:    :+:   */
+/*   defines_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 06:28:51 by coder             #+#    #+#             */
-/*   Updated: 2022/11/29 23:23:19 by coder            ###   ########.fr       */
+/*   Created: 2022/12/11 00:56:37 by coder             #+#    #+#             */
+/*   Updated: 2022/12/11 00:56:38 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINES_H
-# define DEFINES_H
+#ifndef DEFINES_BONUS_H
+# define DEFINES_BONUS_H
 
 # define TRUE 1
 # define FALSE 0
 
-# define TEX_WIDTH 128
-# define TEX_HEIGHT 128
+# define TEX_WIDTH 64
+# define TEX_HEIGHT 64
 
 # define NUM_TEX 4
 
@@ -29,19 +29,21 @@
 
 # define CHAR_PLAYER "NSWE"
 # define PLAYER_SIZE 1
-# define FOV_ANGLE 60 * PI / 180
+# define FOV_ANGLE 1.0472
 # define NUM_RAYS WIN_WIDTH
+# define FOG_DIST 100
 # define FLT_MAX 3.40282346638528859812e+38F
 
-#define RED 0xB00612
-#define GREEN 0x26871C
-#define OFFBLACK 0x191919
-#define OFFWHITE 0xA7A7A7
-#define BLACK 0x000000
-#define WHITE 0xFFFFFF
-#define BLUE 0x06304A
+# define RED 0xB00612
+# define GREEN 0x26871C
+# define OFFBLACK 0x191919
+# define OFFWHITE 0xA7A7A7
+# define BLACK 0x000000
+# define WHITE 0xFFFFFF
+# define BLUE 0x06304A
+# define GRAY 0X8d908d
 
-# define TILE_SIZE 128
+# define TILE_SIZE 64
 
 # define KEY_ESC (0xff1b)
 # define KEY_Q (0x71)
@@ -50,6 +52,8 @@
 # define KEY_S (0x73)
 # define KEY_D (0x64)
 # define KEY_W (0x77)
+# define KEY_E (0x65)
+# define KEY_I (0x69)
 
 # define KEY_UP (0xff52)
 # define KEY_DOWN (0xff54)

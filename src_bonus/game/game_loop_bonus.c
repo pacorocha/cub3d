@@ -6,11 +6,11 @@
 /*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 02:22:28 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/11/29 23:23:06 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/11 00:07:06 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 void	move_player(t_data *data)
 {
@@ -48,15 +48,18 @@ void	update_game(t_data *data)
 int	game_loop(t_data *data)
 {
 	update_game(data);
-	render_layer(data, RED);
 	render_background(data);
-	//render_map(data);
-	//render_rays(data);
-	//render_player(data);
 	init_textures(data);
 	project_3d_walls(data);
-
+	if (data->show_inst == 1)
+		render_rect(&data->img, (t_rect){30, 30,
+			205, 45, WHITE});
+	if (data->show_map == 1)
+		render_map(data);
 	mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.win,
 		data->img.img_ptr, 0, 0);
+	if (data->show_inst == 1)
+		render_inst(data);
+	destroy_textures(data);
 	return (0);
 }

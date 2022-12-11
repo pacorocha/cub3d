@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast_helpers.c                                  :+:      :+:    :+:   */
+/*   read_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 02:59:17 by coder             #+#    #+#             */
-/*   Updated: 2022/11/09 21:20:18 by jfrancis         ###   ########.fr       */
+/*   Created: 2022/11/04 02:37:03 by coder             #+#    #+#             */
+/*   Updated: 2022/12/07 20:57:28 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
-int	is_ray_facing_down(float angle)
+int	check_end_of_file(char *file, char *sufx)
 {
-	return (angle > 0 && angle < PI);
-}
+	int	counter;
 
-int	is_ray_facing_up(float angle)
-{
-	return (!is_ray_facing_down(angle));
-}
-
-int	is_ray_facing_right(float angle)
-{
-	return (angle < PI * 0.5 || angle > 1.5 * PI);
-}
-
-int	is_ray_facing_left(float angle)
-{
-	return (!is_ray_facing_right(angle));
+	counter = 0;
+	while (file[counter + 1])
+		counter++;
+	while (counter >= 0 && file[counter] != '.')
+		counter--;
+	if (counter >= 0 && !ft_strcmp(file + counter + 1, sufx))
+		return (1);
+	return (0);
 }

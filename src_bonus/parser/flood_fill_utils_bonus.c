@@ -6,11 +6,11 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 23:34:48 by coder             #+#    #+#             */
-/*   Updated: 2022/12/10 17:23:28 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/10 17:38:59 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../../includes_bonus/cub3d_bonus.h"
 
 int	is_open(t_data *data, int row, size_t col)
 {

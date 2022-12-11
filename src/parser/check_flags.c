@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_flags.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 02:19:58 by coder             #+#    #+#             */
-/*   Updated: 2022/12/10 15:22:35 by coder            ###   ########.fr       */
+/*   Updated: 2022/12/10 17:41:23 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	check_flags_colors(t_data *data, char *line, int counter)
 		if (counter == 5)
 			free(data->f_color);
 		print_error("Error, not init valid colors");
-	}	
+	}
 }
 
 void	add_char_lines(t_data *data)
