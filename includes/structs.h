@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 17:07:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/10 17:07:57 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 21:43:59 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ typedef struct s_data
 	int			counter_flow;
 	int			counter_map;
 	int			control;
+	int			control_color;
 	size_t		big_line;
 	int			num_player;
 }	t_data;

@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:21:26 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/11 20:21:27 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 21:52:21 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	init_data(t_data *data, int argc, char **argv)
 	data->c_color = NULL;
 	data->f_color = NULL;
 	data->control = 0;
+	data->control_color = 0;
 	data->counter_map = 0;
 	data->num_player = 0;
 	data->big_line = 0;

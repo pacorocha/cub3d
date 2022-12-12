@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:18:42 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/11 20:18:45 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 21:48:10 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	check_rgb_char(t_data *data, char **rgb_arr, char rgb_char, char *rgb)
 
 void	get_map(t_data *data, int i)
 {
+	data->control = 0;
 	verification_char_line(data, data->cub[i]);
 	count_col(data, i);
 	fill_map(data, data->cub[i], i);
@@ -76,12 +77,12 @@ void	verification_char_line(t_data *data, char *line)
 			&& !ft_strchr(CHAR_PLAYER, line[i]))
 		{
 			free_array(data->cub);
-			if (data->counter_flow > 6)
-				free_array(data->map);
 			free(data->directions);
-			free(data->f_color);
-			free(data->c_color);
-			print_error("Error! Invalid Map.");
+			if (data->c_color != NULL)
+				free(data->c_color);
+			if (data->f_color != NULL)
+				free(data->f_color);
+			print_error("Error, not init valid colors.");
 		}
 		i++;
 	}

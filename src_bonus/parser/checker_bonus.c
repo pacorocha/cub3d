@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:23:35 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/11 20:23:37 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 22:58:00 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	map_checker(t_data *data)
 {
 	checking_texture(data);
+	check_dup_textures(data);
 	checking_color(data);
 	search_ocurrence_ground(data);
 }

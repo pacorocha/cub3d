@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:19:23 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/11 20:19:25 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 22:58:33 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,27 @@ int	is_space(char c)
 void	char_change(t_data *data, int row, size_t col, char new_color)
 {
 	data->map[row][col] = new_color;
+}
+
+void	check_dup_textures(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < NUM_TEX)
+	{
+		j = i + 1;
+		while (j < NUM_TEX)
+		{
+			if (ft_strcmp(data->textures[i]->id, data->textures[j]->id) == 0)
+			{
+				free_checker(data);
+				free_textures(data, NUM_TEX);
+				print_error("Error: invalid textures.");
+			}
+			j++;
+		}
+		i++;
+	}
 }

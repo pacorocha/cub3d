@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:18:27 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/11 20:18:31 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 21:55:12 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,16 @@ void	check_flags_directions(t_data *data, char *line, int counter)
 
 void	check_flags_colors(t_data *data, char *line)
 {
-	if (!ft_strncmp(line, "F ", 2)
-		|| !ft_strncmp(line, "C ", 2))
+	if (!ft_strncmp(line, "F ", 2))
+	{
+		data->control_color++;
 		return ;
+	}
+	else if (!ft_strncmp(line, "C ", 2))
+	{
+		data->control++;
+		return ;
+	}
 	else
 	{
 		free_array(data->cub);

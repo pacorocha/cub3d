@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/11 20:23:59 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/11 20:24:01 by jfrancis         ###   ########.fr       */
+/*   Created: 2022/12/11 20:19:04 by jfrancis          #+#    #+#             */
+/*   Updated: 2022/12/11 21:56:34 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,21 @@ void	fill_arr_colors(t_data *data, char *line)
 	char	**str_splitted;
 
 	str_splitted = ft_split(line, ' ');
-	if (!ft_strncmp(line, "F ", 2))
+	if (!ft_strncmp(line, "F ", 2) && data->control_color == 1)
 		data->f_color = ft_strdup(str_splitted[1]);
-	else
+	else if (!ft_strncmp(line, "C ", 2) && data->control == 1)
 		data->c_color = ft_strdup(str_splitted[1]);
+	else
+	{
+		free_array(data->cub);
+		free(data->directions);
+		if (data->c_color != NULL)
+			free(data->c_color);
+		if (data->f_color != NULL)
+			free(data->f_color);
+		free_array(str_splitted);
+		print_error("Error, not init valid colors.");
+	}
 	free_array(str_splitted);
 	data->counter_flow++;
 }

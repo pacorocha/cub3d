@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:18:54 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/11 20:18:56 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 22:55:56 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	map_checker(t_data *data)
 {
 	checking_texture(data);
+	check_dup_textures(data);
 	checking_color(data);
 	search_ocurrence_ground(data);
 }
@@ -33,7 +34,7 @@ void	checking_texture(t_data *data)
 				free(data->textures[i]);
 			else
 				free_textures(data, i);
-			print_error("Error. Texture invalid!");
+			print_error("Error. Invalid texture!");
 		}
 		else
 			map_texture(data, i, data->directions[i]);
