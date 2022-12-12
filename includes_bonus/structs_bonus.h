@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 03:06:08 by coder             #+#    #+#             */
-/*   Updated: 2022/12/11 20:17:38 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 21:58:03 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ typedef struct s_data
 	int			counter_flow;
 	int			counter_map;
 	int			control;
+	int			control_color;
 	size_t		big_line;
 	float		proj_plane_d;
 	int			show_map;

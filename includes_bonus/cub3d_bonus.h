@@ -6,7 +6,7 @@
 /*   By: jfrancis <jfrancis@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:49:33 by jfrancis          #+#    #+#             */
-/*   Updated: 2022/12/11 20:06:05 by jfrancis         ###   ########.fr       */
+/*   Updated: 2022/12/11 22:59:37 by jfrancis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int		is_space(char c);
 void	checking_texture(t_data *data);
 int		is_invalid_file_texture(char *texture);
 void	checking_texture(t_data *data);
+void	check_dup_textures(t_data *data);
 void	get_map(t_data *data, int i);
 void	have_player(t_data *data, char c_current);
 
